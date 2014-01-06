@@ -36,5 +36,5 @@ EOT;
 	return;
 }
 
-header("Location: http:listtournaments");
+header("Location: http:admin");
 ?>
