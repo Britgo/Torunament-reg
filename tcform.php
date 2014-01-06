@@ -192,7 +192,7 @@ EOT;
 			$tcd = $tourn->Tcode . $year;
 		}
 		print <<<EOT
-<form name="ctform" action="/phpsegments/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
+<form name="ctform" action="/tournentry/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table summary="Tournament Table">
 <tr>
 	<td colspan="2">Please enter a unique single-word code for the tournament here.<br />This should be letters and digits only.</td>
@@ -206,7 +206,7 @@ EOT;
 	}
 	else  {
 		print  <<<EOT
-<form name="ctform" action="/phpsegments/ut2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
+<form name="ctform" action="/tournentry/ut2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table summary="Tournament Table">
 
 EOT;

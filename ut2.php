@@ -36,5 +36,5 @@ EOT;
 	return;
 }
 
-header("Location: http://www.stalbans-go.org.uk/tupdatedok?tcode=$tcode");
+header("Location: http://www.britgo.org/tournaments/_register/updated?tcode=$tcode");
 ?>

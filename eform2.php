@@ -65,5 +65,5 @@ EOT;
 	return;
 }
 
-header("Location: http://www.stalbans-go.org.uk/tentryok?tcode=$tcode");
+header("Location: http://www.britgo.org/tournaments/_register/accepted?tcode=$tcode");
 ?>
