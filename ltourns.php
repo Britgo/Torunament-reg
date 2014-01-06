@@ -3,7 +3,7 @@ function dodelete(tc)
 {
 	if  (!confirm("Are you sure you want to delete tournament " + tc))
 		return;
-	document.location = "_register/delete?tcode=" + tc;
+	document.location = "delete?tcode=" + tc;
 }
 </script>
 
@@ -43,7 +43,7 @@ EOT;
 			$url = $tourn->urlof();
 			print <<<EOT
 <tr>
-	<td><a href="_register/clone$url">$tc</a></td>
+	<td><a href="clone$url">$tc</a></td>
 	<td>{$tourn->display_dates()}</td>
 	<td>{$tourn->display_name()}</td>
 	<td>{$tourn->Nrounds}</td>
@@ -52,7 +52,7 @@ EOT;
 	if ($tourn->is_over())
 		print <<<EOT
 	<td>entry</td>
-	<td><a href="_register/listall$url">list</a></td>
+	<td><a href="listall$url">list</a></td>
 	<td>update</td>
 	<td><a href="javascript:dodelete('$tc')">delete</a></td>
 </tr>
@@ -60,9 +60,9 @@ EOT;
 EOT;
 	else
 		print <<<EOT
-	<td><a href="_register/entry$url">entry</a></td>
-	<td><a href="_register/listall$url">list</a></td>
-	<td><a href="_register/update$url">update</a></td>
+	<td><a href="entry$url">entry</a></td>
+	<td><a href="listall$url">list</a></td>
+	<td><a href="update$url">update</a></td>
 	<td><a href="javascript:dodelete('$tc')">delete</a></td>
 </tr>
 
@@ -73,7 +73,7 @@ EOT;
 EOT;
 	}
 	print <<<EOT
-<p><a href="_register/create">Click here</a> to set up a new tournament. Click on a tournament code above
+<p><a href="create">Click here</a> to set up a new tournament. Click on a tournament code above
 to set up a new tournament based on that one.</p>
 
 EOT;
