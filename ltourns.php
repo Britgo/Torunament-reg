@@ -60,7 +60,7 @@ EOT;
 EOT;
 	else
 		print <<<EOT
-	<td><a href="entry$url">entry</a></td>
+	<td><a href="form$url">entry</a></td>
 	<td><a href="listall$url">list</a></td>
 	<td><a href="update$url">update</a></td>
 	<td><a href="javascript:dodelete('$tc')">delete</a></td>

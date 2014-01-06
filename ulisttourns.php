@@ -35,8 +35,8 @@ EOT;
 			$nameprin = $tourn->display_name();
 			if  ($tourn->Open)  {
 				if  (!$tourn->is_over())
-					$codeprin = "<a href=\"_register/entry$url\">$codeprin</a>";
-				$nameprin = "<a href=\"_register/list$url\">$nameprin</a>";
+					$codeprin = "<a href=\"form$url\">$codeprin</a>";
+				$nameprin = "<a href=\"list$url\">$nameprin</a>";
 			}
 			print <<<EOT
 <tr>
