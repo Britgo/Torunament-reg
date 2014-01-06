@@ -8,9 +8,9 @@ function opendb()
 	//  CHANGE THESE AS REQUIRED!!!!
 
 	$hostname = "localhost";	
-	$username = "c9442893_ts";
-	$password = "Tent12";
-	$dbname = "c9442893_tourneys";
+	$username = "tourn-reg";
+	$password = "tourn-reg-0601";
+	$dbname = "tournaments";
 	
 	if  (!mysql_connect($hostname, $username, $password)  ||  !mysql_select_db($dbname))  {
 		$ecode = mysql_error();
