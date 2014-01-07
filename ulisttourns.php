@@ -1,6 +1,12 @@
 <?php
 
-// Set up everything from functions
+// Copyright John Collins 2014
+// Licensed under the GPL, v3
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
 
 include 'tcerror.php';
 include 'tdate.php';
@@ -10,7 +16,7 @@ include 'opendb.php';
 
 try  {
 	opendb();
-	$tlist = get_tcodes("sdate,tname");
+	$tlist = get_tcodes("sdate,tname", true, true);
 	if  (count($tlist) == 0)
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {

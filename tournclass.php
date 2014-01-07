@@ -1,5 +1,13 @@
 <?php
 
+// Copyright John Collins 2014
+// Licensed under the GPL, v3
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 class Tournament {
 	public $Tcode;
 	public $Name;
@@ -384,10 +392,17 @@ class Tournament {
  	}
  }
  
- function get_tcodes($order = "tcode")
+ function get_tcodes($order = "tcode", $openonly = false, $futureonly = false)
  {
 	$result = array();
-	$ret = mysql_query("select tcode from tdetails order by $order");
+	$constr = "";
+	if  ($openonly && $futureonly)
+		$constr = " where open!=0 and sdate>current_date()";
+	elseif  ($openonly)
+		$constr = " where open!=0";
+	elseif  ($futureonly)
+		$constr = " where sdate>current_date()";
+	$ret = mysql_query("select tcode from tdetails$constr order by $order");
 	if  ($ret)  {
    		while ($row = mysql_fetch_array($ret)) {
      		$result.array_push($result, $row[0]);
