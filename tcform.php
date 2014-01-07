@@ -1,5 +1,13 @@
 <?php
 
+// Copyright John Collins 2014
+// Licensed under the GPL, v3
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 include 'tcerror.php';
 include 'tdate.php';
 include 'person.php';
@@ -192,7 +200,7 @@ EOT;
 			$tcd = $tourn->Tcode . $year;
 		}
 		print <<<EOT
-<form name="ctform" action="/tournentry/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
+<form name="ctform" action="/tournreg/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table summary="Tournament Table">
 <tr>
 	<td colspan="2">Please enter a unique single-word code for the tournament here.<br />This should be letters and digits only.</td>
@@ -206,7 +214,7 @@ EOT;
 	}
 	else  {
 		print  <<<EOT
-<form name="ctform" action="/tournentry/ut2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
+<form name="ctform" action="/tournreg/ut2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table summary="Tournament Table">
 
 EOT;
