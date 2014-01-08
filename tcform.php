@@ -129,6 +129,10 @@ EOT;
 		alert("Please give a meaningful tournament code letters/digits");
 		return false;
 	}
+	if  (/editme/i.test(tcode))  {
+		alert("Please change the tournament code from EDITME");
+		return false;
+	}
 	if (Existing_codes[tcode]) {
      	alert("Already have a tournament called " + tcode);
       	return false;
