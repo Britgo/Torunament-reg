@@ -188,7 +188,7 @@ EOT;
 print <<<EOT
 <form name="entryform" action="/tournreg/eform2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <input type="hidden" name="tcode" value="$tcode" />
-<table summary="Entry Table">
+<table>
 
 EOT;
 if  (count($players) > 0)  {

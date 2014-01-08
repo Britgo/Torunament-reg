@@ -16,7 +16,7 @@ include 'opendb.php';
 
 function icsdisp($str)
 {
-	return preg_replace("/\r?\n/", '\\n', $str) . '\\n';
+	return preg_replace("/\r?\n/", '\\n' . "\n", $str) . '\\n';
 }
 
 if (!isset($_GET['tcode']))  {
@@ -69,7 +69,16 @@ if (strlen($tourn->Overview) != 0)
   print icsdisp($tourn->Overview);
 if (strlen($tourn->Address) != 0)
   print icsdisp($tourn->Address);
-print $tourn->Postcode;
+print "{$tourn->Postcode}\\n";
+if (strlen($tourn->Website) != 0)  {
+	$w = $tourn->Website;
+	if (!preg_match('/^<a/', $w))  {
+		if  (!preg_match('/^http:/', $w))
+			$w = "http://$w";
+		$w = "<a href=\"$w\">Website</a>";
+	}
+	print $w;
+}
 print <<<EOT
 
 END:VEVENT
