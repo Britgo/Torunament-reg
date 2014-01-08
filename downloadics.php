@@ -16,7 +16,7 @@ include 'opendb.php';
 
 function icsdisp($str)
 {
-	return preg_replace("/\n/", "\\n", $str) . "\\n";
+	return preg_replace("/\n/", '\\n', $str) . '\\n';
 }
 
 if (!isset($_GET['tcode']))  {
