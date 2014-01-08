@@ -16,7 +16,7 @@ include 'opendb.php';
 
 function icsdisp($str)
 {
-	return preg_replace("\n", "\n ", $str) . "\n ";
+	return preg_replace("/\n/", "\n ", $str) . "\n ";
 }
 
 if (!isset($_GET['tcode']))  {
@@ -71,6 +71,7 @@ if (strlen($tourn->Address) != 0)
   print icsdisp($tourn->Address);
 print $tourn->Postcode;
 print <<<EOT
+
 END:VEVENT
 END:VCALENDAR
 
