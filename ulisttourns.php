@@ -54,7 +54,7 @@ EOT;
 	<td>{$tourn->display_pc()}</td>
 	<td>{$tourn->display_format()}</td>
 	<td>{$tourn->display_over()}</td>
-	<td><a href="http://www.britgo.org/tournreq/downloadics.php{$tourn->urlof()}">ICS</a></td>
+	<td><a href="http://www.britgo.org/tournreg/downloadics.php{$tourn->urlof()}">ICS</a></td>
 </tr>
 
 EOT;
