@@ -30,6 +30,7 @@ try  {
 	<th>Postcode</th>
 	<th>Format</th>
 	<th>Overview</th>
+	<th>ICS</th>
 </tr>
 EOT;
 
@@ -41,8 +42,8 @@ EOT;
 			$nameprin = $tourn->display_name();
 			if  ($tourn->Open)  {
 				if  (!$tourn->is_over())
-					$codeprin = "<a href=\"_register/form$url\">$codeprin</a>";
-				$nameprin = "<a href=\"_register/list$url\">$nameprin</a>";
+					$codeprin = "<a href=\"http://www.britgo.org/tournaments/_register/form$url\">$codeprin</a>";
+				$nameprin = "<a href=\"http://www.britgo.org/tournaments/_register/list$url\">$nameprin</a>";
 			}
 			print <<<EOT
 <tr>
@@ -53,6 +54,7 @@ EOT;
 	<td>{$tourn->display_pc()}</td>
 	<td>{$tourn->display_format()}</td>
 	<td>{$tourn->display_over()}</td>
+	<td><a href="http://www.britgo.org/tournreq/downloadics.php{$tourn->urlof()}">ICS</a></td>
 </tr>
 
 EOT;
