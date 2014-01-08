@@ -61,7 +61,7 @@ if ($tourn->Ndays > 1) {
 	$nd->incdays($tourn->Ndays-1);
 	print "DTEND:{$nd->icsdate()}\n";
 }
-print "SUMMARY:{$tourn->Name}\n";
+print "SUMMARY:{$tourn->Name} Go Tournament\n";
 print "DESCRIPTION:";
 if (strlen($tourn->Format) != 0)
   print icsdisp($tourn->Format);
