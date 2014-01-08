@@ -175,7 +175,7 @@ function country_sel() {
 EOT;
 print <<<EOT
 </script>
-<h1>Entry form for: {$tourn->display_name()}<h1>
+<h2>Entry form for: {$tourn->display_name()}</h2>
 <p>{$tourn->html_format()}</p>
 <p>{$tourn->html_over()}</p>
 EOT;
