@@ -53,6 +53,10 @@ class Tdate {
 	public function display_month() {
 		return date("F Y", $this->timestamp);
 	}
+
+	public function icsdate() {
+		return date("Ymd", $this->timestamp);
+	}
 	
 	public function queryof() {
 		return date("Y-m-d", $this->timestamp);
