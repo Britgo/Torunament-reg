@@ -1,5 +1,13 @@
 <?php
 
+// Copyright John Collins 2014
+// Licensed under the GPL, v3
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 include 'tcerror.php';
 include 'tdate.php';
 include 'rank.php';
