@@ -45,7 +45,7 @@ print <<<EOT
 	<th>Name</th>
 	<th>Club</th>
 	<th>Country</th>
-	<th>Rank</th>
+	<th>Grade</th>
 
 EOT;
 	if ($tourn->Lunch > 0)

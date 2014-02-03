@@ -303,7 +303,7 @@ else
 EOT;
 print <<<EOT
 <tr>
-	<td>Rank</td>
+	<td>Grade</td>
 <td>
 EOT;
 $r = new rank();
