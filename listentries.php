@@ -122,7 +122,7 @@ EOT;
 <a href="/tournreg/delentry.php{$tourn->urlof()}&{$player->urlof()}">Del</a>
 </td>
 
-EOT
+EOT;
 	}
 	print <<<EOT
 </tr>
