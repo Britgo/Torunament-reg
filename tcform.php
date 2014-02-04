@@ -337,6 +337,10 @@ EOT;
 	<td><input type="text" name="lunch" value="{$tourn->display_lunch()}" size="6" maxlength="6" /></td>
 </tr>
 <tr>
+	<td>Dinner or other event, blank if none</td>
+	<td><input type="text" name="dinner" value="{$tourn->display_dinner()}" size="20" /></td>
+</tr>
+<tr>
 	<td>Supplement if not BGA member</td>
 	<td><input type="text" name="nonbga" value="{$tourn->display_nonbga()}" size="6" maxlength="6" /></td>
 </tr>

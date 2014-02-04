@@ -75,10 +75,19 @@ function checkform() {
 function calccost() {
 	var fm = document.entryform;
 	var cost = {$tourn->display_basic_fee()};
+
+EOT;
+
+// Only put in code for non-bga if we have a charge for it
+// (provides for candidates where we don't allow such folk in)
+
+if ($tourn->Nonbga != 0)
+	print <<<EOT
 	if (fm.nonbga.checked)
 		cost += {$tourn->display_nonbga()};
 
 EOT;
+
 	// Process concession radio boxes but only if we have one.
 	// This is a horrible interleaving of PHP and JavaScript....
 	// Enjoy!
@@ -315,6 +324,11 @@ print <<<EOT
 	<td>Email</td>
 	<td><input type="text" name="email" size="30"></td>
 </tr>
+
+EOT;
+
+if ($tourn->Nonbga != 0)
+	print <<<EOT
 <tr>
 	<td>Not BGA Member (add &pound;{$tourn->display_nonbga()})</td>
 	<td><input type="checkbox" name="nonbga" onchange="calccost();"></td>
@@ -355,11 +369,17 @@ if  ($tourn->Lunch > 0)
 </tr>
 
 EOT;
-print <<<EOT
+
+if (strlen($tourn->Dinner) != 0)
+	print <<<EOT
 <tr>
-	<td>Joining for dinner</td>
+	<td>Joining for {$tourn->display_dinner()}</td>
 	<td><input type="checkbox" name="dinner"></td>
 </tr>
+
+EOT;
+
+print <<<EOT
 <tr>
 	<td>Don't list publicly</td>
 	<td><input type="checkbox" name="privacy"></td>

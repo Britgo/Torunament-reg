@@ -39,6 +39,17 @@ class Person {
 		return mysql_real_escape_string($this->Last);
 	}
 	
+	public function urlof() {
+	   $f = urlencode($this->First);
+      $l = urlencode($this->Last);
+      return "f=$f&l=$l";
+   }
+
+	public function fromget() {
+   	$this->First = $_GET["f"];
+      $this->Last = $_GET["l"];
+ 	}
+
 	public function display_name() {
 		if  ($this->Last == '_')
 			return  htmlspecialchars($this->First);

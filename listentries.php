@@ -53,13 +53,15 @@ EOT;
 	<th>Lunch</th>
 
 EOT;
-	print <<<EOT
-	<th>Dinner</th>
+	if (strlen($tourn->Dinner) != 0)
+		print <<<EOT
+	<th>{$tourn->display_dinner()}</th>
 	
 EOT;
 	if  ($Everyone)
 		print <<<EOT
 <th>Status</th>
+<th>Del</th>
 
 EOT;
 	print <<<EOT
@@ -101,7 +103,8 @@ EOT;
 	<td>$lunch</td>
 
 EOT;
-	print <<<EOT
+	if (strlen($tourn->Dinner) != 0)
+		print <<<EOT
 	<td>$dinner</td>
 
 EOT;
@@ -113,7 +116,13 @@ EOT;
 			print $tourn->display_concess2name();
 		else 
 			print "Std";
-		print "</td>\n";
+		print <<<EOT
+</td>
+<td>
+<a href="/tournreg/delentry.php{$tourn->urlof()}&{$player->urlof()}">Del</a>
+</td>
+
+EOT
 	}
 	print <<<EOT
 </tr>
@@ -128,7 +137,12 @@ EOT;
 if  ($Nc1 > 0) print "$Nc1 {$tourn->display_concess1name()}\n";
 if  ($Nc2 > 0) print "$Nc2 {$tourn->display_concess2name()}\n";
 if ($Nlunch > 0) print "$Nlunch for lunch\n";
-if ($Ndinner > 0) print "$Ndinner for dinner\n";
+if ($Ndinner > 0) print "$Ndinner for {$tourn->display_dinner()}\n";
 if ($Npriv > 0) print "$Npriv private entries\n";
-print "</p>\n";
+print <<<EOT
+</p>
+<p>Click <a href="http://www.britgo.org/tournreg/downloadgodraw.php{$tourn->urlof()}">here</a>
+to download a GoDraw file with these entries in.</p>
+
+EOT;
 ?>

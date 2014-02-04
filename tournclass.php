@@ -28,6 +28,7 @@ class Tournament {
  	public $Concess2name;			// Description for concession type 2
  	public $Nonbga;
  	public $Lunch;
+ 	public $Dinner;					// Dinner or such function, blank if none
  	public $Ebird;				// Early bird discount (0.00 if none)
  	public $Ebdate;
  	public $Latefee;
@@ -57,6 +58,7 @@ class Tournament {
  		$this->Concess2name = "";
  		$this->Nonbga = 3.0;
  		$this->Lunch = 0.0;
+ 		$this->Dinner = "";
  		$this->Ebird = 0.0;
  		$this->Ebdate = new Tdate();
  		$this->Ebdate->incdays(-30);
@@ -86,6 +88,7 @@ class Tournament {
  		$this->Concess2name = $t->Concess2name;
  		$this->Nonbga = $t->Nonbga;
  		$this->Lunch = $t->Lunch;
+ 		$this->Dinner = $t->Dinner;
  		$this->Ebird = $t->Ebird;
  		$this->Latefee = $t->Latefee;
  		$this->Latedays = $t->Latedays;
@@ -128,6 +131,7 @@ class Tournament {
  						"open," .
  						"fee," .
  						"lunch," .
+ 						"dinner," .
  						"concess1," .
  						"concess2," .
  						"concess1name," .
@@ -161,6 +165,7 @@ class Tournament {
  		$this->Open = $row["open"];
 		$this->Fee = $row['fee'];
 		$this->Lunch = $row['lunch'];
+		$this->Dinner = $row['dinner'];
  		$this->Concess1 = $row['concess1'];
  		$this->Concess2 = $row['concess2'];
  		$this->Concess1name = $row['concess1name'];
@@ -185,6 +190,7 @@ class Tournament {
 		$qover = mysql_real_escape_string($this->Overview);
 		$qaddr = mysql_real_escape_string($this->Address);
 		$qpc = mysql_real_escape_string($this->Postcode);
+		$qdinner = mysql_real_escape_string($this->Dinner);
 		$qc1 = mysql_real_escape_string($this->Concess1name);
 		$qc2 = mysql_real_escape_string($this->Concess2name);
 		$qem = mysql_real_escape_string($this->Email);
@@ -196,13 +202,13 @@ class Tournament {
 		if  (!mysql_query("insert into tdetails " .
 					    "(tcode,tname,tclass," .
  						"format,overview,address,postcode," .
- 						"sdate,ndays,rounds,provisional,open," .
+ 						"sdate,ndays,rounds,provisional,open,dinner," .
  						"fee,lunch,concess1,concess2,concess1name,concess2name," .
  						"nonbga,ebird,ebdate,latefee,latedays," .
  						"champfirst,champlast,contactfirst,contactlast,email,website" .
  						") values (" .
 						"'$qcode','$qname','$qclass','$qformat','$qover','$qddr','$qpc'," .
-						"'$qdat',{$this->Ndays},{$this->Nrounds},$qprov,$qopen," .
+						"'$qdat',{$this->Ndays},{$this->Nrounds},$qprov,$qopen,'$qdinner'," .
 						"{$this->Fee},{$this->Lunch},{$this->Concess1},{$this->Concess2},'$qc1','$qc2'," .
 						"{$this->Nonbga},{$this->Ebird},'$qebdat',{$this->Latefee},{$this->Latedays}," .
 						"'{$this->Champion->qfirst()}','{$this->Champion->qlast()}','{$this->Contact->qfirst()}','{$this->Contact->qlast()}','$qem','$qws')"))  {
@@ -223,6 +229,7 @@ class Tournament {
 		$qover = mysql_real_escape_string($this->Overview);
 		$qaddr = mysql_real_escape_string($this->Address);
 		$qpc = mysql_real_escape_string($this->Postcode);
+		$qdinner = mysql_real_escape_string($this->Dinner);
 		$qc1 = mysql_real_escape_string($this->Concess1name);
 		$qc2 = mysql_real_escape_string($this->Concess2name);
 		$qem = mysql_real_escape_string($this->Email);
@@ -235,7 +242,7 @@ class Tournament {
 		if  (!mysql_query("update tdetails set " .
 						"tname='$qname',tclass='$qclass'," .
 						"format='$qformat',overview='$qover',address='$qaddr',postcode='$qpc'," .
-						"sdate='$qdat',ndays={$this->Ndays},rounds={$this->Nrounds},provisional=$qprov,open=$qopen," .
+						"sdate='$qdat',ndays={$this->Ndays},rounds={$this->Nrounds},provisional=$qprov,open=$qopen,dinner='$qdinner'," .
 						"fee={$this->Fee},lunch={$this->Lunch},concess1={$this->Concess1},concess2={$this->Concess2},concess1name='$qc1',concess2name='$qc2'," .
 						"nonbga={$this->Nonbga},ebird={$this->Ebird},ebdate='$qebdat'," .
 						"latefee={$this->Latefee},latedays={$this->Latedays}," .
@@ -274,6 +281,9 @@ class Tournament {
  		$this->Open = isset($_POST["open"]);
 		$this->Fee = $_POST['fee'];
 		$this->Lunch = $_POST['lunch'];
+		$this->Dinner = "";
+		if (isset($_POST['dinner']))
+			$this->Dinner = $_POST['dinner'];
  		$this->Concess1 = $_POST['concess1'];
  		$this->Concess2 = $_POST['concess2'];
  		$this->Concess1name = $_POST['concess1name'];
@@ -328,6 +338,9 @@ class Tournament {
  	}
  	public function display_lunch() {
  		return sprintf("%.2f", $this->Lunch);
+ 	}
+ 	public function display_dinner() {
+ 		return  htmlspecialchars($this->Dinner);
  	}
  	public function display_nonbga() {
  		return sprintf("%.2f", $this->Nonbga);
