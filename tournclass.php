@@ -268,12 +268,12 @@ class Tournament {
 	}
  
 	public function frompost()  {
- 		$this->Name = $_POST['tname'];
+ 		$this->Name = trim($_POST['tname']);
  		$this->Tclass = $_POST['tclass'];
- 		$this->Format = $_POST['format'];
- 		$this->Overview = $_POST['overview'];
- 		$this->Address = $_POST['address'];
- 		$this->Postcode = $_POST['postcode'];
+ 		$this->Format = trim($_POST['format']);
+ 		$this->Overview = trim($_POST['overview']);
+ 		$this->Address = trim($_POST['address']);
+ 		$this->Postcode = trim($_POST['postcode']);
  		$this->Sdate->frompost();
 		$this->Ndays = $_POST['ndays'];
  		$this->Nrounds = $_POST['rounds'];
@@ -283,20 +283,20 @@ class Tournament {
 		$this->Lunch = $_POST['lunch'];
 		$this->Dinner = "";
 		if (isset($_POST['dinner']))
-			$this->Dinner = $_POST['dinner'];
+			$this->Dinner = trim($_POST['dinner']);
  		$this->Concess1 = $_POST['concess1'];
  		$this->Concess2 = $_POST['concess2'];
- 		$this->Concess1name = $_POST['concess1name'];
- 		$this->Concess2name = $_POST['concess2name'];
+ 		$this->Concess1name = trim($_POST['concess1name']);
+ 		$this->Concess2name = trim($_POST['concess2name']);
  		$this->Nonbga = $_POST['nonbga'];
  		$this->Ebird = $_POST['ebird'];
  		$this->Ebdate->frompost('eb');
  		$this->Latefee = $_POST['latefee'];
  		$this->Latedays = $_POST['latedays'];
- 		$this->Champion = new Person(trim($_POST['champ']));
- 		$this->Contact = new Person(trim($_POST['contact']));
- 		$this->Email = $_POST['email'];
- 		$this->Website = $_POST['website'];
+ 		$this->Champion = new Person($_POST['champ']);
+ 		$this->Contact = new Person($_POST['contact']);
+ 		$this->Email = trim($_POST['email']);
+ 		$this->Website = trim($_POST['website']);
 	}
  		
  	public function set_hidden()  {

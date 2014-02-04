@@ -99,9 +99,9 @@ class Entrant extends Person {
  
 	public function frompost()  {
 		$this->Rank = new rank($_POST['rank']);
- 		$this->Club = $_POST['club'];
- 		$this->Country = $_POST['country'];
- 		$this->Email = $_POST['email'];
+ 		$this->Club = trim($_POST['club']);
+ 		$this->Country = trim($_POST['country']);
+ 		$this->Email = trim($_POST['email']);
  		$this->Nonbga = isset($_POST['nonbga']);
  		$this->Lunch = isset($_POST['lunch']);
  		$this->Dinner = isset($_POST['dinner']);
