@@ -26,7 +26,7 @@ try  {
 		print <<<EOT
 <table>
 <tr>
-	<th>Code</th>
+	<th>Clone</th>
 	<th>Date(s)</th>
 	<th>Name</th>
 	<th>Rounds</th>
