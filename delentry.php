@@ -10,6 +10,7 @@
 
 include 'tcerror.php';
 include 'tdate.php';
+include 'rank.php';
 include 'person.php';
 include 'entrant.php';
 include 'tournclass.php';
