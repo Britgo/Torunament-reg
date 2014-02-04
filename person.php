@@ -4,6 +4,8 @@ class Person {
 	public $Last;
 
 	public function __construct($f = "", $l = "") {
+		$f = trim($f);
+		$l = trim($l);
 		if (strlen($f) != 0)  {
 			if (strlen($l) != 0) {
 				$this->First = $f;
