@@ -139,8 +139,10 @@ if  ($Nc2 > 0) print "$Nc2 {$tourn->display_concess2name()}\n";
 if ($Nlunch > 0) print "$Nlunch for lunch\n";
 if ($Ndinner > 0) print "$Ndinner for {$tourn->display_dinner()}\n";
 if ($Npriv > 0) print "$Npriv private entries\n";
-print <<<EOT
-</p>
+print "</p>\n";
+if ($Everyone)
+	print <<<EOT
+
 <p>Click <a href="http://www.britgo.org/tournreg/downloadgodraw.php{$tourn->urlof()}">here</a>
 to download a GoDraw file with these entries in.</p>
 
