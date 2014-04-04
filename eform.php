@@ -386,7 +386,7 @@ print <<<EOT
 </tr>
 <tr>
 	<td>Cost</td>
-	<td>&pound;<input name="cost" type="text" size="5" maxlength="4" value="{$tourn->display_basic_fee()}"></td>
+	<td>&pound;<input name="cost" type="text" size="5" maxlength="5" value="{$tourn->display_basic_fee()}"></td>
 </tr>
 <tr>
 	<td>Click to enter</td>
