@@ -56,19 +56,23 @@ function nonblank(s)  {
 }
 
 function checkform() {
-	var fm = document.entryform;
+	 var fm = document.entryform;
     if  (!nonblank(fm.name.value))  {
-    	alert("Please give your name");
+    	  alert("Please give your name");
         return false;
     }
     if (!nonblank(fm.club.value)) {
-    	alert("Please give your club - or put 'No club'");
+    	  alert("Please give your club - or put 'No club'");
         return false;
     }
-	if (!nonblank(fm.email.value))  {
-		alert("Please give your email address");
-		return  false;
-	}  
+    if (!nonblank(fm.country.value))  {
+    	  alert("Please give a country");
+   	  return  false; 	  
+    }
+	 if (!nonblank(fm.email.value))  {
+		  alert("Please give your email address");
+		  return  false;
+	 }  
     return true;
 }
 
@@ -379,6 +383,9 @@ if (strlen($tourn->Dinner) != 0)
 
 EOT;
 
+$r1 = rand(1,10);
+$r2 = rand(1,10);
+
 print <<<EOT
 <tr>
 	<td>Don't list publicly</td>
@@ -387,6 +394,10 @@ print <<<EOT
 <tr>
 	<td>Cost</td>
 	<td>&pound;<input name="cost" type="text" size="5" maxlength="5" value="{$tourn->display_basic_fee()}"></td>
+</tr>
+<tr>
+	<td>(Anti-spam) Please answer this sum as a <b>word</b> $r1 + $r2 =</td>
+	<td><input type="hidden" name="r1" value="$r1" /><input type="hidden" name="r2" value="$r2" /><input type="text" name="asp" size="20" /></td>
 </tr>
 <tr>
 	<td>Click to enter</td>

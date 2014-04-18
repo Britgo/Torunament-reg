@@ -19,10 +19,22 @@ include 'country.php';
 include 'tournclass.php';
 include 'opendb.php';
 
-if (!isset($_POST['tcode']))  {
+if (!isset($_POST['tcode']) || !isset($_POST['r1']) || !isset($_POST['r2']) || !isset($_POST['asp']))  {
 print <<<EOT
 <h1>Wrong entry</h1>
 <p>I do not know how you got here, but it is wrong</p>
+
+EOT;
+	return;
+}
+$r1 = $_POST['r1'];
+$r2 = $_POST['r2'];
+$asp = strtolower($_POST['asp']);
+$ans = array('zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sizteen','seventeen','eighteen','nineteen','twenty');
+if  ($ans[$r1+$r2] != $asp) {
+print <<<EOT
+<h1>Bad sum</h1>
+<p>Sorry but the answer to your sum was wrong, please try again - remember it should be figures, like "eleven".</p>
 
 EOT;
 	return;
