@@ -71,6 +71,8 @@ EOT;
 $Nplayers = count($entlist); 
 $Nc1 = $Nc2 = $Nlunch = $Ndinner = $Npriv = 0;
 foreach ($entlist as $player) {
+	$pb = "";
+	$pa = "";
 	if  ($player->Concess1)
 		$Nc1++;
 	if  ($player->Concess2)
@@ -83,8 +85,10 @@ foreach ($entlist as $player) {
 		$Npriv++;
 		if  (!$Everyone)
 			continue;
+		$pb = "(";
+		$pa = ")";
 	}
-	$n = htmlspecialchars($player->First . ' ' . $player->Last);
+	$n = htmlspecialchars($pb . $player->First . ' ' . $player->Last . $pa);
 	$cl = htmlspecialchars($player->Club);
 	$cn = htmlspecialchars($player->Country);
 	$rk = $player->Rank->display();
