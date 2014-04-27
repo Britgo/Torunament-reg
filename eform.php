@@ -55,13 +55,17 @@ function nonblank(s)  {
         return /\S/.test(s);
 }
 
+function okname(s)  {
+	return /^[A-Z][a-z]*(( (Mc)?|')[A-Z][a-z]*)*$/.test(s); //'
+}
+
 function checkform() {
 	 var fm = document.entryform;
-    if  (!nonblank(fm.name.value))  {
+    if  (!okname(fm.name.value))  {
     	  alert("Please give your name");
         return false;
     }
-    if (!nonblank(fm.club.value)) {
+    if (!okname(fm.club.value)) {
     	  alert("Please give your club - or put 'No club'");
         return false;
     }
@@ -252,7 +256,7 @@ EOT;
 if (count($clubs) > 0) {
 		print <<<EOT
 <tr>
-	<td rowspan="2">Club</td>
+	<td rowspan="2">Club (select if you can)</td>
 	<td><select name="clubsel" onchange="club_sel();">
 <option selected="selected" value=":">(None)</option>
 
