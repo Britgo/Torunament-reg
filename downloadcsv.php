@@ -43,14 +43,29 @@ catch (Tcerror $e)  {
 EOT;
 	return;
 }
-header("Content-Type: text/plain");
-header("Content-Disposition: attachment; filename={$tourn->Tcode}.txt");
-print "NAME-FG\tGRADE\tCLUB\tCOUNTRY\r\n";
+header("Content-Type: text/csv");
+header("Content-Disposition: attachment; filename={$tourn->Tcode}.csv");
+$q='"';
+print "{$q}Name$q,{$q}Not BGA$q";
+if ($tourn->Concess1 != 0)
+	print ",$q{$tourn->Concess1name}$q";
+if ($tourn->Concess2 != 0)
+	print ",$q{$tourn->Concess2name}$q";
+if ($tourn->Lunch != 0)
+	print ",{$q}Lunch$q";
+print ",{$q}Fee$q\n";
 foreach ($players as $p)  {
-	print "{$p->Last} {$p->First}\t";
-	$rk = strtolower($p->Rank->display());
-	print "$rk\t";
-	print "{$p->Club}\t";
-	print "{$p->Country}\r\n";
+	$nbga = $p->Nonbga? 1: 0;
+	$c1 = $p->Concess1? 1: 0;
+	$c2 = $p->Concess2? 1: 0;
+	$lnch = $p->Lunch? 1: 0;
+	print "$q{$p->display_name()}$q,{$p->Nonbga}";
+	if ($tourn->Concess1 != 0)
+		print ",$c1";
+	if ($tourn->Concess2 != 0)
+		print ",$c2";
+	if ($tourn->Lunch != 0)
+		print ",$lnch";
+	print ",$p->Fee\n";
 }
 ?>

@@ -150,5 +150,9 @@ if ($Everyone)
 <p>Click <a href="http://www.britgo.org/tournreg/downloadgodraw.php{$tourn->urlof()}">here</a>
 to download a GoDraw file with these entries in.</p>
 
+<p>Click <a href="http://www.britgo.org/tournreg/downloadcsv.php{$tourn->urlof()}">here</a>
+to download a CSV file with these entries in suitable for importing into a spreadsheet.</p>
+
+
 EOT;
 ?>
