@@ -207,7 +207,7 @@ class Tournament {
  						"nonbga,ebird,ebdate,latefee,latedays," .
  						"champfirst,champlast,contactfirst,contactlast,email,website" .
  						") values (" .
-						"'$qcode','$qname','$qclass','$qformat','$qover','$qddr','$qpc'," .
+						"'$qcode','$qname','$qclass','$qformat','$qover','$qaddr','$qpc'," .
 						"'$qdat',{$this->Ndays},{$this->Nrounds},$qprov,$qopen,'$qdinner'," .
 						"{$this->Fee},{$this->Lunch},{$this->Concess1},{$this->Concess2},'$qc1','$qc2'," .
 						"{$this->Nonbga},{$this->Ebird},'$qebdat',{$this->Latefee},{$this->Latedays}," .
