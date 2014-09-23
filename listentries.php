@@ -138,8 +138,10 @@ print <<<EOT
 <p>Total $Nplayers attending
 
 EOT;
-if  ($Nc1 > 0) print "$Nc1 {$tourn->display_concess1name()}\n";
-if  ($Nc2 > 0) print "$Nc2 {$tourn->display_concess2name()}\n";
+if ($Everyone)  {
+	if  ($Nc1 > 0) print "$Nc1 {$tourn->display_concess1name()}\n";
+	if  ($Nc2 > 0) print "$Nc2 {$tourn->display_concess2name()}\n";
+}
 if ($Nlunch > 0) print "$Nlunch for lunch\n";
 if ($Ndinner > 0) print "$Ndinner for {$tourn->display_dinner()}\n";
 if ($Npriv > 0) print "$Npriv private entries\n";
