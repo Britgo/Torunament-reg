@@ -76,7 +76,7 @@ class Tdate {
 		else
 			$dat = getdate(); 
 		$now = mktime(12,0,0,$dat["mon"], $dat["mday"], $dat["year"]);
-		return $now >= $this->timestamp;
+		return $now > $this->timestamp;
 	}
 	
 	public function is_future() {
