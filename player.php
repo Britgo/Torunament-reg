@@ -33,19 +33,23 @@ class Player extends Person {
 		$qlast = mysql_real_escape_string($this->Last);
 		$qclub = mysql_real_escape_string($this->Club);
 		$qcountry = mysql_real_escape_string($this->Country);
-		$qemail = mysql_real_escape_string($this->Email);
 		$qnonbga = $this->Nonbga? 1: 0;
-		$ret = mysql_query("select first from player where $qq");
+		$ret = mysql_query("select first,email from player where $qq");
 		if  (!$ret)  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot access player record, error was $ecode", "Database error");
 		}
 		if  (mysql_num_rows($ret) > 0)  {
+			if (!preg_match('@', $this->Email))  {
+				$row = mysql_fetch_array($ret);
+				$this->Email = $row[1];
+			}
 			if  (!mysql_query("delete from player where $qq"))  {
 				$ecode = mysql_error();
 				throw  new  Tcerror("Cannot remove player record, error was $ecode", "Database error");
 			}
 		}
+		$qemail = mysql_real_escape_string($this->Email);
 		if  (!mysql_query("insert into player (first,last,rank,club,country,email,nonbga) values ('$qfirst','$qlast',{$this->Rank->Rankvalue},'$qclub','$qcountry','$qemail',$qnonbga)"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot create player record, error was $ecode", "Database error");

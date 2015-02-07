@@ -162,7 +162,10 @@ function playersel() {
 	fm.name.value = parts[0] + ' ' + parts[1];
 	fm.country.value = "UK";
 	fm.club.value = parts[2];
-	fm.email.value = parts[4];
+	if (nonblank(parts[4])
+		fm.email.value = "(as before)";
+	else
+		fm.email.value = "";
 	var rnk = parseInt(parts[3]);
 	fm.rank.selectedIndex = 8 - rnk;
 	fm.nonbga.checked = parseInt(parts[5]) != 0;

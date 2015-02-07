@@ -247,7 +247,7 @@ EOT;
 		
 	print <<<EOT
 <tr>
-	<td colspan="2">Please give a full nuame for the tournament, usually just location and year.<br />
+	<td colspan="2">Please give a full name for the tournament, usually just location and year.<br />
 	This is normally displayed as a heading in various places.</td>
 </tr>
 <tr>

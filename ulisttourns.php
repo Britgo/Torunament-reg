@@ -16,7 +16,7 @@ include 'opendb.php';
 
 try  {
 	opendb();
-	$tlist = get_tcodes("sdate,tname", true, true);
+	$tlist = get_tcodes("sdate desc,tname", true, true);
 	if  (count($tlist) == 0)
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {

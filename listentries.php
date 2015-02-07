@@ -94,9 +94,21 @@ foreach ($entlist as $player) {
 	$rk = $player->Rank->display();
 	$lunch = $player->Lunch? "Yes" : "No";
 	$dinner = $player->Dinner? "Yes" : "No";
-	print  <<<EOT
+	if ($Everyone && preg_match('@', $player->Email)) {
+		$ml = htmlspecialchars($player->Email);
+		print  <<<EOT
+<tr>
+	<td><a href="mailto:$ml?subject=Tournament%20registration">$n</a></td>
+
+EOT;
+	}
+	else
+		print <<<EOT
 <tr>
 	<td>$n</td>
+
+EOT;
+	print <<<EOT
 	<td>$cl</td>
 	<td>$cn</td>
 	<td>$rk</td>

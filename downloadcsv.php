@@ -46,26 +46,31 @@ EOT;
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename={$tourn->Tcode}.csv");
 $q='"';
-print "{$q}Name$q,{$q}Not BGA$q";
+print "{$q}Name$q,{$q}Club$q,{$q}Rank$q,{$q}Email$q,{$q}Not BGA$q";
 if ($tourn->Concess1 != 0)
 	print ",$q{$tourn->Concess1name}$q";
 if ($tourn->Concess2 != 0)
 	print ",$q{$tourn->Concess2name}$q";
 if ($tourn->Lunch != 0)
 	print ",{$q}Lunch$q";
+if (strlen($tourn->Dinner) != 0)
+	print ",{$q}{$tourn->Dinner}$q";
 print ",{$q}Fee$q\n";
 foreach ($players as $p)  {
 	$nbga = $p->Nonbga? 1: 0;
 	$c1 = $p->Concess1? 1: 0;
 	$c2 = $p->Concess2? 1: 0;
 	$lnch = $p->Lunch? 1: 0;
-	print "$q{$p->display_name()}$q,{$p->Nonbga}";
+	$dinn = $p->Dinner? 1: 0;
+	print "$q{$p->display_name()}$q,$q{$p->Club}$q,$q{$p->Rank->display()}$q,$q{$p->Email}$q,{$p->Nonbga}";
 	if ($tourn->Concess1 != 0)
 		print ",$c1";
 	if ($tourn->Concess2 != 0)
 		print ",$c2";
 	if ($tourn->Lunch != 0)
 		print ",$lnch";
+	if (strlen($tourn->Dinner) != 0)
+		print ",$dinn";
 	print ",$p->Fee\n";
 }
 ?>

@@ -64,6 +64,7 @@ $tmpfile = "/tmp/splurge$$";
 open(MOUT, ">$tmpfile");
 print MOUT <<EOF;
 To: $first $last<$pemail>
+Cc: $contactfirst $contactlast<$contemail>
 Reply-to: $contactfirst $contactlast<$contemail>
 Subject: Tournament Entry Confirmation
 
