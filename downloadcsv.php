@@ -55,7 +55,7 @@ if ($tourn->Lunch != 0)
 	print ",{$q}Lunch$q";
 if (strlen($tourn->Dinner) != 0)
 	print ",{$q}{$tourn->Dinner}$q";
-print ",{$q}Fee$q\n";
+print ",{$q}Fee$q,{$q}Date$q\n";
 foreach ($players as $p)  {
 	$nbga = $p->Nonbga? 1: 0;
 	$c1 = $p->Concess1? 1: 0;
@@ -71,6 +71,6 @@ foreach ($players as $p)  {
 		print ",$lnch";
 	if (strlen($tourn->Dinner) != 0)
 		print ",$dinn";
-	print ",$p->Fee\n";
+	print ",$p->Fee,$q{$p->Edate->shortdate()}$q\n";
 }
 ?>

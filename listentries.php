@@ -94,7 +94,7 @@ foreach ($entlist as $player) {
 	$rk = $player->Rank->display();
 	$lunch = $player->Lunch? "Yes" : "No";
 	$dinner = $player->Dinner? "Yes" : "No";
-	if ($Everyone && preg_match('@', $player->Email)) {
+	if ($Everyone && preg_match('/@/', $player->Email)) {
 		$ml = htmlspecialchars($player->Email);
 		print  <<<EOT
 <tr>
@@ -165,7 +165,7 @@ if ($Everyone)
 to download a GoDraw file with these entries in.</p>
 
 <p>Click <a href="http://www.britgo.org/tournreg/downloadcsv.php{$tourn->urlof()}">here</a>
-to download a CSV file with these entries in suitable for importing into a spreadsheet.</p>
+to download a CSV file with these entries in containing name, club, email, rank, lunch, concession and fee options suitable for importing into a spreadsheet.</p>
 
 
 EOT;
