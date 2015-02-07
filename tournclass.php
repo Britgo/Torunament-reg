@@ -400,7 +400,7 @@ class Tournament {
  	
  	public function is_over() {
  		$t = new Tdate($this->Sdate);
- 		$t->incdays(-1);
+ 		//$t->incdays(-1);
  		return $t->is_past();
  	}
  }
