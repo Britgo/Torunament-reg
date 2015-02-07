@@ -162,7 +162,7 @@ function playersel() {
 	fm.name.value = parts[0] + ' ' + parts[1];
 	fm.country.value = "UK";
 	fm.club.value = parts[2];
-	if (nonblank(parts[4])
+	if (nonblank(parts[4]))
 		fm.email.value = "(as before)";
 	else
 		fm.email.value = "";

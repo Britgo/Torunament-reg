@@ -23,8 +23,8 @@ try  {
 		print <<<EOT
 <table>
 <tr>
-	<th>Code</th>
-	<th>Name</th>
+	<th>Enter</th>
+	<th>List</th>
 	<th>Date(s)</th>
 	<th>Venue</th>
 	<th>Postcode</th>
