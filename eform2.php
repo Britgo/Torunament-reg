@@ -56,6 +56,11 @@ try  {
 	}
 	$entrant->frompost();
 	$entrant->Fee = $entrant->total_fee($tourn);
+	if (!preg_match('/@/', $entrant->Email))  {
+		$play = new Player($entrant);
+		if ($play->fetchplayer())
+			$entrant->Email = $play->Email;
+	}
 	if  ($isupd)
 		$entrant->update($tourn);
 	else

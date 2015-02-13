@@ -27,6 +27,19 @@ class Player extends Person {
  		}
  	}
  	
+ 	public function fetchplayer {
+ 		$ret = mysql_query("select rank,club,country,email,nonbga from player where {$this->queryof()}");
+ 		if (!$ret || mysql_num_rows($ret) == 0)
+ 			return  false;
+ 		$row = mysql_fetch_assoc($ret);
+ 		$this->Rank = new rank($row['rank']);
+ 		$this->Club = $row['club'];
+ 		$this->Country = $row['country'];
+ 		$this->Email = $row['email'];
+ 		$this->Nonbga = $row['nonbga'];
+ 		return true;
+ 	}
+ 	
  	public function create_or_update()  {
  		$qq = $this->queryof();
  		$qfirst = mysql_real_escape_string($this->First);
