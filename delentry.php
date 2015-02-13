@@ -23,7 +23,7 @@ if (!preg_match(';/tournaments/_register/listall;', $_SERVER["HTTP_REFERER"]))  
 <p>Referrer was {$_SERVER["HTTP_REFERER"]}</p>
 
 EOT;
-	sleep(10);
+	sleep(109);
 	return;
 }
 
