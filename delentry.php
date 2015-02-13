@@ -16,6 +16,16 @@ include 'entrant.php';
 include 'tournclass.php';
 include 'opendb.php';
 
+if (!preg_match(';/tournreg/listentries;', $_SERVER["HTTP_REFERER"]))  {
+	print <<<EOT
+<h1>Wrong entry</h1>
+<p>This has not been invoked correctly, byebye.</p>
+
+EOT;
+	sleep(100);
+	return;
+}
+
 if (!isset($_GET['tcode'])  || !isset($_GET['f'])  ||  !isset($_GET['l']))  {
 print <<<EOT
 <h1>Wrong entry</h1>
