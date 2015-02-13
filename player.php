@@ -40,7 +40,7 @@ class Player extends Person {
 			throw  new  Tcerror("Cannot access player record, error was $ecode", "Database error");
 		}
 		if  (mysql_num_rows($ret) > 0)  {
-			if (!preg_match('@', $this->Email))  {
+			if (!preg_match('/@/', $this->Email))  {
 				$row = mysql_fetch_array($ret);
 				$this->Email = $row[1];
 			}

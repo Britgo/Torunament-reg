@@ -102,7 +102,7 @@ class Entrant extends Person {
  		$this->Club = trim($_POST['club']);
  		$this->Country = trim($_POST['country']);
  		$this->Email = trim($_POST['email']);
-		if (!preg_match('@', $this->Email))
+		if (!preg_match('/@/', $this->Email))
 			$this->Email = "";						//  Cater for "as before" which we sort out in create_or_update in player
  		$this->Nonbga = isset($_POST['nonbga']);
  		$this->Lunch = isset($_POST['lunch']);

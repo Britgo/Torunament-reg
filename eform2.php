@@ -71,7 +71,7 @@ try  {
 	catch (Tcerror $e) {
 		;
 	}
-	$prog = $_SERVER["DOCUMENT_ROOT"] . '/tournreg/acknow.pl';
+	$prog = '/var/www/bgasite/tournreg/acknow.pl';
 	system("$prog \'$tcode\' \'{$player->First}\' \'{$player->Last}\'");
 }
 catch (Tcerror $e)  {
