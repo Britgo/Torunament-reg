@@ -27,7 +27,7 @@ class Player extends Person {
  		}
  	}
  	
- 	public function fetchplayer {
+ 	public function fetchplayer() {
  		$ret = mysql_query("select rank,club,country,email,nonbga from player where {$this->queryof()}");
  		if (!$ret || mysql_num_rows($ret) == 0)
  			return  false;
