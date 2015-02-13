@@ -20,9 +20,10 @@ if (!preg_match(';/tournreg/listentries;', $_SERVER["HTTP_REFERER"]))  {
 	print <<<EOT
 <h1>Wrong entry</h1>
 <p>This has not been invoked correctly, byebye.</p>
+<p>Referrer was {$_SERVER["HTTP_REFERER"]}</p>
 
 EOT;
-	sleep(100);
+	sleep(10);
 	return;
 }
 
