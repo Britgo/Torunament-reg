@@ -141,7 +141,7 @@ EOT;
 		print <<<EOT
 </td>
 <td>
-<a href="javascript:okdel('$tourn->urlof()}&{$player->urlof()}');">Del</a>
+<a href="javascript:okdel('{$tourn->urlof()}&{$player->urlof()}');">Del</a>
 </td>
 
 EOT;
