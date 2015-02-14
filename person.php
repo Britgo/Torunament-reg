@@ -11,7 +11,7 @@ class Person {
 				$this->First = $f;
 				$this->Last = $l;
 			}
-			elseif (preg_match("/^\s*(\S+)\s+(.+)$/", $f, $matches))  {
+			elseif (preg_match("/^\s*(\S+)\s+(.+?)\s*$/", $f, $matches))  {
 				$this->First = $matches[1];
 				$this->Last = $matches[2];
 			}
