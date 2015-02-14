@@ -3,8 +3,11 @@ e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/downloadgodraw.php:0:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform.php:3542:2818:0:
 openfiles: /home/jmc/src/Websites/tournreg/ulisttourns.php:726:69:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1884:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/delentry.php:1076:0:1:
+openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1738:1329:1:
+openfiles: /home/jmc/src/Websites/tournreg/delentry.php:1076:387:0:
+openfiles: /home/jmc/src/Websites/tournreg/player.php:759:56:0:
+openfiles: /home/jmc/src/Websites/tournreg/person.php:0:330:0:
+openfiles: /home/jmc/src/Websites/tournreg/entrant.php:842:162:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -19,6 +22,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
+ssearch_text: fetchdets
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -41,11 +45,14 @@ charmap_block: 1
 recent_files: file:///home/jmc/src/Websites/tournaments/tcform.php
 recent_files: file:///home/jmc/src/Websites/tournaments/rank.php
 recent_files: file:///home/jmc/src/Websites/goleague/captmail.pl
-recent_files: file:///home/jmc/src/Websites/tournreg/eform2.php
+recent_files: file:///home/jmc/src/Websites/tournreg/delentry.php
 recent_files: file:///home/jmc/src/Websites/tournreg/downloadgodraw.php
+recent_files: file:///home/jmc/src/Websites/tournreg/eform2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ulisttourns.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform.php
-recent_files: file:///home/jmc/src/Websites/tournreg/delentry.php
+recent_files: file:///home/jmc/src/Websites/tournreg/player.php
+recent_files: file:///home/jmc/src/Websites/tournreg/person.php
+recent_files: file:///home/jmc/src/Websites/tournreg/entrant.php
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
@@ -60,6 +67,7 @@ ssearch_dotmatchall: 0
 searchlist: strlen
 searchlist: tournentry
 searchlist: $player
+searchlist: fetchdets
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0

@@ -56,16 +56,20 @@ function nonblank(s)  {
 }
 
 function okname(s)  {
-	return /^[A-Z][a-z]*(( (Mc)?|')[A-Z][a-z]*)*$/.test(s); //'
+	return /^[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s); //'
 }
 
 function checkform() {
 	 var fm = document.entryform;
-    if  (!okname(fm.name.value))  {
+    if  (!nonblank(fm.name.value))  {
     	  alert("Please give your name");
         return false;
     }
-    if (!okname(fm.club.value)) {
+    if  (!okname(fm.name.value))  {
+    	  alert("Sorry unacceptable name format");
+        return false;
+    }
+    if (!nonblank(fm.club.value)) {
     	  alert("Please give your club - or put 'No club'");
         return false;
     }

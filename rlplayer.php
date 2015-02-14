@@ -50,7 +50,7 @@ function open_rldb()
 {
 	//  CHANGE THESE AS REQUIRED!!!!
 
-	$hostname = "britgo.org";	
+	$hostname = "localhost";
 	$username = "rluser";
 	$password = "Get Ratings";
 	$dbname = "ratinglist";
