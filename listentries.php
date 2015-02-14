@@ -40,7 +40,7 @@ EOT;
 print <<<EOT
 <script language="javascript">
 function okdel(urlpar) {
-	if  (confirm("OK to remove player from {$tourn->display_name()}")
+	if  (confirm("OK to remove player from {$tourn->display_name()}"))
 		document.location = "/tournreg/delentry.php" + urlpar;
 }
 </script>
