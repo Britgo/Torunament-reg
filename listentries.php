@@ -37,13 +37,17 @@ catch (Tcerror $e)  {
 EOT;
 	return;
 }
-print <<<EOT
+if ($Everyone)
+	print <<<EOT
 <script language="javascript">
 function okdel(urlpar) {
 	if  (confirm("OK to remove player from {$tourn->display_name()}"))
 		document.location = "/tournreg/delentry.php" + urlpar;
 }
 </script>
+
+EOT;
+print <<<EOT
 <h1>Entries for {$tourn->display_name()}</h1>
 
 <table summary="Entry List">

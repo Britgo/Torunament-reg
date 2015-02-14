@@ -10,7 +10,7 @@ openfiles: /home/jmc/src/Websites/tournreg/person.php:1047:337:0:
 openfiles: /home/jmc/src/Websites/tournreg/entrant.php:842:4121:0:
 openfiles: /home/jmc/src/Websites/tournreg/rlplayer.php:1168:272:0:
 openfiles: /home/jmc/src/Websites/tournreg/club.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/listentries.php:663:179:1:
+openfiles: /home/jmc/src/Websites/tournreg/listentries.php:631:179:1:
 openfiles: /home/jmc/src/Websites/tournreg/tournclass.php:0:2056:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
@@ -26,7 +26,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: fetchdets
+ssearch_text: everyone
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -76,6 +76,7 @@ searchlist: strlen
 searchlist: tournentry
 searchlist: $player
 searchlist: fetchdets
+searchlist: everyone
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
