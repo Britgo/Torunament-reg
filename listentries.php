@@ -38,6 +38,12 @@ EOT;
 	return;
 }
 print <<<EOT
+<script language="javascript">
+function okdel(urlpar) {
+	if  (confirm("OK to remove player from {$tourn->display_name()}")
+		document.location = "/tournreg/delentry.php" + urlpar;
+}
+</script>
 <h1>Entries for {$tourn->display_name()}</h1>
 
 <table summary="Entry List">
@@ -135,7 +141,7 @@ EOT;
 		print <<<EOT
 </td>
 <td>
-<a href="/tournreg/delentry.php{$tourn->urlof()}&{$player->urlof()}">Del</a>
+<a href="javascript:okdel('$tourn->urlof()}&{$player->urlof()}');">Del</a>
 </td>
 
 EOT;
