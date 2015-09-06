@@ -80,7 +80,20 @@ function checkform() {
 	 if (!nonblank(fm.email.value))  {
 		  alert("Please give your email address");
 		  return  false;
-	 }  
+	 }
+
+EOT;
+if ($tourn->Nonbga != 0)
+    print <<<EOT
+    var nbgasel = fm.nonbga;
+	 var optl = nbgasel.options;
+	 if (optl[nbgasel.selectedIndex).value == 'u')  {
+	     alert("Please select BGA membership");
+	     return  false;
+	 }
+
+EOT;
+	 print <<<EOT
     return true;
 }
 
@@ -95,7 +108,7 @@ EOT;
 
 if ($tourn->Nonbga != 0)
 	print <<<EOT
-	if (fm.nonbga.checked)
+	if (fm.nonbga.options[fm.nonbga.selectedIndex].value == 'n')
 		cost += {$tourn->display_nonbga()};
 
 EOT;
@@ -172,7 +185,16 @@ function playersel() {
 		fm.email.value = "";
 	var rnk = parseInt(parts[3]);
 	fm.rank.selectedIndex = 8 - rnk;
-	fm.nonbga.checked = parseInt(parts[5]) != 0;
+	var notmemb = parseInt(parts[5]) != 0? "n": "m";
+	var nbgasel = fm.nonbga;
+	var optl = nbgasel.options;
+	var n;
+	for (n = 0;  n < nbgasel.length;  n++)  {
+		if (optl[n].value == notmemb)  {
+			nbgasel.selectedIndex = n;
+			break;
+		}
+	}
 	calccost();
 }
 
@@ -345,8 +367,14 @@ EOT;
 if ($tourn->Nonbga != 0)
 	print <<<EOT
 <tr>
-	<td>Not BGA Member (add &pound;{$tourn->display_nonbga()})</td>
-	<td><input type="checkbox" name="nonbga" onchange="calccost();"></td>
+	<td>BGA Member (if not add &pound;{$tourn->display_nonbga()})</td>
+	<td>
+	<select name="nonbga" onchange="calccost();">
+	<option value="u" selected="selected">Not selected</option>
+	<option value="m">Member</option>
+	<option value="n">Not member</option>
+	</select>
+	</td>
 </tr>
 
 EOT;

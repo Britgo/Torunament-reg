@@ -104,7 +104,7 @@ class Entrant extends Person {
  		$this->Email = trim($_POST['email']);
 		if (!preg_match('/@/', $this->Email))
 			$this->Email = "";						//  Cater for "as before" which we sort out in create_or_update in player
- 		$this->Nonbga = isset($_POST['nonbga']);
+      $this->Nonbga = $_POST['nonbga'] == 'n';
  		$this->Lunch = isset($_POST['lunch']);
  		$this->Dinner = isset($_POST['dinner']);
  		$this->Privacy = isset($_POST['privacy']);
