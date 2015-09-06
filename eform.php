@@ -87,7 +87,7 @@ if ($tourn->Nonbga != 0)
     print <<<EOT
     var nbgasel = fm.nonbga;
 	 var optl = nbgasel.options;
-	 if (optl[nbgasel.selectedIndex).value == 'u')  {
+	 if (optl[nbgasel.selectedIndex].value == 'u')  {
 	     alert("Please select BGA membership");
 	     return  false;
 	 }
