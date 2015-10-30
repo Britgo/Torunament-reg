@@ -425,6 +425,18 @@ EOT;
 </tr>
 
 EOT;
+
+	$r1 = rand(1,10);
+	$r2 = rand(1,10);
+	
+	print <<<EOT
+<tr>
+	<td>(Anti-spam) Please answer this sum as a <b>word</b> $r1 + $r2 =</td>
+	<td><input type="hidden" name="r1" value="$r1" /><input type="hidden" name="r2" value="$r2" /><input type="text" name="asp" size="20" /></td>
+</tr>
+
+EOT;
+
 	if  ($creating)
 		print <<<EOT
 <tr>

@@ -14,14 +14,18 @@ include 'person.php';
 include 'tournclass.php';
 include 'opendb.php';
 
-if (!isset($_POST['tcode']))  {
+if (!isset($_POST['tcode']) || !isset($_POST['r1']) || !isset($_POST['r2']))  {
 print <<<EOT
 <h1>Wrong entry</h1>
 <p>I do not know how you got here, but it is wrong</p>
 
 EOT;
+	flush();
+	sleep(300);
 	return;
 }
+
+include 'checksum.php';
 
 $tcode = $_POST['tcode'];
 
