@@ -9,14 +9,17 @@ include 'entrant.php';
 include 'tournclass.php';
 include 'opendb.php';
 
-if (!isset($_POST['tcode']))  {
+// Temporary hack to stop hacker
+
+//if (!isset($_POST['tcode']))  {
 print <<<EOT
 <h1>Wrong entry</h1>
 <p>I do not know how you got here, but it is wrong</p>
 
 EOT;
+	sleep(300);
 	return;
-}
+//}
 
 $tcode = $_POST['tcode'];
 
