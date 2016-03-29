@@ -16,7 +16,7 @@ include 'entrant.php';
 include 'tournclass.php';
 include 'opendb.php';
 
-if (!preg_match(';/tournaments/_register/listall;', $_SERVER["HTTP_REFERER"]))  {
+if (!preg_match(';/tournaments/_?register/listall;', $_SERVER["HTTP_REFERER"]))  {
 	print <<<EOT
 <h1>Wrong entry</h1>
 <p>This has not been invoked correctly, byebye.</p>
