@@ -4,7 +4,7 @@
 <title>BGA Tournament Registration</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-01T19:24:46+0100" >
+<meta name="date" content="2016-08-01T19:37:08+0100" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -30,9 +30,9 @@ try  {
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {
 		print <<<EOT
-<table align="center">
+<table cellpadding="2" cellspacing="2" align="center">
 <tr>
-	<th>List</th>
+	<th>Name</th>
 	<th>Date(s)</th>
 	<th>ICS</th>
 </tr>
@@ -47,13 +47,12 @@ EOT;
 			if  ($tourn->Open)  {
 				if  (!$tourn->is_over())
 					$codeprin = "<a href=\"http://www.britgo.org/tournaments/_register/form$url\">$codeprin</a>";
-				$nameprin = "<a href=\"http://www.britgo.org/tournaments/_register/list$url\">$nameprin</a>";
 			}
 			print <<<EOT
 <tr>
 	<td>$nameprin</td>
 	<td>{$tourn->display_dates()}</td>
-	<td><a href="http://www.britgo.org/tournreg/downloadics.php{$tourn->urlof()}">ICS</a></td>
+	<td><a href="downloadics.php{$tourn->urlof()}">ICS</a></td>
 </tr>
 
 EOT;
