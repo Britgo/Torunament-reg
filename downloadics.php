@@ -8,11 +8,11 @@
 // Your changes may be lost or break things if you don't do it correctly!
 // *****************************************************************************
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'person.php';
-include 'tournclass.php';
-include 'opendb.php';
+include 'php/tcerror.php';
+include 'php/tdate.php';
+include 'php/person.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
 
 function icsdisp($str)
 {
