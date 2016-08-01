@@ -4,7 +4,7 @@
 <title>BGA Tournament Registration</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-01T18:54:48+0100" >
+<meta name="date" content="2016-08-01T18:59:01+0100" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
