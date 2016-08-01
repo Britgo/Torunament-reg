@@ -418,7 +418,7 @@ class Tournament {
 	$ret = mysql_query("select tcode from tdetails$constr order by $order");
 	if  ($ret)  {
    		while ($row = mysql_fetch_array($ret)) {
-     		$result.array_push($result, $row[0]);
+     		$result = array_push($result, $row[0]);
      	}
 	}
    	return $result;
