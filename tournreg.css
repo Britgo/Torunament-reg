@@ -183,6 +183,20 @@ a.il:link {
 a.il:visited {
 	color: #528652;
 }
+
+a.headlink:active {
+	text-decoration: none;
+	font-size: large;
+}
+a.headlink:link {
+	text-decoration: none;
+	font-size: large;
+}
+a.headlink:visited {
+	text-decoration: none;
+	font-size: large;
+}
+
 h1 {
 	text-align: center;
 	color: #5F3D2C;

@@ -4,7 +4,7 @@
 <title>BGA Tournament Registration</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-01T18:33:00+0100" >
+<meta name="date" content="2016-08-01T18:54:48+0100" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -32,13 +32,8 @@ try  {
 		print <<<EOT
 <table>
 <tr>
-	<th>Enter</th>
 	<th>List</th>
 	<th>Date(s)</th>
-	<th>Venue</th>
-	<th>Postcode</th>
-	<th>Format</th>
-	<th>Overview</th>
 	<th>ICS</th>
 </tr>
 EOT;
@@ -56,13 +51,8 @@ EOT;
 			}
 			print <<<EOT
 <tr>
-	<td>$codeprin</td>
 	<td>$nameprin</td>
 	<td>{$tourn->display_dates()}</td>
-	<td>{$tourn->display_addr()}</td>
-	<td>{$tourn->display_pc()}</td>
-	<td>{$tourn->display_format()}</td>
-	<td>{$tourn->display_over()}</td>
 	<td><a href="http://www.britgo.org/tournreg/downloadics.php{$tourn->urlof()}">ICS</a></td>
 </tr>
 
