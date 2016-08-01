@@ -21,7 +21,7 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ?>
-<div id="Nave">
+<div id="Nav">
 <div class="innertube">
 <table align="center" width="100%">
 <tr>
