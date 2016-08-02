@@ -60,7 +60,7 @@ Userid:<input type="text" name="user_id" id="user_id" value="$userid" size="10">
 Password:<input type="password" name="passwd" size="10">
 <input type="submit" value="Login">
 </form><br />
-<a href="javascript:lostpw();" title="Get your lost password">Lost password?</a><br />
+<a href="javascript:lostpw();" title="Get your lost password">Lost password?</a>
 <a href="newacct.php" title="Create yourself an account">Create account</a></td>
 
 EOT;

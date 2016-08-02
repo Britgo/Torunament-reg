@@ -4,7 +4,7 @@
 <title>BGA Tournament Registration</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-02T15:22:21+0100" >
+<meta name="date" content="2016-08-02T16:18:59+0100" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -24,6 +24,9 @@ include 'php/tdate.php';
 include 'php/person.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
+?>
+<h1>Tournament List</h1>
+<?php
 
 try  {
 	opendb();
@@ -32,7 +35,7 @@ try  {
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {
 		print <<<EOT
-<table cellpadding="2" cellspacing="2" align="center">
+<table cellpadding="2" cellspacing="2">
 <tr>
 	<th>Name</th>
 	<th>Date(s)</th>

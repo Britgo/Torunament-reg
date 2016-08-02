@@ -1,12 +1,14 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/index.php:740:30:0:
+openfiles: /home/jmc/src/Websites/tournreg/index.php:907:586:1:
 openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:3428:3455:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:2021:385:1:
+openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:2721:1127:0:
 openfiles: /home/jmc/src/Websites/tournreg/downloadics.php:508:522:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/person.php:0:0:0:
 openfiles: /home/jmc/src/Websites/goleague/php/player.php:0:2039:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/session.php:1618:358:0:
+openfiles: /home/jmc/src/Websites/goleague/php/nav.php:5951:4646:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/opendb.php:0:0:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -18,10 +20,10 @@ view_left_panel: 1
 default_mime_type: text/plain
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/goleague/php
+opendir: file:///home/jmc/src/Websites/tournreg/php
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: admin
+ssearch_text: $qu
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -41,7 +43,6 @@ ssearch_regex: 0
 e2c.convert_iso: 0
 ssearch_casesens: 0
 charmap_block: 1
-recent_files: file:///home/jmc/src/Websites/tournreg/player.php
 recent_files: file:///home/jmc/src/Websites/tournreg/person.php
 recent_files: file:///home/jmc/src/Websites/tournreg/entrant.php
 recent_files: file:///home/jmc/src/Websites/tournreg/rlplayer.php
@@ -55,7 +56,6 @@ recent_files: file:///home/jmc/src/Websites/tournreg/listentries.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ct2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ut2.php
 recent_files: file:///home/jmc/src/Websites/goleague/index.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ulisttourns.php
 recent_files: file:///home/jmc/src/Websites/tournreg/downloadics.php
 recent_files: file:///home/jmc/src/Websites/tournreg/index.php
@@ -71,8 +71,10 @@ recent_files: file:///home/jmc/src/Websites/goleague/php/credentials.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/checklogged.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/checksecure.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/session.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
+recent_files: file:///home/jmc/src/Websites/tournreg/php/opendb.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/goleague/php
+savedir: file:///home/jmc/src/Websites/tournreg/php
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 
@@ -92,6 +94,8 @@ searchlist: ut2
 searchlist: nonbga
 searchlist: tournentry
 searchlist: admin
+searchlist: <a href="logout.php" title="Log yourself out">Logout<br>$qu</a>
+searchlist: $qu
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
