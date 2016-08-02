@@ -196,6 +196,42 @@ a.headlink:visited {
 	text-decoration: none;
 	font-size: large;
 }
+a.aheadlink:active {
+	text-decoration: none;
+	font-size: large;
+	background-color: #857B1B;
+	color: #FFFFFF;
+}
+a.aheadlink:link {
+	text-decoration: none;
+	font-size: large;
+	background-color: #857B1B;
+	color: #FFFFFF;
+}
+a.aheadlink:visited {
+	text-decoration: none;
+	font-size: large;
+	background-color: #857B1B;
+	color: #FFFFFF;
+}
+a.oheadlink:active {
+	text-decoration: none;
+	font-size: large;
+	background-color: #32851B;
+	color: #FFFFFF;
+}
+a.oheadlink:link {
+	text-decoration: none;
+	font-size: large;
+	background-color: #32851B;
+	color: #FFFFFF;
+}
+a.oheadlink:visited {
+	text-decoration: none;
+	font-size: large;
+	background-color: #32851B;
+	color: #FFFFFF;
+}
 
 h1 {
 	text-align: center;

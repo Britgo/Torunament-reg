@@ -4,7 +4,7 @@
 <title>BGA Tournament Registration</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-01T19:37:08+0100" >
+<meta name="date" content="2016-08-02T15:22:21+0100" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -16,7 +16,9 @@
 <link href="tournreg.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
-<?php include 'php/nav.php';
+<?php
+include 'php/session.php';
+include 'php/nav.php';
 include 'php/tcerror.php';
 include 'php/tdate.php';
 include 'php/person.php';

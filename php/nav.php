@@ -29,6 +29,43 @@
 	<td><a href="index.php" title="Go to tournament registration home page" class="headlink">Tournament Registration Home</a></td>
 	<td><a href="https://www.britgo.org/tournaments" title="View BGA tournament calendar" class="headlink">BGA Calendar</a></td>
 	<td><a href="https://www.britgo.org/results/12months" title="View last 12 months results" class="headlink">Results</a></td>
+<?php
+if ($organ) {
+	print <<<'EOF'
+	<td><a href='createtourn.php' title='Create a new tournament' class='oheadlink'>Create Tournaement</a></td>
+
+EOF;
+}
+if ($admin) {
+	print <<<'EOF'
+	<td><a href='useradmin.php' title='Administer user file' class='aheadlink'>Administration</a></td>
+
+EOF;
+}
+if ($logged_in) {
+	$qu = htmlspecialchars($username);
+	print <<<EOF
+	<td><a href="ownupd.php" title="Update your account details" class="headlink">Update account</a></td>
+	<td><a href="logout.php" title="Log yourself out" class="headlink">Logout<br>$qu</a></td>
+
+EOF;
+}
+else {
+	$userid = "";
+	if (isset($_COOKIE['user_id']))
+		$userid = $_COOKIE['user_id'];
+	print <<<EOT
+<td><form name="lifm" action="login.php" method="post" enctype="application/x-www-form-urlencoded">
+Userid:<input type="text" name="user_id" id="user_id" value="$userid" size="10">
+Password:<input type="password" name="passwd" size="10">
+<input type="submit" value="Login">
+</form><br />
+<a href="javascript:lostpw();" title="Get your lost password">Lost password?</a><br />
+<a href="newacct.php" title="Create yourself an account">Create account</a></td>
+
+EOT;
+}
+?>
 </tr>
 </table>
 </div>
