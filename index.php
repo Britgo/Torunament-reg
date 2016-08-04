@@ -19,7 +19,7 @@ include 'php/opendb.php';
 try  {
 	opendb();
 	if ($organ)
-		$list = get_tcodes("sdate desc,tname", false, false);
+		$tlist = get_tcodes("sdate desc,tname", false, false);
 	else
 		$tlist = get_tcodes("sdate desc,tname", true, true);
 	if  (count($tlist) == 0)
