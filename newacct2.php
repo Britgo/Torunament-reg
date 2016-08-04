@@ -90,6 +90,12 @@ function checkclash($column, $value) {
 	}
 }
 
+// Split down club into just club rather than club:country
+
+$bits = split(':', $club);
+if (array_count($bits) > 1)
+	$club = $bits[0];
+
 // Check user name doesn't clash
 
 checkclash('user', $userid);
@@ -125,7 +131,7 @@ catch (Tcerror $e) {
 EOT;
 	exit(0);
 }
-newaccemail($email, $userid, $passw);
+newaccemail($email, $userid, $passw1);
 $Title = "BGA Tournament Registration Account Created";
 include 'php/head.php';
 ?>
