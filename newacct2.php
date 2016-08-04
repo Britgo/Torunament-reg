@@ -82,6 +82,9 @@ function checkclash($column, $value) {
 	$qvalue = mysql_real_escape_string($value);
 	$ret = mysql_query("select $column from player where $column='$qvalue'");
 	if ($ret && mysql_num_rows($ret) != 0)  {
+		$row = mysql_fetch_array($ret);
+		$column = htmlspecialchars($column);
+		$value =  htmlspecialchars($row[0]);
 		include 'php/nameclash.php';
 		exit(0);
 	}
