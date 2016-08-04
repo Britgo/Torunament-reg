@@ -32,6 +32,7 @@ try {
 	opendb();
 }
 catch (Tcerror $e)  {
+	print <<<EOT
 <body>
 <p>Cannot open database.</p>
 </body>
