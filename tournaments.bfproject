@@ -1,14 +1,14 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/index.php:1355:531:0:
-openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:3775:3511:1:
+openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:4557:4066:1:
 openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:1143:1048:0:
 openfiles: /home/jmc/src/Websites/tournreg/login.php:1228:1847:0:
-openfiles: /home/jmc/src/Websites/tournreg/newacct.php:1327:0:0:
+openfiles: /home/jmc/src/Websites/tournreg/newacct.php:2086:1273:0:
 openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:1997:1177:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/club.php:0:107:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/country.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/player.php:4706:3173:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/player.php:4951:3864:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform.php:2091:1155:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/rank.php:0:304:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform2.php:0:497:0:
@@ -28,7 +28,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: throw
+ssearch_text: ;
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -89,7 +89,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: strlen
 searchlist: everyone
 searchlist: fetchdets
 searchlist: $player
@@ -104,6 +103,7 @@ searchlist: clubopt
 searchlist: webfn
 searchlist: head
 searchlist: throw
+searchlist: ;
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0

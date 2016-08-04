@@ -65,6 +65,11 @@ Password:<input type="password" name="passwd" size="10">
 
 EOT;
 }
+if (strlen($_SERVER['HTTPS']) == 0)
+	print <<<EOF
+<td><span class="alarm">Use HTTPS!!</span></td>
+
+EOF;
 ?>
 </tr>
 </table>
