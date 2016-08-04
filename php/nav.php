@@ -23,7 +23,7 @@
 ?>
 <div id="Nav">
 <div class="innertube">
-<table cellpadding="3" cellspacing="1" align="left">
+<table cellpadding="5" cellspacing="5" align="left">
 <tr>
 	<td><a href="https://www.britgo.org" title="Go to BGA main site"><img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a></td>
 	<td><a href="index.php" title="Go to tournament registration home page" class="headlink">Tournament Registration Home</a></td>

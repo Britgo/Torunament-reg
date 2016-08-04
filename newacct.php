@@ -27,6 +27,21 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
+try {
+	opendb();
+}
+catch (Tcerror $e)  {
+	$Title = 'Cannot open database';
+	include 'php/head.php';
+	print <<<EOT
+<body>
+<p>Cannot open database.</p>
+</body>
+</html>
+
+EOT;
+	exit(0);
+}
 ?>
 <body>
 <script language="javascript" src="webfn.js"></script>
@@ -91,10 +106,10 @@ If you have forgotten your password, select the "remind password" entry.
 <p>Please note that email addresses are <b>not</b> published anywhere or used other than to send you confirmation emails of
 tournament entries.</p>
 <form name="trform" action="newacct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
-<table cellpadding="2" cellspacing="5" border="0">
+<table cellpadding="5" cellspacing="5" border="0">
 <tr><td>Player Name</td>
 <td><input type="text" name="playname"></td></tr>
-<tr><td>League Userid (initials/KGS name acceptable)</td>
+<tr><td>Userid (initials acceptable)</td>
 <td><input type="text" name="userid"></td></tr>
 <tr><td>Password (leave blank to let system set it)</td>
 <td><input type="password" name="passw1"></td></tr>
