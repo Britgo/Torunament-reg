@@ -26,6 +26,7 @@ if (isset($_POST["turnoff"]) || !isset($_POST["turnon"]))  {
 	exit(0);
 }
 
+include 'php/tcerror.php';
 include 'php/opendb.php';
 include 'php/country.php';
 include 'php/club.php';
@@ -96,14 +97,29 @@ $player->Country = $country;
 $player->Email = $email;
 $player->Userid = $userid;
 
-$player->create_or_update();
+try {
+	$player->create_or_update();
 
-// If no password specified, invent one
+	// If no password specified, invent one
 
-if (strlen($passw) == 0)
-	$passw = generate_password();
+	if (strlen($passw) == 0)
+		$passw = generate_password();
 
-$player->set_passwd($passw1. $userid);
+	$player->set_passwd($passw1. $userid);
+}
+catch (Tcerror $e) {
+	$h = htmlspecialchars($e->Header);
+	$m = htmlspecialchars($e->getMessage());
+	print <<<EOT
+<body>
+<h1>$h</h1>
+<p>Database error was $m.</p>
+</body>
+</html>
+
+EOT;
+	exit(0);
+}
 newaccemail($email, $userid, $passw);
 $Title = "BGA Tournament Registration Account Created";
 include 'php/head.php';
