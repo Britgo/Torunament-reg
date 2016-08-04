@@ -82,7 +82,7 @@ function formvalid()
 }
 
 function club_sel() {
-	var fm = document.entryform;
+	var fm = document.trform;
 	var ps = fm.clubsel;
 	var cs = fm.countrysel;
 	var psi = ps.selectedIndex;
