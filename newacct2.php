@@ -93,7 +93,7 @@ function checkclash($column, $value) {
 // Split down club into just club rather than club:country
 
 $bits = split(':', $club);
-if (array_count($bits) > 1)
+if (count($bits) > 1)
 	$club = $bits[0];
 
 // Check user name doesn't clash
