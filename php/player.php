@@ -152,7 +152,7 @@ class Player extends Person {
 		$countries = list_countries();
 		print "<select name=\"country\">\n";
 		foreach ($countries as $country) {
-			$qname = htmlspecialchars($country);
+			$qname = htmlspecialchars($country->Name);
 			if ($country == $this->Country)
 				print "<option value=\"$qname\" selected>$qname</option>\n";
 			else
