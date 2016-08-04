@@ -317,9 +317,9 @@ span.prom {
 span.releg {
 	color: #EA484A;
 }
-span alarm {
+span.alarm {
 	color: #FF0000;
-	font-size: larger;
+	font-size: 16pt;
 }
 
 li.nav {
