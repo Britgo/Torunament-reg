@@ -72,6 +72,14 @@ function formvalid()
       	alert("Passwords do not match");
       	return  false;
       }
+      if (form.clubsel.selectedIndex <= 0)  {
+      	alert("No club selected");
+      	return  false;
+      }
+      if (form.clubsel.selectedIndex <= 0)  {
+      	alert("No country selected");
+      	return  false;
+      }
       var nbgasel = form.nonbga;
 	 	var optl = nbgasel.options;
 	 	if (optl[nbgasel.selectedIndex].value == 'u')  {

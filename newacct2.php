@@ -41,8 +41,8 @@ $userid = $_POST["userid"];
 $passw1 = $_POST["passw1"];
 $passw2 = $_POST["passw2"];
 $email = $_POST["email"];
-$club = $_POST["club"];
-$country = $_POST["country"];
+$club = $_POST["clubsel"];
+$country = $_POST["countrysel"];
 $rank = $_POST["rank"];
 
 if  (strlen($playname) == 0)  {
@@ -105,10 +105,10 @@ try {
 
 	// If no password specified, invent one
 
-	if (strlen($passw) == 0)
-		$passw = generate_password();
+	if (strlen($passw1) == 0)
+		$passw1 = generate_password();
 
-	$player->set_passwd($passw1. $userid);
+	$player->set_passwd($passw1, $userid);
 }
 catch (Tcerror $e) {
 	$h = htmlspecialchars($e->Header);
