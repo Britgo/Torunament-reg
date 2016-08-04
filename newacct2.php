@@ -21,10 +21,10 @@
 
 // Clog up the works for spammers
 
-if (isset($_POST["turnoff"]) || !isset($_POST["turnon"]))  {
-	system("sleep 60");
-	exit(0);
-}
+//if (isset($_POST["turnoff"]) || !isset($_POST["turnon"]))  {
+//	system("sleep 60");
+//	exit(0);
+//}
 
 include 'php/tcerror.php';
 include 'php/opendb.php';
