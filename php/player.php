@@ -152,7 +152,7 @@ class Player extends Person {
 	public function countryopt() {
 		$countries = list_countries();
 		print "<select name=\"countrysel\">\n";
-		print "<option value='none'>No club Selected</option>\n";
+		print "<option value='none'>None Selected</option>\n";
 		foreach ($countries as $country) {
 			$qname = htmlspecialchars($country->Name);
 			if ($country == $this->Country)
