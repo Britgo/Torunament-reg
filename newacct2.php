@@ -110,6 +110,8 @@ try {
 catch (Tcerror $e) {
 	$h = htmlspecialchars($e->Header);
 	$m = htmlspecialchars($e->getMessage());
+	$Title = "DB upd error";
+	include 'php/head.php';
 	print <<<EOT
 <body>
 <h1>$h</h1>
