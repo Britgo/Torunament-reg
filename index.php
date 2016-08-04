@@ -18,7 +18,10 @@ include 'php/opendb.php';
 
 try  {
 	opendb();
-	$tlist = get_tcodes("sdate desc,tname", true, true);
+	if ($organ)
+		$list = get_tcodes("sdate desc,tname", false, false);
+	else
+		$tlist = get_tcodes("sdate desc,tname", true, true);
 	if  (count($tlist) == 0)
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {
@@ -27,6 +30,7 @@ try  {
 <tr>
 	<th>Name</th>
 	<th>Date(s)</th>
+	<th>Rounds</th>
 	<th>ICS</th>
 </tr>
 EOT;
@@ -35,17 +39,17 @@ EOT;
 			$tourn = new Tournament($tc);
 			$tourn->fetchdets();
 			$url = $tourn->urlof();
-			$codeprin = $tourn->display_code();
 			$nameprin = $tourn->display_name();
 			if  ($tourn->Open)  {
 				if  (!$tourn->is_over())
-					$codeprin = "<a href=\"http://www.britgo.org/tournaments/_register/form$url\">$codeprin</a>";
+					$nameprin = "<a href=\"eform.php$url\">$nameprin</a>";
 			}
 			print <<<EOT
 <tr>
 	<td>$nameprin</td>
 	<td>{$tourn->display_dates()}</td>
-	<td><a href="downloadics.php{$tourn->urlof()}">ICS</a></td>
+	<td>{$tourn->Nrounds}</td>
+	<td><a href="downloadics.php{$url}">ICS</a></td>
 </tr>
 
 EOT;
