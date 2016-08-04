@@ -23,12 +23,12 @@
 ?>
 <div id="Nav">
 <div class="innertube">
-<table align="center" width="100%">
+<table align="left">
 <tr>
 	<td><a href="https://www.britgo.org" title="Go to BGA main site"><img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a></td>
 	<td><a href="index.php" title="Go to tournament registration home page" class="headlink">Tournament Registration Home</a></td>
-	<td><a href="https://www.britgo.org/tournaments" title="View BGA tournament calendar" class="headlink">BGA Calendar</a></td>
-	<td><a href="https://www.britgo.org/results/12months" title="View last 12 months results" class="headlink">Results</a></td>
+	<td><a href="https://www.britgo.org/tournaments" title="View BGA tournament calendar" class="headlink">BGA Calendar</a><br/>
+	<a href="https://www.britgo.org/results/12months" title="View last 12 months results" class="headlink">Results</a></td>
 <?php
 if ($organ) {
 	print <<<'EOF'
