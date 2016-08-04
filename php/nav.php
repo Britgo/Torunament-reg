@@ -30,19 +30,19 @@
 	<td><a href="https://www.britgo.org/tournaments" title="View BGA tournament calendar" class="headlink">BGA Calendar</a><br/>
 	<a href="https://www.britgo.org/results/12months" title="View last 12 months results" class="headlink">Results</a></td>
 <?php
-if ($organ) {
+if (isset($organ) && $organ) {
 	print <<<'EOF'
 	<td><a href='createtourn.php' title='Create a new tournament' class='oheadlink'>Create Tournaement</a></td>
 
 EOF;
 }
-if ($admin) {
+if (isset($admin) && $admin) {
 	print <<<'EOF'
 	<td><a href='useradmin.php' title='Administer user file' class='aheadlink'>Administration</a></td>
 
 EOF;
 }
-if ($logged_in) {
+if (isset($logged_in) && $logged_in) {
 	$qu = htmlspecialchars($username);
 	print <<<EOF
 	<td><a href="ownupd.php" title="Update your account details" class="headlink">Update account</a></td>
@@ -65,7 +65,7 @@ Password:<input type="password" name="passwd" size="10">
 
 EOT;
 }
-if (strlen($_SERVER['HTTPS']) == 0)
+if (!isset($_SERVER['HTTPS']) || strlen($_SERVER['HTTPS']) == 0)
 	print <<<EOF
 <td><span class="alarm">Use HTTPS!!</span></td>
 
