@@ -92,7 +92,9 @@ function club_sel() {
 	var parts = optv.split(':');
 	var cntry = parts[1];
 	var n;
+	alert(cntry);
 	for (n = 1;  n < cs.options.length; n++) {
+		alert(cs.options[n].value);
 		if (cs.options[n].value == cntry)  {
 			cs.selectedIndex = n;
 			break;
