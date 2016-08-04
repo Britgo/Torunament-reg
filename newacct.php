@@ -85,10 +85,12 @@ function club_sel() {
 	var fm = document.trform;
 	var ps = fm.clubsel;
 	var cs = fm.countrysel;
+	alert('In club sel');
 	var psi = ps.selectedIndex;
-	if  (psi < 0)
+	if  (psi <= 0)
 		return;
 	var optv = ps.options[psi].value;
+	alert(optv);
 	var parts = optv.split(':');
 	var cntry = parts[1];
 	var n;
