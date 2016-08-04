@@ -421,7 +421,12 @@ class Tournament {
      			array_push($result, $row[0]);
      		}
 	}
-   return $result;
+	else {
+		$code = mysql_error();
+		throw new Tcerror("Error was $code", "List fail");
+	}
+	
+	return $result;
  }
  
  function tourn_select()

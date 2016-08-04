@@ -32,7 +32,7 @@
 <?php
 if (isset($organ) && $organ) {
 	print <<<'EOF'
-	<td><a href='createtourn.php' title='Create a new tournament' class='oheadlink'>Create Tournaement</a></td>
+	<td><a href='createtourn.php' title='Create a new tournament' class='oheadlink'>Create Tournament</a></td>
 
 EOF;
 }
