@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>BGA Tournament Registration</title>
-<meta name="generator" content="Bluefish 2.2.5" >
-<meta name="author" content="John M Collins" >
-<meta name="date" content="2016-08-02T16:18:59+0100" >
-<meta name="copyright" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-<meta http-equiv="content-style-type" content="text/css">
-<meta http-equiv="expires" content="0">
-<link href="tournreg.css" type="text/css" rel="stylesheet"></link>
-</head>
+<?php
+$Title = 'BGA Tournament Registration';
+include 'php/head.php';
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <?php
 include 'php/session.php';
 include 'php/nav.php';
@@ -76,7 +64,6 @@ catch (Tcerror $e)  {
 <p>$msg</p>
 
 EOT;
-	return;
 }
 ?>
 </div>

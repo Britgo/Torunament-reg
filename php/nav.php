@@ -56,11 +56,11 @@ else {
 		$userid = $_COOKIE['user_id'];
 	print <<<EOT
 <td><form name="lifm" action="login.php" method="post" enctype="application/x-www-form-urlencoded">
-Userid:<input type="text" name="user_id" id="user_id" value="$userid" size="10">
+User:<input type="text" name="user_id" id="user_id" value="$userid" size="10">
 Password:<input type="password" name="passwd" size="10">
 <input type="submit" value="Login">
 </form><br />
-<a href="javascript:lostpw();" title="Get your lost password">Lost password?</a>
+<a href="javascript:lostpw();" title="Get your lost password">Lost password?</a>&nbsp;&nbsp;&nbsp;
 <a href="newacct.php" title="Create yourself an account">Create account</a></td>
 
 EOT;

@@ -234,7 +234,6 @@ a.oheadlink:visited {
 }
 
 h1 {
-	text-align: center;
 	color: #5F3D2C;
 	font-size: 18pt;
 }
@@ -248,10 +247,10 @@ h3 {
 }
 
 body {
-	background-color: #FFD3E5;
+	background-color: #D3FFFF;
 	color: #000000;
-	text-align: justify;
-	font-size: 10pt;
+	text-align: left;
+	font-size: 12pt;
 	line-height: 1.2;
 	height: 100%;
 	max-height: 100%;
