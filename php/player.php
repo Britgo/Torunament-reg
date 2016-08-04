@@ -135,7 +135,8 @@ class Player extends Person {
 		$onc = "";
 		if (strlen($selfn) != 0)
 			$onc = " onchange=\"$selfn());\"";
-		print "<select name=\"club\"$onc>\n";
+		print "<select name=\"clubsel\"$onc>\n";
+		print "<option value='none'>No club Selected</option>\n";
 		foreach ($clubs as $club) {
 			$name = $club->Name;
 			$qname = htmlspecialchars($name);
@@ -150,7 +151,8 @@ class Player extends Person {
 	
 	public function countryopt() {
 		$countries = list_countries();
-		print "<select name=\"country\">\n";
+		print "<select name=\"countrysel\">\n";
+		print "<option value='none'>No club Selected</option>\n";
 		foreach ($countries as $country) {
 			$qname = htmlspecialchars($country->Name);
 			if ($country == $this->Country)

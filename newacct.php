@@ -84,13 +84,20 @@ function formvalid()
 function club_sel() {
 	var fm = document.entryform;
 	var ps = fm.clubsel;
+	var cs = fm.countrysel;
 	var psi = ps.selectedIndex;
 	if  (psi < 0)
 		return;
 	var optv = ps.options[psi].value;
 	var parts = optv.split(':');
-	fm.club.value = parts[0];
-	fm.country.value = parts[1]; 
+	var cntry = parts[1];
+	var n;
+	for (n = 1;  n < cs.options.length; n++) {
+		if (cs.options[n].value == cntry)  {
+			cs.selectedIndex = n;
+			break;
+		}
+	}
 }
 </script>
 <?php include 'php/nav.php'; ?>
