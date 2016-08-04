@@ -32,7 +32,8 @@ include 'php/club.php';
 try {
 	opendb();
 	$player = new Player();
-	$player->fromid($_GET['uid']);
+	$userid = $_GET['uid'];
+	$player->fromid($userid);
 }
 catch (Tcerror $e) {
 	$mess = $e->getMessage();
@@ -55,8 +56,8 @@ elseif (strlen($pw) == 0)  {
 else {
 	$Title = "Reminder sent";
 	$Mess = "Reminder was sent OK.";
-	$fh = popen("mail -s 'Go League email - password reminder' $em", "w");
-	fwrite($fh, "Your userid is {$player->Userid}.\n");
+	$fh = popen("mail -s 'Go Tournament Registration email - password reminder' $em", "w");
+	fwrite($fh, "Your userid is $userid.\n");
 	fwrite($fh, "Your password is $pw\n");
 	pclose($fh);
 }
