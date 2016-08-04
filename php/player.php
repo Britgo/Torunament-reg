@@ -134,7 +134,7 @@ class Player extends Person {
 		$clubs = list_clubs();
 		$onc = "";
 		if (strlen($selfn) != 0)
-			$onc = " onchange=\"$selfn());\"";
+			$onc = " onchange=\"$selfn();\"";
 		print "<select name=\"clubsel\"$onc>\n";
 		print "<option value='none'>No club Selected</option>\n";
 		foreach ($clubs as $club) {
