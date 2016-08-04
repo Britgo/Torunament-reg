@@ -20,6 +20,7 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 $Title = "BGA Tournament Registration Account";
+include 'php/tcerror.php';
 include 'php/head.php';
 include 'php/opendb.php';
 include 'php/country.php';
@@ -31,9 +32,6 @@ try {
 	opendb();
 }
 catch (Tcerror $e)  {
-	$Title = 'Cannot open database';
-	include 'php/head.php';
-	print <<<EOT
 <body>
 <p>Cannot open database.</p>
 </body>
