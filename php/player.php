@@ -62,6 +62,13 @@ class Player extends Person {
 		$this->Nonbga = $row["nonbga"];
 	}
 	
+	public function fromget($prefix = "") {
+		$this->First = $_GET["${prefix}f"];
+		$this->Last = $_GET["${prefix}l"];
+		if (strlen($this->First) == 0 || strlen($this->Last) == 0)
+			throw new Tcerror("Null name field"); 
+	}
+	
 	// Use me to get the player we are talking about from a hidden field
 	// We'll still perhaps need to get the rest
 	

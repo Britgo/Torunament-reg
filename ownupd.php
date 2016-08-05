@@ -98,9 +98,11 @@ function club_sel() {
 	}
 }
 
-function confirmdel()
+function confirmdel(urlq)
 {
-	return confirm("Please confirm you want to delete yourself");
+	if  (!confirm("Please confirm you want to delete yourself"))
+		return;
+	document.location = "deluserid.php?" + urlq;
 }
 </script>
 <?php
@@ -113,9 +115,10 @@ EOT;
 <h1>Update your details</h1>
 <p>Please update your details as required using the form below.</p>
 <p>Please note that email addresses are <b>not</b> published anywhere.</p>
-<p>If you want to delete the records of your user name and user id, then please <a href="deluserid.php" onclick="confirmdel();">click here</a>.</p>
+<p>If you want to delete the records of your user name and user id, then please
 <?php
 print <<<EOT
+<a href="javascript:confirmdel('{$player->urlof()}');">click here</a>.</p>
 <form name="playform" action="ownupd2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
 {$player->save_hidden()}
 <table cellpadding="2" cellspacing="5" border="0">
