@@ -112,7 +112,6 @@ print <<<EOT
 
 EOT;
 ?>
-<h1>Update your details</h1>
 <p>Please update your details as required using the form below.</p>
 <p>Please note that email addresses are <b>not</b> published anywhere.</p>
 <p>If you want to delete the records of your user name and user id, then please

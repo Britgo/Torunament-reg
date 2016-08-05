@@ -19,28 +19,30 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if (isset($_SESSION['user_id']))  {
-	$uid = $_SESSION['user_id'];
-	if (strlen($uid) != 79) {
-		include 'php/tcerror.php';
-		include 'php/opendb.php';
-		try {
-			//opendb();
-			;
-		}
-		catch (Tcerrpr $e) {
-			$mess = "error with '$uid' - " . $e->getMessage();
-			include 'php/wrongentry.php';
-			exit(0);
-		}
-		$quid = mysql_real_escape_string($uid);
-		if (!mysql_query("delete from player where user='$quid'"))  {
-			$mess = mysql_error() . "with $uid".
-			include 'php/wrongentry.php';
-			exit(0);
-		}
+include 'php/tcerror.php';
+include 'php/session.php';
+include 'php/checklogged.php';
+include 'php/opendb.php';
+include 'php/country.php';
+include 'php/club.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/player.php';
+
+try {
+	opendb();
+	$player = new Player();
+	$player->fromget();
+	if (!mysql_query("delete from player where {$player->queryof()}"))  {
+		throw new Tcerror("Delete player failed error was " . mysql_error());
 	}
 }
+catch (Tcerror $e) {
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
+}
+
 ini_set("session.gc_maxlifetime", "18000");
 $phpsessiondir = $_SERVER["DOCUMENT_ROOT"] . "/phpsessions";
 if (is_dir($phpsessiondir))
