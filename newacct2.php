@@ -44,6 +44,7 @@ $email = $_POST["email"];
 $club = $_POST["clubsel"];
 $country = $_POST["countrysel"];
 $rank = $_POST["rank"];
+$nonbga = $_POST['nonbga'] != 'm';
 
 if  (strlen($playname) == 0)  {
 	$mess = "No player name given";
@@ -105,9 +106,10 @@ $player->Club = $club;
 $player->Country = $country;
 $player->Email = $email;
 $player->Userid = $userid;
+$player->Nonbga = $nonbga;
 
 try {
-	$player->create_or_update();
+	$player->create();
 
 	// If no password specified, invent one
 

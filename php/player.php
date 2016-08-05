@@ -61,34 +61,61 @@ class Player extends Person {
 		$this->Admin = $row["admin"];
 		$this->Nonbga = $row["nonbga"];
 	}
+	
+	// Use me to get the player we are talking about from a hidden field
+	// We'll still perhaps need to get the rest
+	
+	public function frompost($prefix = "") {
+		$this->First = $_POST["${prefix}f"];
+		$this->Last = $_POST["${prefix}l"];
+		if (strlen($this->First) == 0 || strlen($this->Last) == 0)
+			throw new Tcerror("Null post name field"); 
+	}
+	
+	// Are we talking about same player
+		
+	public function is_same($pl) {
+		return $this->First == $pl->First && $this->Last == $pl->Last;
+	}
  	
- 	public function create_or_update()  {
+ 	public function create()  {
  		$qq = $this->queryof();
  		$qfirst = mysql_real_escape_string($this->First);
 		$qlast = mysql_real_escape_string($this->Last);
 		$qclub = mysql_real_escape_string($this->Club);
 		$qcountry = mysql_real_escape_string($this->Country);
-		$qnonbga = $this->Nonbga? 1: 0;
-		$ret = mysql_query("select first,email from player where $qq");
-		if  (!$ret)  {
-			$ecode = mysql_error();
-			throw new Tcerror("Cannot access player record, error was $ecode", "Database error");
-		}
-		if  (mysql_num_rows($ret) > 0)  {
-			if (!preg_match('/@/', $this->Email))  {
-				$row = mysql_fetch_array($ret);
-				$this->Email = $row[1];
-			}
-			if  (!mysql_query("delete from player where $qq"))  {
-				$ecode = mysql_error();
-				throw new Tcerror("Cannot remove player record, error was $ecode", "Database error");
-			}
-		}
 		$qemail = mysql_real_escape_string($this->Email);
-		if  (!mysql_query("insert into player (first,last,rank,club,country,email,nonbga) values ('$qfirst','$qlast',{$this->Rank->Rankvalue},'$qclub','$qcountry','$qemail',$qnonbga)"))  {
+		$qnonbga = $this->Nonbga? 1: 0;
+		$qrank = $this->Rank->Rankvalue;
+		mysql_query("delete from player where $qq");
+		if  (!mysql_query("insert into player (first,last,rank,club,country,email,nonbga) values ('$qfirst','$qlast',$qrank,'$qclub','$qcountry','$qemail',$qnonbga)"))  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot create player record, error was $ecode", "Database error");
 		}
+	}
+	
+	public function updatename($newp) {
+		$qfirst = mysql_real_escape_string($newp->First);
+		$qlast = mysql_real_escape_string($newp->Last);
+		mysql_query("update player set first='$qfirst',last='$qlast' where {$this->queryof()}");
+		$this->First = $newp->First;
+		$this->Last = $newp->Last;
+	}
+	
+	public function update()  {
+ 		$qq = $this->queryof();
+ 		$qclub = mysql_real_escape_string($this->Club);
+		$qcountry = mysql_real_escape_string($this->Country);
+		$qemail = mysql_real_escape_string($this->Email);
+		$qnonbga = $this->Nonbga? 1: 0;
+		$qrank = $this->Rank->Rankvalue;
+		$ret = mysql_query("update player set rank=$qrank,club='$qclub',country='$qcountry',email='$qemail',nonbga=$qnonbga where $qq");
+	}	
+	
+	public function save_hidden($prefix = "") {
+		$f = htmlspecialchars($this->First);
+		$l = htmlspecialchars($this->Last);
+		return "<input type=\"hidden\" name=\"${prefix}f\" value=\"$f\"><input type=\"hidden\" name=\"${prefix}l\" value=\"$l\">";
 	}
 	
 	// Get password
@@ -125,9 +152,21 @@ class Player extends Person {
 		}
 	}
 	
+	// Display whole name
+		
+	public function display_name() {
+		$f = $this->First;
+		$l = $this->Last;
+		return  htmlspecialchars("$f $l");
+	}
+	
 	public function display_country()
 	{
 		return htmlspecialchars($this->Country);
+	}
+	
+	public function display_email_nolink() {
+		return htmlspecialchars($this->Email);
 	}
 	
 	public function clubopt($selfn = "") {
