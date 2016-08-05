@@ -26,7 +26,11 @@ if (isset($_SESSION['user_id']))  {
 		include 'php/opendb.php';
 		opendb();
 		$quid = mysql_real_escape_string($uid);
-		mysql_query("delete from player where user='$quid'");
+		if (!mysql_query("delete from player where user='$quid'"))  {
+			$mess = mysql_error();
+			include 'php/wrongentry.php';
+			exit(0);
+		}
 	} 
 }
 ini_set("session.gc_maxlifetime", "18000");
