@@ -403,6 +403,14 @@ class Tournament {
  		//$t->incdays(-1);
  		return $t->is_past();
  	}
+ 	
+ 	public function count_entries() {
+ 		$result = 0;
+ 		$ret = mysql_query("select count(*) from {$this->etable()}");
+ 		if  ($ret && ($row = mysql_fetch_array($ret)))
+ 			$result = $row[0];
+ 		return  $result;
+ 	}
  }
  
  function get_tcodes($order = "tcode", $openonly = false, $futureonly = false)

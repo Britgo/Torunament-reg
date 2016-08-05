@@ -31,6 +31,7 @@ try  {
 	<th>Name</th>
 	<th>Date(s)</th>
 	<th>Rounds</th>
+	<th>Entries</th>
 	<th>ICS</th>
 </tr>
 EOT;
@@ -49,6 +50,7 @@ EOT;
 	<td>$nameprin</td>
 	<td>{$tourn->display_dates()}</td>
 	<td>{$tourn->Nrounds}</td>
+	<td><a href="listentries.php{$url}">{$tourn->count_entries()}</a></td>
 	<td><a href="downloadics.php{$url}">ICS</a></td>
 </tr>
 
