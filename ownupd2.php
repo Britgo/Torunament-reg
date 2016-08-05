@@ -58,7 +58,7 @@ try {
 	opendb();
 	$origplayer = new Player();
 	$origplayer->frompost();
-	$origplayer->fetchdets();
+	$origplayer->fetchplayer();
 }
 catch (Tcerror $e) {
 	$mess = $e->getMessage();

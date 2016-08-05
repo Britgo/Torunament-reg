@@ -7,11 +7,11 @@ openfiles: /home/jmc/src/Websites/tournreg/newacct.php:4892:3582:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform2.php:0:497:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:14176:13394:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/ownupd.php:4461:3568:1:
+openfiles: /home/jmc/src/Websites/tournreg/ownupd.php:3875:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:3068:2914:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/player.php:5419:4412:0:
-openfiles: /home/jmc/src/Websites/goleague/php/player.php:8190:7492:0:
-openfiles: /home/jmc/src/Websites/tournreg/ownupd2.php:2670:1733:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/player.php:6207:6397:0:
+openfiles: /home/jmc/src/Websites/goleague/php/player.php:8673:8086:0:
+openfiles: /home/jmc/src/Websites/tournreg/ownupd2.php:2670:0:1:
 openfiles: /home/jmc/src/Websites/tournreg/deluserid.php:1786:202:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
@@ -31,7 +31,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: display_u
+ssearch_text: disp_passwd
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -93,7 +93,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: head
 searchlist: .
 searchlist: (
 searchlist: )
@@ -108,6 +107,7 @@ searchlist: updaname
 searchlist: updatname
 searchlist: updatename
 searchlist: display_u
+searchlist: disp_passwd
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
