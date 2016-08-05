@@ -156,7 +156,7 @@ print <<<EOT
 <tr><td>Email</td><td><input type="text" name="email" value="{$player->display_email_nolink()}"></td></tr>
 <tr><td>Password</td><td><input type="password" name="passw1"$dp></td></tr>
 <tr><td>Confirm</td><td><input type="password" name="passw2"$dp></td></tr>
-<tr><td><input type="submit" name="subm" value="Create Account"></td></tr>
+<tr><td colspan="2"><input type="submit" name="subm" value="Update Account"></td></tr>
 
 EOT;
 ?>
