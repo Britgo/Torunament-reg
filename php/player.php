@@ -171,6 +171,12 @@ class Player extends Person {
 		return htmlspecialchars($this->Country);
 	}
 	
+	// Get password for "display"
+		
+	public function disp_passwd() {
+		return htmlspecialchars($this->get_passwd());
+	}
+	
 	public function display_email_nolink() {
 		return htmlspecialchars($this->Email);
 	}
