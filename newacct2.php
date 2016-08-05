@@ -37,7 +37,7 @@ include 'php/genpasswd.php';
 include 'php/newaccemail.php';
 
 $playname = $_POST["playname"];
-$userid = $_POST["userid"];
+$username = $_POST["userid"];
 $passw1 = $_POST["passw1"];
 $passw2 = $_POST["passw2"];
 $email = $_POST["email"];
@@ -51,7 +51,7 @@ if  (strlen($playname) == 0)  {
 	include 'php/wrongentry.php';
 	exit(0);
 }
-if  (strlen($userid) == 0)  {
+if  (strlen($username) == 0)  {
 	$mess = "No user name given";
 	include 'php/wrongentry.php';
 	exit(0);
@@ -99,7 +99,7 @@ if (count($bits) > 1)
 
 // Check user name doesn't clash
 
-checkclash('user', $userid);
+checkclash('user', $username);
 
 $player->Rank = new Rank($rank);
 $player->Club = $club;
@@ -115,7 +115,7 @@ try {
 	if (strlen($passw1) == 0)
 		$passw1 = generate_password();
 
-	$player->set_passwd($passw1, $userid);
+	$player->set_passwd($passw1, $username);
 }
 catch (Tcerror $e) {
 	$h = htmlspecialchars($e->Header);
@@ -132,7 +132,7 @@ catch (Tcerror $e) {
 EOT;
 	exit(0);
 }
-newaccemail($email, $userid, $passw1);
+newaccemail($email, $username, $passw1);
 $Title = "BGA Tournament Registration Account Created";
 include 'php/head.php';
 ?>
@@ -140,8 +140,8 @@ include 'php/head.php';
 <?php include 'php/nav.php';
 print <<<EOT
 <h1>$Title</h1>
-<p>Your account $userid has been successfully created and you should be receiving
-a confirmatory email with your password in.</p>
+<p>Your account `$username' has been successfully created and you should be receiving
+a confirmatory email with your password.</p>
 
 EOT;
 ?>
