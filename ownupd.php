@@ -112,7 +112,7 @@ EOT;
 <h1>Update your details</h1>
 <p>Please update your details as required using the form below.</p>
 <p>Please note that email addresses are <b>not</b> published anywhere.</p>
-,p>If you want to delete the records of your user name and user id, then please <a href="deluserid.php" onclick="confirmdel();">click here</a>.</p>
+<p>If you want to delete the records of your user name and user id, then please <a href="deluserid.php" onclick="confirmdel();">click here</a>.</p>
 <?php
 print <<<EOT
 <form name="playform" action="ownupd2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
@@ -156,6 +156,7 @@ print <<<EOT
 <tr><td>Email</td><td><input type="text" name="email" value="{$player->display_email_nolink()}"></td></tr>
 <tr><td>Password</td><td><input type="password" name="passw1"$dp></td></tr>
 <tr><td>Confirm</td><td><input type="password" name="passw2"$dp></td></tr>
+<tr><td><input type="submit" name="subm" value="Create Account"></td></tr>
 
 EOT;
 ?>

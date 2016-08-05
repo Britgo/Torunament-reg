@@ -3,16 +3,16 @@ e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/index.php:1200:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:4399:4066:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:1851:460:0:
-openfiles: /home/jmc/src/Websites/tournreg/newacct.php:4392:3582:0:
+openfiles: /home/jmc/src/Websites/tournreg/newacct.php:4892:3582:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform2.php:0:497:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:14176:13394:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/ownupd.php:1259:2400:0:
-openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:3068:1508:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/player.php:3841:2724:0:
-openfiles: /home/jmc/src/Websites/goleague/php/player.php:13550:11301:0:
+openfiles: /home/jmc/src/Websites/tournreg/ownupd.php:4461:3568:1:
+openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:3068:2914:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/player.php:5419:4412:0:
+openfiles: /home/jmc/src/Websites/goleague/php/player.php:8190:7492:0:
 openfiles: /home/jmc/src/Websites/tournreg/ownupd2.php:2670:1733:0:
-openfiles: /home/jmc/src/Websites/tournreg/deluserid.php:1675:619:1:
+openfiles: /home/jmc/src/Websites/tournreg/deluserid.php:1786:202:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -31,7 +31,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: updatename
+ssearch_text: display_u
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -83,7 +83,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/checklogged.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ownupd2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/deluserid.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg
+savedir: file:///home/jmc/src/Websites/tournreg/php
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 
@@ -93,7 +93,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: ;
 searchlist: head
 searchlist: .
 searchlist: (
@@ -108,6 +107,7 @@ searchlist: updname
 searchlist: updaname
 searchlist: updatname
 searchlist: updatename
+searchlist: display_u
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
