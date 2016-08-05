@@ -105,7 +105,6 @@ $player->Rank = new Rank($rank);
 $player->Club = $club;
 $player->Country = $country;
 $player->Email = $email;
-$player->Userid = $userid;
 $player->Nonbga = $nonbga;
 
 try {

@@ -40,6 +40,7 @@ catch (Tcerror $e) {
 	exit(0);
 }
 
+$disp_userid = htmlspecialchars($userid);
 $Title = "Update Your Details";
 include 'php/head.php';
 ?>
@@ -105,7 +106,7 @@ function confirmdel()
 <?php
 include 'php/nav.php';
 print <<<EOT
-<h1>Update Details for userid {$player->display_userid(0)}</h1>
+<h1>Update Details for userid $disp_userid</h1>
 
 EOT;
 ?>
@@ -126,7 +127,7 @@ EOT;
 $player->clubopt("club_sel");
 print <<<EOT
 </td></tr>
-<tr><td>Country (set to {$player->Country})</td><td>
+<tr><td>Country</td><td>
 
 EOT;
 $player->countryopt();

@@ -160,11 +160,11 @@ class Player extends Person {
 		return  htmlspecialchars("$f $l");
 	}
 	
-	public function display_userid($wminus=1) {
-		if ($wminus && strlen($this->Userid) == 0)
-			return "-";
-		return htmlspecialchars($this->Userid);
-	}
+	//public function display_userid($wminus=1) {
+	//	if ($wminus && strlen($this->Userid) == 0)
+	//		return "-";
+	//	return htmlspecialchars($this->Userid);
+	//}
 	
 	public function display_country()
 	{
