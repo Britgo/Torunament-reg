@@ -206,7 +206,7 @@ class Player extends Person {
 		print "<option value='none'>None Selected</option>\n";
 		foreach ($countries as $country) {
 			$qname = htmlspecialchars($country->Name);
-			if ($country == $this->Country)
+			if ($country->Name == $this->Country)
 				print "<option value=\"$qname\" selected>$qname</option>\n";
 			else
 				print "<option value=\"$qname\">$qname</option>\n";

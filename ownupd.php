@@ -126,7 +126,7 @@ EOT;
 $player->clubopt("club_sel");
 print <<<EOT
 </td></tr>
-<tr><td>Country (set to {$player->Country}</td><td>
+<tr><td>Country (set to {$player->Country})</td><td>
 
 EOT;
 $player->countryopt();
