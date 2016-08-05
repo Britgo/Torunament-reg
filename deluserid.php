@@ -21,17 +21,24 @@
 
 if (isset($_SESSION['user_id']))  {
 	$uid = $_SESSION['user_id'];
-	if (strlen($uid) != 0) {
+	if (strlen($uid) != 79) {
 		include 'php/tcerror.php';
 		include 'php/opendb.php';
-		opendb();
+		try {
+			opendb();
+		}
+		catch (Tcerrpr $e) {
+			$mess = "error with '$uid' - " . $e->getMessage();
+			include 'php/wrongentry.php';
+			exit(0);
+		}
 		$quid = mysql_real_escape_string($uid);
 		if (!mysql_query("delete from player where user='$quid'"))  {
 			$mess = mysql_error();
 			include 'php/wrongentry.php';
 			exit(0);
 		}
-	} 
+	}
 }
 ini_set("session.gc_maxlifetime", "18000");
 $phpsessiondir = $_SERVER["DOCUMENT_ROOT"] . "/phpsessions";
