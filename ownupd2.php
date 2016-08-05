@@ -79,6 +79,12 @@ if  (!$origplayer->is_same($newplayer))  {
 	$chname = true;
 }
 	
+// Split down club into just club rather than club:country
+
+$bits = split(':', $club);
+if (count($bits) > 1)
+	$club = $bits[0];
+
 $origplayer->Rank = new Rank($rank);
 $origplayer->Club = $club;
 $origplayer->Country = $country;
