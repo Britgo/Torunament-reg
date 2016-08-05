@@ -25,7 +25,8 @@ if (isset($_SESSION['user_id']))  {
 		include 'php/tcerror.php';
 		include 'php/opendb.php';
 		try {
-			opendb();
+			//opendb();
+			;
 		}
 		catch (Tcerrpr $e) {
 			$mess = "error with '$uid' - " . $e->getMessage();
@@ -34,7 +35,7 @@ if (isset($_SESSION['user_id']))  {
 		}
 		$quid = mysql_real_escape_string($uid);
 		if (!mysql_query("delete from player where user='$quid'"))  {
-			$mess = mysql_error();
+			$mess = mysql_error() . "with $uid".
 			include 'php/wrongentry.php';
 			exit(0);
 		}
