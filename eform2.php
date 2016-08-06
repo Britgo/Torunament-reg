@@ -31,13 +31,13 @@ include 'php/player.php';
 include 'php/club.php';
 include 'php/country.php';
 
-if (!isset($_GET['tcode']))  {
+if (!isset($_POST['tcode']))  {
 	$mess = "No code";
 	include 'php/wrongentry.php';
 	exit(0);
 }
 
-$tcode = $_GET['tcode'];
+$tcode = $_POST['tcode'];
 
 // Check anti-spam sum
 

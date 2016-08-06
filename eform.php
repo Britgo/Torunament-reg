@@ -291,7 +291,7 @@ if ($tourn->Nonbga != 0)  {
 <tr><td>BGA Memb</td><td>
 
 EOT;
-	$defplayer->bgaopt();
+	$defplayer->bgaopt(false);
 	print "</td></tr>\n";
 }
 
