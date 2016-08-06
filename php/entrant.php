@@ -100,6 +100,9 @@ class Entrant extends Person {
 	public function frompost()  {
 		$this->Rank = new rank($_POST['rank']);
  		$this->Club = trim($_POST['clubsel']);
+ 		$bits = split(':', $this->Club);
+		if (count($bits) > 1)
+			$this->Club = $bits[0];
  		$this->Country = trim($_POST['countrysel']);
  		$this->Email = trim($_POST['email']);
 		if (!preg_match('/@/', $this->Email))
