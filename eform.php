@@ -24,6 +24,7 @@ include 'php/session.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
+include 'php/entrant.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 include 'php/player.php';
