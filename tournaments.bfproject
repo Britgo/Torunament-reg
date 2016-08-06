@@ -1,15 +1,16 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/index.php:1156:202:0:
+openfiles: /home/jmc/src/Websites/tournreg/index.php:2451:1683:0:
 openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:4399:4066:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:1851:1091:0:
 openfiles: /home/jmc/src/Websites/tournreg/newacct.php:1020:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform2.php:0:497:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:15288:14117:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:13066:13063:0:
 openfiles: /home/jmc/src/Websites/tournreg/eform.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:1509:3265:0:
-openfiles: /home/jmc/src/Websites/tournreg/listentries.php:1828:1086:1:
-openfiles: /home/jmc/src/Websites/tournreg/php/player.php:4557:3649:0:
+openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:1019:0:0:
+openfiles: /home/jmc/src/Websites/tournreg/listentries.php:4645:3567:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/player.php:4557:0:0:
+openfiles: /home/jmc/src/Websites/tournreg/downloadcsv.php:1133:0:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -25,7 +26,7 @@ view_left_panel: 1
 default_mime_type: text/plain
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/tournreg/php
+opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
 ssearch_text: etable
@@ -50,7 +51,6 @@ ssearch_regex: 0
 e2c.convert_iso: 0
 ssearch_casesens: 0
 charmap_block: 1
-recent_files: file:///home/jmc/src/Websites/tournreg/country.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/country.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/club.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/rank.php
@@ -80,8 +80,9 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/session.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/opendb.php
 recent_files: file:///home/jmc/src/Websites/tournreg/listentries.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/player.php
+recent_files: file:///home/jmc/src/Websites/tournreg/downloadcsv.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 

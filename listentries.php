@@ -73,7 +73,7 @@ function okdel(urlpar) {
 
 EOT;
 
-include 'nav.php';
+include 'php/nav.php';
 
 print <<<EOT
 <h1>Entries for {$tourn->display_name()}</h1>
@@ -205,7 +205,6 @@ to download a GoDraw file with these entries in.</p>
 
 <p>Click <a href="downloadcsv.php{$tourn->urlof()}">here</a>
 to download a CSV file with these entries in containing name, club, email, rank, lunch, concession and fee options suitable for importing into a spreadsheet.</p>
-
 
 EOT;
 ?>

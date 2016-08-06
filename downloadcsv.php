@@ -1,28 +1,38 @@
 <?php
 
-// Copyright John Collins 2014
-// Licensed under the GPL, v3
+//   Copyright 2016 John Collins
 
 // *****************************************************************************
 // PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
 // Your changes may be lost or break things if you don't do it correctly!
 // *****************************************************************************
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'rank.php';
-include 'person.php';
-include 'entrant.php';
-include 'tournclass.php';
-include 'opendb.php';
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+include 'php/tcerror.php';
+include 'php/session.php';
+include 'php/tdate.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/entrant.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
 
 if (!isset($_GET['tcode']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
-
-EOT;
-	return;
+	$mess = "No code";
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
 $tcode = $_GET['tcode'];
@@ -34,14 +44,9 @@ try  {
 	$players = get_entrants($tourn);
 }
 catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
-
-EOT;
-	return;
+	$mess = htmlspecialchars($e->getMessage());
+	include 'php/wrongentry.php';
+	exit(0);
 }
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename={$tourn->Tcode}.csv");
