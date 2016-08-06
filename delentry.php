@@ -66,7 +66,7 @@ include 'php/head.php';
 include 'php/nav.php';
 print <<<EOT
 <h1>Entrant deleted</h1>
-<p>The entrant {pers->display_name()} has been removed from {$tourn->display_name()}.</p>
+<p>The entrant {$pers->display_name()} has been removed from {$tourn->display_name()}.</p>
 
 EOT;
 ?>
