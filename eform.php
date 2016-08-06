@@ -216,7 +216,7 @@ print <<<EOT
 }
 
 function club_sel() {
-	var fm = document.trform;
+	var fm = document.entryform;
 	var ps = fm.clubsel;
 	var cs = fm.countrysel;
 	var psi = ps.selectedIndex;
