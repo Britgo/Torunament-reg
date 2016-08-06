@@ -178,10 +178,10 @@ class Entrant extends Person {
    		while ($row = mysql_fetch_array($ret)) {
    			$p = new Entrant($row[0], $row[1]);
    			$p->fetchdets($t);
-     		$result.array_push($result, $p);
-     	}
+     			array_push($result, $p);
+     		}
 	}
-   	return $result;
+   return $result;
  }
 
 //  Create and delete entrant tables.

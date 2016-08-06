@@ -1,30 +1,38 @@
 <?php
-
-// Copyright John Collins 2014
-// Licensed under the GPL, v3
+//   Copyright 2016 John Collins
 
 // *****************************************************************************
 // PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
 // Your changes may be lost or break things if you don't do it correctly!
 // *****************************************************************************
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'rank.php';
-include 'person.php';
-include 'tournclass.php';
-include 'opendb.php';
-include 'player.php';
-include 'club.php';
-include 'country.php';
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+include 'php/tcerror.php';
+include 'php/tdate.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
+include 'php/player.php';
+include 'php/club.php';
+include 'php/country.php';
 
 if (!isset($_GET['tcode']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
-
-EOT;
-	return;
+	$mess = "No code";
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
 $tcode = $_GET['tcode'];
@@ -38,59 +46,104 @@ try  {
 	$countries = list_countries();
 }
 catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
-
-EOT;
-	return;
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
 }
+
+// If this is my tourbament, then we allow things like editing other users
+
+$mytournament = $admin || ($organ && $tourn->Orguser == $userid);
+
+// Get my userid and player details
+
+$defplayer = new Player();
+
+try  {
+	// If we are allowed to and a player is given, pick up the details for that player,
+	// otherwise grab from the userid
+	
+	if ($mytournament && isset($_GET['f']) && isset($_GET['l']))  {
+		$defplayer->fromget();
+		$defplayer->fetchplayer();
+	}
+	elseif (strlen($userid) != 0)  {
+		$defplayer->fromid($userid);
+	}
+}
+catch (Tcerror $e) {
+	$mess = "Cannot get details for {$defplayer->First} {$defplayer->Last} or useid $userid";
+	include 'php/wrongentry.php';
+	exit(0);
+}
+
+// Fetch details of any previous entry with same name
+// Otherwise make one up with defaults from person if any.
+
+if  ($defplayer->isdefined())  {
+	$preventry = new Entrant();
+	$preventry->cloneperson();
+	try  {
+		$preventry->fetchdets($tourn);
+		$defplayer->Club = $preventry->Club;
+		$defplayer->Rank = $preventry->Rank;
+		$defplayer->Country = $preventry->Country;
+		$defplayer->Nonbga = $preventry->Nonbga;
+		$defplayer->Email = $preventry->Email;
+	}
+	catch (Tcerror $e)  {
+		$preventry->Club = $defplayer->Club;
+		$preventry->Rank = $defplayer->Rank;
+		$preventry->Country = $defplayer->Country;
+		$preventry->Nonbga = $defplayer->Nonbga;
+		$preventry->Email = $defplayer->Email;
+	}
+}
+
+// OK kick off the form
+
+$Title = "Entry for tournament {$tourn->display_name()}";
+include 'php/head.php';
+
+// There follows a pleasing mixture of lumps of PHP and JavaScript.
+// "Enjoy"
 
 print <<<EOT
+<body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
-
-function nonblank(s)  {
-        return /\S/.test(s);
-}
-
-function okname(s)  {
-	return /^[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s); //'
-}
-
 function checkform() {
-	 var fm = document.entryform;
-    if  (!nonblank(fm.name.value))  {
-    	  alert("Please give your name");
-        return false;
-    }
-    if  (!okname(fm.name.value))  {
-    	  alert("Sorry unacceptable name format");
-        return false;
-    }
-    if (!nonblank(fm.club.value)) {
-    	  alert("Please give your club - or put 'No club'");
-        return false;
-    }
-    if (!nonblank(fm.country.value))  {
-    	  alert("Please give a country");
-   	  return  false; 	  
-    }
-	 if (!nonblank(fm.email.value))  {
-		  alert("Please give your email address");
-		  return  false;
-	 }
+	var fm = document.entryform;
+   if  (!nonblank(fm.name.value))  {
+   	alert("Please give your name");
+      return false;
+   }
+   if (!okname(fm.name.value))  {
+   	alert("Sorry unacceptable name format");
+      return false;
+   }
+   if (fm.clubsel.selectedIndex <= 0)  {
+		alert("No club selected");
+      return  false;
+   }
+   if (fm.countrysel.selectedIndex <= 0)  {
+     	alert("No country selected");
+      return  false;
+   }
+   if (!nonblank(fm.email.value))  {
+	   alert("Please give your email address");
+		return  false;
+	}
 
 EOT;
 if ($tourn->Nonbga != 0)
-    print <<<EOT
-    var nbgasel = fm.nonbga;
-	 var optl = nbgasel.options;
-	 if (optl[nbgasel.selectedIndex].value == 'u')  {
-	     alert("Please select BGA membership");
-	     return  false;
-	 }
+	print <<<EOT
+   var nbgasel = fm.nonbga;
+	var optl = nbgasel.options;
+	if (optl[nbgasel.selectedIndex].value == 'u')  {
+		alert("Please select BGA membership");
+	   return  false;
+	}
 
 EOT;
 	 print <<<EOT
@@ -114,8 +167,6 @@ if ($tourn->Nonbga != 0)
 EOT;
 
 	// Process concession radio boxes but only if we have one.
-	// This is a horrible interleaving of PHP and JavaScript....
-	// Enjoy!
 	// If there are any concessions there will be a radio button set
 
 if  ($tourn->Concess1 != 0  ||  $tourn->Concess2 != 0)  {		// Don't bother if none
@@ -164,74 +215,35 @@ print <<<EOT
 	fm.cost.value = costp + '.' + costd.substr(1);
 }
 
-EOT;
-
-if  (count($players) > 0)  {
-	print <<<EOT
-function playersel() {
-	var fm = document.entryform;
-	var ps = fm.psel;
+function club_sel() {
+	var fm = document.trform;
+	var ps = fm.clubsel;
+	var cs = fm.countrysel;
 	var psi = ps.selectedIndex;
-	if  (psi < 0)
+	if  (psi <= 0)
 		return;
 	var optv = ps.options[psi].value;
 	var parts = optv.split(':');
-	fm.name.value = parts[0] + ' ' + parts[1];
-	fm.country.value = "UK";
-	fm.club.value = parts[2];
-	if (nonblank(parts[4]))
-		fm.email.value = "(as before)";
-	else
-		fm.email.value = "";
-	var rnk = parseInt(parts[3]);
-	fm.rank.selectedIndex = 8 - rnk;
-	var notmemb = parseInt(parts[5]) != 0? "n": "m";
-	var nbgasel = fm.nonbga;
-	var optl = nbgasel.options;
+	var cntry = parts[1];
 	var n;
-	for (n = 0;  n < nbgasel.length;  n++)  {
-		if (optl[n].value == notmemb)  {
-			nbgasel.selectedIndex = n;
+	for (n = 1;  n < cs.options.length; n++) {
+		if (cs.options[n].value == cntry)  {
+			cs.selectedIndex = n;
 			break;
 		}
 	}
-	calccost();
 }
-
-EOT;
-}
-if (count($clubs) > 0)
-	print <<<EOT
-function club_sel() {
-	var fm = document.entryform;
-	var ps = fm.clubsel;
-	var psi = ps.selectedIndex;
-	if  (psi < 0)
-		return;
-	var optv = ps.options[psi].value;
-	var parts = optv.split(':');
-	fm.club.value = parts[0];
-	fm.country.value = parts[1]; 
-}
-
-EOT;
-if (count($countries) > 0)
-	print <<<EOT
-function country_sel() {
-	var fm = document.entryform;
-	var ps = fm.countrysel;
-	var psi = ps.selectedIndex;
-	if  (psi < 0)
-		return;
-	fm.country.value = ps.options[psi].value;
-}
-
-EOT;
-print <<<EOT
 </script>
+
+EOT;
+
+include 'php/nav.php';
+
+print <<<EOT
 <h2>Entry form for: {$tourn->display_name()}</h2>
 <p>{$tourn->html_format()}</p>
 <p>{$tourn->html_over()}</p>
+
 EOT;
 
 if ($tourn->Provisional)
@@ -239,211 +251,135 @@ if ($tourn->Provisional)
 <p><b>Please note that this tournament is <u>provisional</u>. dates, arrangements and fees may be subject to change.</b></p>
 
 EOT;
+
 print <<<EOT
-<form name="entryform" action="/tournreg/eform2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
+<form name="entryform" action="eform2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <input type="hidden" name="tcode" value="$tcode" />
 <table>
 
-EOT;
-if  (count($players) > 0)  {
-	print <<<EOT
-<tr>
-	<td rowspan="2">Player Name</td>
-	<td><select name="psel" onchange="playersel();">
-<option selected="selected" value="::None:0:">(None)</option>
-
-EOT;
-	foreach  ($players as $p)  {
-		$f = htmlspecialchars($p->First);
-		$l = htmlspecialchars($p->Last);
-		$c = htmlspecialchars($p->Club);
-		$e = htmlspecialchars($p->Email);
-		$n = $p->Nonbga? 1: 0;
-		$r = $p->Rank->Rankvalue;
-		print <<<EOT
-<option value="$f:$l:$c:$r:$e:$n">{$p->display_name()}</option>
-
-EOT;
-	}
-	print <<<EOT
-</select>
-</td></tr>
-<tr>
-	<td><input type="text" name="name" size="30"></td>
-</tr>
-
-EOT;
-}
-else
-	print <<<EOT
 <tr>
 	<td>Player Name</td>
-	<td><input type="text" name="name" size="30"></td>
+	<td><input type="text" name="name" size="30" value="{$defplayer->display_name()}"></td>
 </tr>
 
-EOT;
-if (count($clubs) > 0) {
-		print <<<EOT
-<tr>
-	<td rowspan="2">Club (select if you can)</td>
-	<td><select name="clubsel" onchange="club_sel();">
-<option selected="selected" value=":">(None)</option>
-
-EOT;
-	foreach  ($clubs as $club)  {
-		$cl = htmlspecialchars($club->Name);
-		$cnt = htmlspecialchars($club->Country);
-		print <<<EOT
-<option value="$cl:$cnt">$cl</option>
-
-EOT;
-    }
-	print <<<EOT
-</select>
-</td></tr>
-<tr>
-	<td><input type="text" name="club" size="25"></td>
-</tr>
-
-EOT;
-}
-else
-	print <<<EOT
 <tr>
 	<td>Club</td>
-	<td><input type="text" name="club" size="25"></td>
-</tr>
-
+	<td>
 EOT;
-if (count($countries) > 0) {
-		print <<<EOT
-<tr>
-	<td rowspan="2">Country</td>
-	<td><select name="countrysel" onchange="country_sel();">
-<option selected="selected" value="">(None)</option>
-
-EOT;
-	foreach  ($countries as $country)  {
-		$cnt = htmlspecialchars($country->Name);
-		print <<<EOT
-<option value="$cnt">$cnt</option>
-
-EOT;
-    }
-	print <<<EOT
-</select>
+$defplayer->clubopt("club_sel");
+print <<<EOT
 </td></tr>
-<tr>
-	<td><input type="text" name="country" size="20"></td>
-</tr>
-
+<tr><td>Country</td><td>
 EOT;
-}
-else
-	print <<<EOT
-<tr>
-	<td>Club</td>
-	<td><input type="text" name="country" size="20"></td>
-</tr>
-
-EOT;
+$defplayer->countryopt();
 print <<<EOT
-<tr>
-	<td>Grade</td>
-<td>
+<tr><td>Rank</td><td>
 EOT;
-$r = new rank();
-$r->rankopt();
+$defplayer->rankopt();
 print <<<EOT
-</td>
-</tr>
+</td></tr>
 <tr>
 	<td>Email</td>
-	<td><input type="text" name="email" size="30"></td>
+	<td><input type="text" name="email" size="30" value="{$defplayer->display_email()}"></td>
 </tr>
 
 EOT;
-
-if ($tourn->Nonbga != 0)
+if ($tourn->Nonbga != 0)  {
 	print <<<EOT
-<tr>
-	<td>BGA Member (if not add &pound;{$tourn->display_nonbga()})</td>
-	<td>
-	<select name="nonbga" onchange="calccost();">
-	<option value="u" selected="selected">Not selected</option>
-	<option value="m">Member</option>
-	<option value="n">Not member</option>
-	</select>
-	</td>
-</tr>
+<tr><td>BGA Memb</td><td>
 
 EOT;
+	$defplayer->bgaopt();
+	print "</td></tr>\n";
+}
+
 if  ($tourn->Concess1 != 0  || $tourn->Concess2 != 0)  {
 	$rows = 2;
 	if  ($tourn->Concess1 != 0  && $tourn->Concess2 != 0)
 		$rows = 3;
+	$sck = ' checked="checked"';
+	$c1ck = $c2ck = "";
+	if ($preventry->Concess1) {
+		$c1ck = ' checked="checked"';
+		$sck = "";
+	}
+	elseif($preventry->Concess2) {
+		$c2ck = ' checked="checked"';
+		$sck = "";
+	}
 	print <<<EOT
 <tr>
 	<td rowspan="$rows">Entry Type</td>
-	<td><input type="radio" name="concess" value="std" checked="checked" onchange="calccost();" />Standard</td>
+	<td><input type="radio" name="concess" value="std"$sck onchange="calccost();" />Standard</td>
 </tr>
 
 EOT;
 	if ($tourn->Concess1 != 0)
 		print <<<EOT
 <tr>
-	<td><input type="radio" name="concess" value="C1" onchange="calccost();" />{$tourn->display_concess1name()}</td>
+	<td><input type="radio" name="concess" value="C1"$c1ck onchange="calccost();" />{$tourn->display_concess1name()}</td>
 </tr>
 
 EOT;
 	if ($tourn->Concess2 != 0)
 		print <<<EOT
 <tr>
-	<td><input type="radio" name="concess" value="C2" onchange="calccost();" />{$tourn->display_concess2name()}</td>
+	<td><input type="radio" name="concess" value="C2"$c2ck onchange="calccost();" />{$tourn->display_concess2name()}</td>
 </tr>
 
 EOT;
 }
-if  ($tourn->Lunch > 0)
+if  ($tourn->Lunch > 0)  {
+	$lck = "";
+	if ($preventry->Lunch)
+		$lck = ' checked="checked"';
 	print <<<EOT
 <tr>
 	<td>Lunch (add &pound;{$tourn->display_lunch()})</td>
-	<td><input type="checkbox" name="lunch" onchange="calccost();"></td>
+	<td><input type="checkbox" name="lunch"$lck onchange="calccost();"></td>
 </tr>
 
 EOT;
+}
 
-if (strlen($tourn->Dinner) != 0)
+if (strlen($tourn->Dinner) != 0)  {
+	$dck = "";
+	if ($preventry->Dinner)
+		$dck = ' checked="checked"';
 	print <<<EOT
 <tr>
 	<td>Joining for {$tourn->display_dinner()}</td>
-	<td><input type="checkbox" name="dinner"></td>
+	<td><input type="checkbox" name="dinner"$dck></td>
 </tr>
 
 EOT;
+}
 
-$r1 = rand(1,10);
-$r2 = rand(1,10);
+$pck = "";
+if ($preventry->Privacy)
+	$pck = ' checked="checked"';
 
 print <<<EOT
 <tr>
-	<td>Don't list publicly</td>
-	<td><input type="checkbox" name="privacy"></td>
+	<td>Do not list publicly</td>
+	<td><input type="checkbox" name="privacy"$pck></td>
 </tr>
 <tr>
 	<td>Cost</td>
 	<td>&pound;<input name="cost" type="text" size="5" maxlength="5" value="{$tourn->display_basic_fee()}"></td>
 </tr>
-<tr>
-	<td>(Anti-spam) Please answer this sum as a <b>word</b> $r1 + $r2 =</td>
-	<td><input type="hidden" name="r1" value="$r1" /><input type="hidden" name="r2" value="$r2" /><input type="text" name="asp" size="20" /></td>
-</tr>
+
+EOT;
+
+include 'php/sumchallenge.php';
+?>
 <tr>
 	<td>Click to enter</td>
 	<td><input type="submit" value="Submit"></td>
 </tr>
 </table>
 </form>
-
-EOT;
-?>
+</div>
+</div>
+</body>
+</html>

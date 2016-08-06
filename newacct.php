@@ -76,7 +76,7 @@ function formvalid()
       	alert("No club selected");
       	return  false;
       }
-      if (form.clubsel.selectedIndex <= 0)  {
+      if (form.countrysel.selectedIndex <= 0)  {
       	alert("No country selected");
       	return  false;
       }

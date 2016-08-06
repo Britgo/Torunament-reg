@@ -27,6 +27,16 @@ class Person {
 		}
 	}
 	
+	public function cloneperson($old)
+	{
+		$this->First = $old->First;
+		$this->Last = $old->Last;
+	}
+	
+	public function isdefined()  {
+		return  strlen($this->First) != 0  &&  strlen($this->Last) != 0;
+	}
+	
 	public function queryof($prefix = "") {
 		$qf = mysql_real_escape_string($this->First);
 		$ql = mysql_real_escape_string($this->Last);
