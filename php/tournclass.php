@@ -37,6 +37,7 @@ class Tournament {
  	public $Contact;				// Contact (person object)
  	public $Email;				// Contact email
  	public $Website;				// Tournament website
+ 	public $Orguser;				// Userid of organiser
  	
 	public function __construct($tc = "") {
  		$this->Tcode = $tc;
@@ -68,6 +69,7 @@ class Tournament {
  		$this->Contact = new Person();
  		$this->Email = "";
  		$this->Website = "";
+ 		$this->Orguser = "";
  	}
  	
  	public function clonefrom($t)  {
@@ -96,6 +98,7 @@ class Tournament {
  		$this->Contact = $t->Contact;
  		$this->Email = $t->Email;
  		$this->Website = $t->Website;
+ 		$this->Orguser = $t->Orguser;
  	}
  		
  	public function isnew() {
@@ -145,6 +148,7 @@ class Tournament {
  						"champlast," .
  						"contactfirst," .
  						"contactlast," .
+ 						"org," .
  						"email," .
  						"website from tdetails where {$this->queryof()}");
  		if  (!$ret)
@@ -179,6 +183,7 @@ class Tournament {
  		$this->Contact = new Person($row['contactfirst'], $row['contactlast']);
  		$this->Email = $row['email'];
  		$this->Website = $row['website'];
+ 		$this->Orguser = $row['org'];
  	}
  		
 	public function create()	
@@ -195,6 +200,7 @@ class Tournament {
 		$qc2 = mysql_real_escape_string($this->Concess2name);
 		$qem = mysql_real_escape_string($this->Email);
 		$qws = mysql_real_escape_string($this->Website);
+		$qorg = mysql_real_escape_string($this->Orguser);
 		$qprov = $this->Provisional? 1: 0;
 		$qopen = $this->Open? 1: 0;
 		$qdat = $this->Sdate->queryof();
@@ -205,13 +211,13 @@ class Tournament {
  						"sdate,ndays,rounds,provisional,open,dinner," .
  						"fee,lunch,concess1,concess2,concess1name,concess2name," .
  						"nonbga,ebird,ebdate,latefee,latedays," .
- 						"champfirst,champlast,contactfirst,contactlast,email,website" .
+ 						"champfirst,champlast,contactfirst,contactlast,email,website,org" .
  						") values (" .
 						"'$qcode','$qname','$qclass','$qformat','$qover','$qaddr','$qpc'," .
 						"'$qdat',{$this->Ndays},{$this->Nrounds},$qprov,$qopen,'$qdinner'," .
 						"{$this->Fee},{$this->Lunch},{$this->Concess1},{$this->Concess2},'$qc1','$qc2'," .
 						"{$this->Nonbga},{$this->Ebird},'$qebdat',{$this->Latefee},{$this->Latedays}," .
-						"'{$this->Champion->qfirst()}','{$this->Champion->qlast()}','{$this->Contact->qfirst()}','{$this->Contact->qlast()}','$qem','$qws')"))  {
+						"'{$this->Champion->qfirst()}','{$this->Champion->qlast()}','{$this->Contact->qfirst()}','{$this->Contact->qlast()}','$qem','$qws','$qorg')"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot create tournament record, error was $ecode", "Database error");
 		}
@@ -234,6 +240,7 @@ class Tournament {
 		$qc2 = mysql_real_escape_string($this->Concess2name);
 		$qem = mysql_real_escape_string($this->Email);
 		$qws = mysql_real_escape_string($this->Website);
+		$qorg = mysql_real_escape_string($this->Orguser);
 		$qprov = $this->Provisional? 1: 0;
 		$qopen = $this->Open? 1: 0;
 		$qdat = $this->Sdate->queryof();
@@ -248,7 +255,7 @@ class Tournament {
 						"latefee={$this->Latefee},latedays={$this->Latedays}," .
 						"champfirst='{$this->Champion->qfirst()}',champlast='{$this->Champion->qlast()}'," .
 						"contactfirst='{$this->Contact->qfirst()}',contactlast='{$this->Contact->qlast()}'," .
-						"email='$qem',website='$qws'" .
+						"email='$qem',website='$qws',org='$qorg'" .
 						" where {$this->queryof()}"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot update tournament record, error was $ecode", "Database error");
@@ -297,6 +304,7 @@ class Tournament {
  		$this->Contact = new Person($_POST['contact']);
  		$this->Email = trim($_POST['email']);
  		$this->Website = trim($_POST['website']);
+ 		$this->Orguser = trim($_POST['organiser']);
 	}
  		
  	public function set_hidden()  {
@@ -368,6 +376,9 @@ class Tournament {
  	}
  	public function display_ws() {
  		return htmlspecialchars($this->Website);
+ 	}
+ 	public function display_org() {
+ 		return  htmlspecialchars($this->Orguser);
  	}
  	public function display_dates() {
  		$sd = $this->Sdate->display();

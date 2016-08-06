@@ -1,22 +1,40 @@
 <?php
 
+//   Copyright 2016 John Collins
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 // Set up everything from functions
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'rank.php';
-include 'person.php';
-include 'entrant.php';
-include 'tournclass.php';
-include 'opendb.php';
+include 'php/tcerror.php';
+include 'php/session.php';
+include 'php/tdate.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/entrant.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
 
 if (!isset($_GET['tcode']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
-
-EOT;
-	return;
+	$mess = 'No tournament given';
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
 $tcode = $_GET['tcode'];
@@ -28,25 +46,35 @@ try  {
 	$entlist = get_entrants($tourn);
 }
 catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
+}
+
+$mytourn = $admin || ($organ && $tourn->Orguser == $userid);
+
+$Title = "Entrants for {$tourn->display_name()}";
+include 'php/head.php';
+print <<<EOT
+<body>
 
 EOT;
-	return;
-}
-if ($Everyone)
+
+// If organiser, put in JavaScript func
+
+if ($mytourn)
 	print <<<EOT
 <script language="javascript">
 function okdel(urlpar) {
 	if  (confirm("OK to remove player from {$tourn->display_name()}"))
-		document.location = "/tournreg/delentry.php" + urlpar;
+		document.location = "delentry.php" + urlpar;
 }
 </script>
 
 EOT;
+
+include 'nav.php';
+
 print <<<EOT
 <h1>Entries for {$tourn->display_name()}</h1>
 
@@ -68,7 +96,7 @@ EOT;
 	<th>{$tourn->display_dinner()}</th>
 	
 EOT;
-	if  ($Everyone)
+	if  ($mytourn)
 		print <<<EOT
 <th>Status</th>
 <th>Del</th>
@@ -78,6 +106,7 @@ EOT;
 </tr>
 
 EOT;
+
 $Nplayers = count($entlist); 
 $Nc1 = $Nc2 = $Nlunch = $Ndinner = $Npriv = 0;
 foreach ($entlist as $player) {
@@ -93,7 +122,7 @@ foreach ($entlist as $player) {
 		$Ndinner++;
 	if  ($player->Privacy)  {
 		$Npriv++;
-		if  (!$Everyone)
+		if  (!$mytourn)
 			continue;
 		$pb = "(";
 		$pa = ")";
@@ -104,7 +133,7 @@ foreach ($entlist as $player) {
 	$rk = $player->Rank->display();
 	$lunch = $player->Lunch? "Yes" : "No";
 	$dinner = $player->Dinner? "Yes" : "No";
-	if ($Everyone && preg_match('/@/', $player->Email)) {
+	if ($mytourn && preg_match('/@/', $player->Email)) {
 		$ml = htmlspecialchars($player->Email);
 		print  <<<EOT
 <tr>
@@ -134,7 +163,7 @@ EOT;
 	<td>$dinner</td>
 
 EOT;
-	if ($Everyone)  {
+	if ($mytourn)  {
 		print "<td>";
 		if ($player->Concess1)
 			print $tourn->display_concess1name();
@@ -160,7 +189,7 @@ print <<<EOT
 <p>Total $Nplayers attending
 
 EOT;
-if ($Everyone)  {
+if ($mytourn)  {
 	if  ($Nc1 > 0) print "$Nc1 {$tourn->display_concess1name()}\n";
 	if  ($Nc2 > 0) print "$Nc2 {$tourn->display_concess2name()}\n";
 }
@@ -168,15 +197,19 @@ if ($Nlunch > 0) print "$Nlunch for lunch\n";
 if ($Ndinner > 0) print "$Ndinner for {$tourn->display_dinner()}\n";
 if ($Npriv > 0) print "$Npriv private entries\n";
 print "</p>\n";
-if ($Everyone)
+if ($mytourn)
 	print <<<EOT
 
-<p>Click <a href="http://www.britgo.org/tournreg/downloadgodraw.php{$tourn->urlof()}">here</a>
+<p>Click <a href="downloadgodraw.php{$tourn->urlof()}">here</a>
 to download a GoDraw file with these entries in.</p>
 
-<p>Click <a href="http://www.britgo.org/tournreg/downloadcsv.php{$tourn->urlof()}">here</a>
+<p>Click <a href="downloadcsv.php{$tourn->urlof()}">here</a>
 to download a CSV file with these entries in containing name, club, email, rank, lunch, concession and fee options suitable for importing into a spreadsheet.</p>
 
 
 EOT;
 ?>
+</div>
+</div>
+</body>
+</html>

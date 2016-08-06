@@ -125,6 +125,16 @@ class Player extends Person {
 		return "<input type=\"hidden\" name=\"${prefix}f\" value=\"$f\"><input type=\"hidden\" name=\"${prefix}l\" value=\"$l\">";
 	}
 	
+	// Get userid
+	
+	public function get_userid() {
+		$ret = mysql_query("select user from player where {$this->queryof()}");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return  "";
+		$row = mysql_fetch_array($ret);
+		return $row[0];	
+	}
+	
 	// Get password
 		
 	public function get_passwd() {

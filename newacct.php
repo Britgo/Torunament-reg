@@ -64,10 +64,10 @@ function formvalid()
       	alert("No valid userid given");
       	return  false;
       }
-      if  (!nonblank(form.email.value))  {
-      	alert("No email address given");
-      	return  false;
-      }
+      //if  (!nonblank(form.email.value))  {
+      //	alert("No email address given");
+      //	return  false;
+      //}
       if (form.passw1.value != form.passw2.value)  {
       	alert("Passwords do not match");
       	return  false;

@@ -69,12 +69,21 @@ catch (Tcerror $e) {
    exit(0);
 }
 
-$ret = mysql_query("select first,last from player where {$player->queryof()}");
+$addacct = false;
+$oldemail = "";
+$ret = mysql_query("select first,last,user,email from player where {$player->queryof()}");
 if ($ret && mysql_num_rows($ret) != 0)  {
-	$column = "name";
-	$value = $player->display_name(false);
-	include 'php/nameclash.php';
-	exit(0);
+	$row = mysql_fetch_assoc($ret);
+	if (strlen($row['user']) == 0)  {
+		$addacct = true;
+		$oldemail = $row["email"];
+	}
+	else  {
+		$column = "name";
+		$value = $player->display_name(false);
+		include 'php/nameclash.php';
+		exit(0);
+	}
 }
 
 function checkclash($column, $value) {
@@ -96,6 +105,11 @@ function checkclash($column, $value) {
 $bits = split(':', $club);
 if (count($bits) > 1)
 	$club = $bits[0];
+	
+// Fix email to old if it wasn't given
+
+if ($email != $oldemail  &&  strlen($email) == 0)
+	$email = $oldemail;
 
 // Check user name doesn't clash
 
@@ -108,7 +122,10 @@ $player->Email = $email;
 $player->Nonbga = $nonbga;
 
 try {
-	$player->create();
+	if  ($addacct)
+		$player->update();
+	else
+		$player->create();
 
 	// If no password specified, invent one
 
