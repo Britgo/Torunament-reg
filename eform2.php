@@ -1,36 +1,47 @@
 <?php
-
-/// Copyright John Collins 2014
-// Licensed under the GPL, v3
+//   Copyright 2016 John Collins
 
 // *****************************************************************************
 // PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
 // Your changes may be lost or break things if you don't do it correctly!
 // *****************************************************************************
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'rank.php';
-include 'person.php';
-include 'entrant.php';
-include 'player.php';
-include 'club.php';
-include 'country.php';
-include 'tournclass.php';
-include 'opendb.php';
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
 
-if (!isset($_POST['tcode']) || !isset($_POST['r1']) || !isset($_POST['r2']) || !isset($_POST['asp']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
 
-EOT;
-	return;
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+include 'php/tcerror.php';
+include 'php/session.php';
+include 'php/tdate.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/entrant.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
+include 'php/player.php';
+include 'php/club.php';
+include 'php/country.php';
+
+if (!isset($_GET['tcode']))  {
+	$mess = "No code";
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
-include 'checksum.php';
+$tcode = $_GET['tcode'];
 
-$tcode = $_POST['tcode'];
+// Check anti-spam sum
+
+include 'php/checksum.php';
 
 try  {
 	opendb();
@@ -55,30 +66,29 @@ try  {
 		$entrant->update($tourn);
 	else
 		$entrant->create($tourn);
-	$player = new Player($entrant);
-	$player->create_or_update();
-	$club = new Club($player->Club, $player->Country);
-	$country = new Country($player->Country);
-	try  {
-		$club->create();
-		$country->create();
-	}
-	catch (Tcerror $e) {
-		;
-	}
-	$prog = '/var/www/bgasite/tournreg/acknow.pl';
+	$prog = $_SERVER['DOCUMENT_ROOT'] . '/acknow.pl';
 	system("$prog \'$tcode\' \'{$player->First}\' \'{$player->Last}\'");
 }
 catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
-
-EOT;
-	return;
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
-header("Location: http://www.britgo.org/tournaments/_register/accepted?tcode=$tcode");
+$Title = $isupd? "Amended entry accepted": "Entry accepted";
+include 'php/head.php';
 ?>
+<body>
+<?php
+include 'php/nav.php';
+print <<<EOT
+<h1>$Title</h1>
+<p>Your entry to the {$tourn->display_name()} tournament has been accepted.</p>
+<p>You should be receiving confirmation in your email shortly.</p>
+
+EOT;
+?>
+</div>
+</div>
+</body>
+</html>

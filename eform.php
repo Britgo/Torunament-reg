@@ -84,7 +84,7 @@ catch (Tcerror $e) {
 
 $preventry = new Entrant();
 if  ($defplayer->isdefined())  {
-	$preventry->cloneperson();
+	$preventry->cloneperson($defplayer);
 	try  {
 		$preventry->fetchdets($tourn);
 		$defplayer->Club = $preventry->Club;
