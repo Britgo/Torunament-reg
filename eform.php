@@ -280,7 +280,7 @@ print <<<EOT
 </td></tr>
 <tr>
 	<td>Email</td>
-	<td><input type="text" name="email" size="30" value="{$defplayer->display_email()}"></td>
+	<td><input type="text" name="email" size="30" value="{$defplayer->display_email_nolink()}"></td>
 </tr>
 
 EOT;
