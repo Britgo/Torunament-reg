@@ -4,18 +4,16 @@ openfiles: /home/jmc/src/Websites/tournreg/index.php:2493:1683:0:
 openfiles: /home/jmc/src/Websites/tournreg/tournreg.css:4399:4066:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/nav.php:1851:1091:0:
 openfiles: /home/jmc/src/Websites/tournreg/newacct.php:4696:3074:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1991:1393:1:
+openfiles: /home/jmc/src/Websites/tournreg/eform2.php:2104:1020:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:15288:14117:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform.php:1431:8096:0:
+openfiles: /home/jmc/src/Websites/tournreg/eform.php:7091:6707:0:
 openfiles: /home/jmc/src/Websites/tournreg/newacct2.php:1019:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/listentries.php:1668:1086:0:
 openfiles: /home/jmc/src/Websites/tournreg/delentry.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/entrant.php:241:5280:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/entrant.php:1209:302:1:
 openfiles: /home/jmc/src/Websites/tournreg/php/person.php:710:188:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/player.php:6116:91:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/sumchallenge.php:1021:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/checksum.php:1634:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/acknow.pl:0:1051:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -87,7 +85,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/sumchallenge.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/checksum.php
 recent_files: file:///home/jmc/src/Websites/tournreg/acknow.pl
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 

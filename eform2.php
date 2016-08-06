@@ -67,7 +67,7 @@ try  {
 	else
 		$entrant->create($tourn);
 	$prog = $_SERVER['DOCUMENT_ROOT'] . '/acknow.pl';
-	system("$prog \'$tcode\' \'{$player->First}\' \'{$player->Last}\'");
+	system("$prog \'$tcode\' \'{$entrant->First}\' \'{$entrant->Last}\'");
 }
 catch (Tcerror $e)  {
 	$mess = $e->getMessage();
