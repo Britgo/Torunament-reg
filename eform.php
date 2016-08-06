@@ -20,6 +20,7 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include 'php/tcerror.php';
+include 'php/session.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
@@ -80,8 +81,8 @@ catch (Tcerror $e) {
 // Fetch details of any previous entry with same name
 // Otherwise make one up with defaults from person if any.
 
+$preventry = new Entrant();
 if  ($defplayer->isdefined())  {
-	$preventry = new Entrant();
 	$preventry->cloneperson();
 	try  {
 		$preventry->fetchdets($tourn);
