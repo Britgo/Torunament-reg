@@ -23,7 +23,7 @@ function nonblank(s)  {
 }
 
 function okcode(s)  {
-	return /^\w+\$/.test(s);
+	return /^\w+$/.test(s);
 }
 
 function okname(s)  {
