@@ -26,6 +26,7 @@ include 'php/opendb.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
+include 'php/entrant.php';
 include 'php/tdate.php';
 include 'php/tournclass.php';
 
