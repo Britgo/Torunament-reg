@@ -215,33 +215,6 @@ for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
 	for ($i = 4;  $i <= 20;  $i++) print "<option>$i</option>\n";
 ?></td></tr>
 <tr>
-	<td>Number of days</td>
-	
-EOT;
-	for ($i = 1;  $i <= 7;  $i++)
-		if  ($i == $tourn->Ndays)
-			print "<option selected=\"selected\">$i</option>\n";
-		else
-			print "<option>$i</option>\n";
-
-	print <<<EOT
-</select></td>
-</tr>
-<tr>
-	<td>Total number of rounds</td>
-	<td><select name="rounds">
-
-EOT;
-
-	for ($i = 3;  $i <= 20;  $i++)
-		if  ($i == $tourn->Nrounds)
-			print "<option selected=\"selected\">$i</option>\n";
-		else
-			print "<option>$i</option>\n";
-	print <<<EOT
-</select></td>
-</tr>
-<tr>
 	<td>Basic fee for tournament</td>
 	<td><input type="text" name="fee" value="5.00" size="6" maxlength="6" /></td>
 </tr>
