@@ -22,6 +22,10 @@ function nonblank(s)  {
         return  false;
 }
 
+function okcode(s)  {
+	return /^\w+\$/.test(s);
+}
+
 function okname(s)  {
 	return /^[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s); //'
 }
