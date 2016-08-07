@@ -130,7 +130,7 @@ function checkform() {
 <h1>Create a new tournament</h1>
 <p>Please enter the required details in the form below.</p>
 <form name="ctform" action="/tournreg/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
-<table cellpadding="5" cellspacing="5" align="center" width="800"  summary="Tournament Table">
+<table cellpadding="5" cellspacing="5" align="left" width="800"  summary="Tournament Table">
 <tr>
 	<td colspan="2">Please enter a unique single-word code for the tournament here.<br />This should be letters and digits only.</td>
 </tr>
