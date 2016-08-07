@@ -20,6 +20,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checklogged.php';
 include 'php/opendb.php';
