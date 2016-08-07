@@ -33,7 +33,7 @@ class Tournament {
  	public $Ebdate;
  	public $Latefee;
  	public $Latedays;
- 	public $Champion;				// Current champion (person object)
+ 	// public $Champion;				// Current champion (person object)
  	public $Contact;				// Contact (person object)
  	public $Email;				// Contact email
  	public $Website;				// Tournament website
@@ -65,7 +65,7 @@ class Tournament {
  		$this->Ebdate->incdays(-30);
  		$this->Latefee = 5.0;
  		$this->Latedays = 0;
- 		$this->Champion = new Person();
+ 		//$this->Champion = new Person();
  		$this->Contact = new Person();
  		$this->Email = "";
  		$this->Website = "";
@@ -94,7 +94,7 @@ class Tournament {
  		$this->Ebird = $t->Ebird;
  		$this->Latefee = $t->Latefee;
  		$this->Latedays = $t->Latedays;
- 		$this->Champion = $t->Champion;
+ 		//$this->Champion = $t->Champion;
  		$this->Contact = $t->Contact;
  		$this->Email = $t->Email;
  		$this->Website = $t->Website;
@@ -144,8 +144,8 @@ class Tournament {
  						"ebdate," .
  						"latefee," .
  						"latedays," .
- 						"champfirst," .
- 						"champlast," .
+ 						//"champfirst," .
+ 						//"champlast," .
  						"contactfirst," .
  						"contactlast," .
  						"org," .
@@ -179,7 +179,7 @@ class Tournament {
  		$this->Ebdate->enctime($row['ebdate']);
  		$this->Latefee = $row['latefee'];
  		$this->Latedays = $row['latedays'];
- 		$this->Champion = new Person($row['champfirst'], $row['champlast']);
+ 		//$this->Champion = new Person($row['champfirst'], $row['champlast']);
  		$this->Contact = new Person($row['contactfirst'], $row['contactlast']);
  		$this->Email = $row['email'];
  		$this->Website = $row['website'];
@@ -211,13 +211,15 @@ class Tournament {
  						"sdate,ndays,rounds,provisional,open,dinner," .
  						"fee,lunch,concess1,concess2,concess1name,concess2name," .
  						"nonbga,ebird,ebdate,latefee,latedays," .
- 						"champfirst,champlast,contactfirst,contactlast,email,website,org" .
+ 						//"champfirst,champlast,contactfirst,contactlast,email,website,org" .
+ 						"contactfirst,contactlast,email,website,org" .
  						") values (" .
 						"'$qcode','$qname','$qclass','$qformat','$qover','$qaddr','$qpc'," .
 						"'$qdat',{$this->Ndays},{$this->Nrounds},$qprov,$qopen,'$qdinner'," .
 						"{$this->Fee},{$this->Lunch},{$this->Concess1},{$this->Concess2},'$qc1','$qc2'," .
 						"{$this->Nonbga},{$this->Ebird},'$qebdat',{$this->Latefee},{$this->Latedays}," .
-						"'{$this->Champion->qfirst()}','{$this->Champion->qlast()}','{$this->Contact->qfirst()}','{$this->Contact->qlast()}','$qem','$qws','$qorg')"))  {
+						//"'{$this->Champion->qfirst()}','{$this->Champion->qlast()}'," .
+						"'{$this->Contact->qfirst()}','{$this->Contact->qlast()}','$qem','$qws','$qorg')"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot create tournament record, error was $ecode", "Database error");
 		}
@@ -253,7 +255,7 @@ class Tournament {
 						"fee={$this->Fee},lunch={$this->Lunch},concess1={$this->Concess1},concess2={$this->Concess2},concess1name='$qc1',concess2name='$qc2'," .
 						"nonbga={$this->Nonbga},ebird={$this->Ebird},ebdate='$qebdat'," .
 						"latefee={$this->Latefee},latedays={$this->Latedays}," .
-						"champfirst='{$this->Champion->qfirst()}',champlast='{$this->Champion->qlast()}'," .
+						// "champfirst='{$this->Champion->qfirst()}',champlast='{$this->Champion->qlast()}'," .
 						"contactfirst='{$this->Contact->qfirst()}',contactlast='{$this->Contact->qlast()}'," .
 						"email='$qem',website='$qws',org='$qorg'" .
 						" where {$this->queryof()}"))  {
@@ -300,7 +302,7 @@ class Tournament {
  		$this->Ebdate->frompost('eb');
  		$this->Latefee = $_POST['latefee'];
  		$this->Latedays = $_POST['latedays'];
- 		$this->Champion = new Person($_POST['champ']);
+ 		//$this->Champion = new Person($_POST['champ']);
  		$this->Contact = new Person($_POST['contact']);
  		$this->Email = trim($_POST['email']);
  		$this->Website = trim($_POST['website']);
