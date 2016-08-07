@@ -197,12 +197,12 @@ EOT;
 	<td><input type="checkbox" name="open"$popen /></td>
 </tr>
 <tr>
-	<td>Date (or first day)</td><td>
+	<td>Date (or first day)</td>
 	<td><?php $tourn->Sdate->dateopt(); ?></td>
 </tr>
 <tr>
 	<td>Number of days</td>
-	<td><td><select name="ndays">
+	<td><select name="ndays">
 	<option selected="selected">1</option>
 <?php
 for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
@@ -277,7 +277,7 @@ for ($i = 2;  $i <= 20;  $i++)  {
 	<td>
 <?php
 print <<<EOT
-<input type="text" name="contact" value="{$orguser->display_name}" size="30"></td></tr>
+<input type="text" name="contact" value="{$orguser->display_name()}" size="30"></td></tr>
 
 EOT;
 ?>

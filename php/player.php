@@ -170,20 +170,6 @@ class Player extends Person {
 		}
 	}
 	
-	// Display whole name
-		
-	public function display_name() {
-		$f = $this->First;
-		$l = $this->Last;
-		return  htmlspecialchars("$f $l");
-	}
-	
-	//public function display_userid($wminus=1) {
-	//	if ($wminus && strlen($this->Userid) == 0)
-	//		return "-";
-	//	return htmlspecialchars($this->Userid);
-	//}
-	
 	public function display_country()
 	{
 		return htmlspecialchars($this->Country);
