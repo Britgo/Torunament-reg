@@ -32,7 +32,7 @@ function newaccemail($email, $userid, $passw)  {
 
 function ackentry($tourn, $entrant, $upd)  {
 	$orgname = "{$tourn->Contact->First} {$tourn->Contact->Last}";
-	$entname = "{$entrant->First} {$Entrant->Last}";
+	$entname = "{$entrant->First} {$entrant->Last}";
 	$orgemail = $tourn->get_org_email();
 	$entemail = $entrant->Email;
 	if  (strlen($entemail) != 0)  {

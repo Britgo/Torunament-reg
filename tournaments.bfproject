@@ -1,17 +1,16 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:1134:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/index.php:1020:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:12164:11219:0:
+openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:9411:8548:1:
+openfiles: /home/jmc/src/Websites/tournreg/index.php:1149:202:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:0:1432:0:
 openfiles: /home/jmc/src/Websites/tournreg/dt.php:1020:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/ct2.php:1020:689:0:
-openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:1021:0:0:
+openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:1021:359:0:
 openfiles: /home/jmc/src/Websites/tournreg/ut2.php:1021:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/ltourns.php:0:786:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1340:1464:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/newaccemail.php:1844:0:1:
-openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:15460:13810:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/player.php:1924:657:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:1762:1053:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/player.php:6200:5627:0:
+openfiles: /home/jmc/src/Websites/tournreg/webfn.js:1745:905:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -27,10 +26,10 @@ view_left_panel: 1
 default_mime_type: text/plain
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/tournreg/php
+opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: email
+ssearch_text: display_email
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -52,7 +51,6 @@ ssearch_regex: 0
 e2c.convert_iso: 0
 ssearch_casesens: 0
 charmap_block: 1
-recent_files: file:///home/jmc/src/Websites/tournreg/newacct.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/nav.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ownupd.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform.php
@@ -82,8 +80,9 @@ recent_files: file:///home/jmc/src/Websites/tournreg/eform2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/newaccemail.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/tournclass.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/player.php
+recent_files: file:///home/jmc/src/Websites/tournreg/webfn.js
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 
@@ -93,9 +92,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: displ_userid
-searchlist: displa_userid
-searchlist: display_userid
 searchlist: bits
 searchlist: get
 searchlist: $userid
@@ -108,6 +104,9 @@ searchlist: display_email
 searchlist: okdel
 searchlist: playerselect
 searchlist: email
+searchlist: existing
+searchlist: getsel
+searchlist: display_email
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0

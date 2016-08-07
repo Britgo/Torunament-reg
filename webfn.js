@@ -35,3 +35,34 @@ function lostpw() {
    }
    window.open("rempwbyuid.php?uid=" + l, "Password Reminder", "width=450,height=200,resizeable=yes,scrollbars=yes");
 }
+
+// For checking prices in things
+
+function isprice(s, descr)  {
+	var  v = s.value;
+	if  (!/^\d+\.\d\d\$/.test(v))
+		throw Error("Invalid price value for " + descr);
+	return  parseFloat(s.value);
+}
+
+// For checking bits of dates
+
+function getsel(el, descr) {
+	var si = el.selectedIndex;
+	if  (si < 0)
+		throw Error("No " + descr + " selected");
+	return el.options[si].value;
+}
+function datecheck(fmyr, fmmon, fmdy, descr)
+{
+   	var ds = getsel(fmdy, "Day for " + descr);
+    	var ms = getsel(fmmon, "Month for " + descr);
+    	var ys = getsel(fmyr, "Year for " + descr);
+    	var tdat = new Date(ys, ms-1, ds, 12, 0, 0);
+   	var now = new Date();
+   	if  (tdat < now)
+     	throw Error("Time for " + descr + " has to be in future");
+	  	if (tdat.getMonth() != ms-1)
+  			throw Error("Invalid date for " + descr);
+		return tdat;
+}
