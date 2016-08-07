@@ -130,7 +130,7 @@ function checkform() {
 <h1>Create a new tournament</h1>
 <p>Please enter the required details in the form below.</p>
 <form name="ctform" action="/tournreg/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
-<table summary="Tournament Table">
+<table align="center" width="600"  summary="Tournament Table">
 <tr>
 	<td colspan="2">Please enter a unique single-word code for the tournament here.<br />This should be letters and digits only.</td>
 </tr>
@@ -209,7 +209,7 @@ for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
 ?></td></tr>
 <tr>
 	<td>Number of rounds</td>
-	<td><td><select name="rounds">
+	<td><select name="rounds">
 	<option selected="selected">3</option>
 	<?php
 	for ($i = 4;  $i <= 20;  $i++) print "<option>$i</option>\n";
