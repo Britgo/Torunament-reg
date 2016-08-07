@@ -58,7 +58,7 @@ try {
 	$tourn->create();
 }
 catch (Tcerror $e)  {
-	$mess = 'Cannot open database or create tournament user';
+	$mess = 'Cannot open database or create tournament' . $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);
 }
