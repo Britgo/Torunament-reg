@@ -20,44 +20,58 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'person.php';
-include 'entrant.php';
-include 'tournclass.php';
-include 'opendb.php';
+include 'php/session.php';
+include 'php/checklogged.php';
+include 'php/opendb.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/player.php';
+include 'php/tdate.php';
+include 'php/tournclass.php';
 
-if (!isset($_POST['tcode']) || !isset($_POST['r1']) || !isset($_POST['r2']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
-
-EOT;
-	flush();
-	sleep(300);
-	return;
+if (!isset($_POST['tcode']))  {
+	$mess = "No code";
+	include 'php/wrongentry.php';
+	exit(0);
 }
-
-include 'checksum.php';
 
 $tcode = $_POST['tcode'];
 
-try  {
+// Check anti-spam sum
+
+include 'php/checksum.php';
+
+// Check the guy can create tournaments before we go any further
+
+if (!$organ)  {
+	$mess = 'Not Tournament Organiser';
+	include 'php/wrongentry.php';
+	exit(0);
+}
+
+try {
 	opendb();
 	$tourn = new Tournament($tcode);
 	$tourn->frompost();
 	$tourn->create();
 }
 catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
-
-EOT;
-	return;
+	$mess = 'Cannot open database or create tournament user';
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
-header("Location: http://www.britgo.org/tournaments/_register/created?tcode=$tcode");
+$Title = "Tournament created OK";
+include 'php/head.php';
 ?>
+<body>
+<?php
+include 'php/nav.php'
+?>
+<h1>Tournament created OK</h1>
+<p>Your tournament, <?php print $tourn->display_name(); ?>, was created successfully.</p>
+</div>
+</div>
+</body>
+</html>
+

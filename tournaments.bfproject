@@ -1,10 +1,10 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:6227:5394:1:
+openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:1551:790:0:
 openfiles: /home/jmc/src/Websites/tournreg/index.php:1339:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:0:1432:0:
 openfiles: /home/jmc/src/Websites/tournreg/dt.php:1020:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/ct2.php:1020:689:0:
+openfiles: /home/jmc/src/Websites/tournreg/ct2.php:1947:1130:1:
 openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:1021:359:0:
 openfiles: /home/jmc/src/Websites/tournreg/ut2.php:1021:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/ltourns.php:0:786:0:
@@ -12,7 +12,7 @@ openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:1762:1053:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/player.php:5604:4518:0:
 openfiles: /home/jmc/src/Websites/tournreg/webfn.js:1745:905:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/sumchallenge.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1150:756:0:
+openfiles: /home/jmc/src/Websites/tournreg/eform2.php:1516:756:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/entrant.php:0:511:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/person.php:0:547:0:
 snr_recursion_level: 0
@@ -30,7 +30,7 @@ view_left_panel: 1
 default_mime_type: text/plain
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/tournreg/php
+opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 bookmarks_filename_mode: 0
 ssearch_text: display_name
@@ -58,7 +58,6 @@ charmap_block: 1
 recent_files: file:///home/jmc/src/Websites/tournreg/php/nav.php
 recent_files: file:///home/jmc/src/Websites/tournreg/ownupd.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform.php
-recent_files: file:///home/jmc/src/Websites/tournreg/newacct2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/deluserid.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/session.php
@@ -85,6 +84,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/sumchallenge.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/entrant.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/person.php
+recent_files: file:///home/jmc/src/Websites/tournreg/newacct2.php
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
