@@ -86,6 +86,8 @@ print <<<EOT
 <p>Your entry to the {$tourn->display_name()} tournament has been accepted.</p>
 <p>You should be receiving confirmation in your email shortly.</p>
 
+Invoked $prog \'$tcode\' \'{$entrant->First}\' \'{$entrant->Last}\'
+
 EOT;
 ?>
 </div>
