@@ -214,33 +214,6 @@ for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
 	<?php
 	for ($i = 4;  $i <= 20;  $i++) print "<option>$i</option>\n";
 ?></td></tr>
-
-// Set for provisional and open
-	
-	$pprov = $tourn->Provisional? " checked=\"checked\"": "";
-	$popen = $tourn->Open? " checked=\"checked\"": "";
-	$ach = $bch = $cch = $nch = "";
-	switch ($tourn->Tclass) {
-	case 'A':
-		$ach = ' checked="checked"';
-		break;
-	case 'B':
-		$bch = ' checked="checked"';
-		break;
-	case 'C':
-		$cch = ' checked="checked"';
-		break;
-	default:
-		$nch = ' checked="checked"';
-		break;
-	}
-		
-	print <<<EOT
-
-EOT;
-	
-	print <<<EOT
-</td></tr>
 <tr>
 	<td>Number of days</td>
 	
