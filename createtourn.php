@@ -47,6 +47,7 @@ catch (Tcerror $e)  {
 }
 
 $tourn = new Tournament();
+$tourn->Orguser = $userid;
 
 $Title = 'Create a new tournament';
 include 'php/head.php';
@@ -145,6 +146,17 @@ print <<<EOT
 </tr>
 
 EOT;
+if ($admin) {
+	print <<<EOT
+<tr>
+	<td><b>Organiser userd</b></td>
+	<td><input type="text" name="organiser" value="$userid" size="16"></td>
+</tr>
+
+EOT;
+}
+else
+	$tourn->hidden_organiser();
 ?>
 <tr>
 	<td colspan="2">Please give a full name for the tournament, usually just location and year.<br />

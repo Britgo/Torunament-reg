@@ -308,7 +308,11 @@ class Tournament {
 	}
  		
  	public function set_hidden()  {
- 		  print "<input type=\"hidden\" name=\"tcode\" value=\"{$this->Tcode}\" />\n";
+			print "<input type=\"hidden\" name=\"tcode\" value=\"{$this->Tcode}\" />\n";
+ 	}
+ 	
+ 	public function hidden_organiser() {
+			print "<input type=\"hidden\" name=\"organiser\" value=\"{$this->Orguser}\" />\n";
  	}
  	
  	public function display_code() {
