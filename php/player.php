@@ -60,6 +60,7 @@ class Player extends Person {
 		$this->Email = $row["email"];
 		$this->Admin = $row["admin"];
 		$this->Nonbga = $row["nonbga"];
+		return $this;
 	}
 	
 	public function fromget($prefix = "") {

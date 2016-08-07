@@ -422,6 +422,35 @@ class Tournament {
  			$result = $row[0];
  		return  $result;
  	}
+ 	
+ 	// Get organiser details
+ 	
+ 	public function get_organiser()  {
+ 		if  (strlen($this->Orguser) == 0)
+ 			return null;
+ 		$orgp = new Player();
+ 		try  {
+ 			return $orgp->fromid($this->Orguser);
+ 		}
+ 		catch (Tcerror $e)  {
+ 			return  null;
+ 		}
+ 	}
+ 	
+ 	// Get email addresses of organisers, from contact and organiser id
+ 	
+ 	public function get_org_email() {
+ 		$conte = $this->Email;
+ 		$orgp = $this->get_organiser();
+ 		if  (is_null($orgp))
+ 			return  $conte;
+ 		$orge = $orgp->Email;
+ 		if  ($conte == $orge  ||  $orge == "")
+ 			return  $conte;
+ 		if  ($conte == "")
+ 			return  $orge;
+ 		return "$conte $orge";
+ 	}
  }
  
  function get_tcodes($order = "tcode", $openonly = false, $futureonly = false)

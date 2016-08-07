@@ -30,6 +30,7 @@ include 'php/opendb.php';
 include 'php/player.php';
 include 'php/club.php';
 include 'php/country.php';
+include 'php/newaccemail.php';
 
 if (!isset($_POST['tcode']))  {
 	$mess = "No code";
@@ -66,8 +67,7 @@ try  {
 		$entrant->update($tourn);
 	else
 		$entrant->create($tourn);
-	$prog = $_SERVER['DOCUMENT_ROOT'] . '/acknow.pl';
-	system("$prog \'$tcode\' \'{$entrant->First}\' \'{$entrant->Last}\'");
+	ackentry($tourn, $entrant, $isupd);
 }
 catch (Tcerror $e)  {
 	$mess = $e->getMessage();
@@ -85,8 +85,6 @@ print <<<EOT
 <h1>$Title</h1>
 <p>Your entry to the {$tourn->display_name()} tournament has been accepted.</p>
 <p>You should be receiving confirmation in your email shortly.</p>
-
-Invoked $prog \'$tcode\' \'{$entrant->First}\' \'{$entrant->Last}\'
 
 EOT;
 ?>

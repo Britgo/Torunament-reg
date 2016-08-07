@@ -21,12 +21,60 @@
 
 function newaccemail($email, $userid, $passw)  {
 	if (strlen($email) != 0)  {
-		$fh = popen("mail -s 'BGA tournament registration account created' $email", "w");
+		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'BGA tournament registration account created' $email", "w");
 		fwrite($fh, "Please DO NOT reply to this message!!!\n\n");
 		fwrite($fh, "A BGA tournament registration account has been created for you on http://tournaments.britgo.org\n\n");
 		fwrite($fh, "Your user id is $userid and your password is $passw\n\n"); 
 		fwrite($fh, "Please log in and reset your password if you wish\n");
 		pclose($fh);
 	}
+}
+
+function ackentry($tourn, $entrant, $upd)  {
+	$orgname = "{$tourn->Contact->First} {$tourn->Contact->Last}";
+	$entname = "{$entrant->First} {$Entrant->Last}";
+	$orgemail = $tourn->get_org_email();
+	$entemail = $entrant->Email;
+	if  (strlen($entemail) != 0)  {
+		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'Entry acceated' $entemail", "w");
+		$mess = <<<EOT
+Please DO NOT reply to this message!!!
+
+Dear $entname,
+
+Thank you for your entry for the {$tourn->Name} tournament,
+which has been received.
+
+If you have any questions about the tournament, please ask the organiser,
+$orgname on $orgemail.
+
+EOT;
+		fwrite($fh, $mess);
+		pclose($fh);
+	}
+	if ($upd)  {
+		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'Tournament entry amended' $orgemail", "w");
+		$mess = <<<EOT
+Please DO NOT reply to this message!!!
+
+Dear $orgname,
+
+$entname has amended his/her entry to the {$tourn->Name} tournament.
+
+EOT;
+	}
+	else  {
+		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'Tournament entry accepted' $orgemail", "w");
+		$mess = <<<EOT
+Please DO NOT reply to this message!!!
+
+Dear $orgname,
+
+$entname has entered the {$tourn->Name} tournament.
+
+EOT;
+	}
+	fwrite($fh, $mess);
+	pclose($fh);
 }
 ?>
