@@ -130,12 +130,12 @@ function checkform() {
 <h1>Create a new tournament</h1>
 <p>Please enter the required details in the form below.</p>
 <form name="ctform" action="/tournreg/ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
-<table align="center" width="600"  summary="Tournament Table">
+<table cellpadding="5" cellspacing="5" align="center" width="800"  summary="Tournament Table">
 <tr>
 	<td colspan="2">Please enter a unique single-word code for the tournament here.<br />This should be letters and digits only.</td>
 </tr>
 <tr>
-	<td>Tournament Code</td>
+	<td><b>Tournament Code</b></td>
 <?php
 $dat = getdate();
 $year = $dat['year'];
@@ -151,7 +151,7 @@ EOT;
 	This is normally displayed as a heading in various places.</td>
 </tr>
 <tr>
-	<td>Tournament Name</td>
+	<td><b>Tournament Name</b></td>
 	<td><input type="text" name="tname" size="40"></td>
 </tr>
 <tr>
@@ -159,7 +159,7 @@ EOT;
 	affects ratings, select N.</td>
 </tr>
 <tr>
-	<td>Tournament Class</td>
+	<td><b>Tournament Class</b></td>
 	<td>
 		<input type="radio" name="tclass" value="A" />A
 		<input type="radio" name="tclass" value="B" />B
@@ -168,66 +168,66 @@ EOT;
 	</td>
 </tr>
 <tr>
-	<td>Format<br />Please give a brief description of the tournament parameters with time limits.
+	<td><b>Format</b><br />Please give a brief description of the tournament parameters with time limits.
 	Say what the rules are if not AGA and 7.5 Komi.</td>
 	<td><textarea name="format" rows="6" cols="50"></textarea></td>
 </tr>
 <tr>
-	<td>Overview<br />Please give a brief description of the tournament timetable. Mention any side
+	<td><b>Overview</b><br />Please give a brief description of the tournament timetable. Mention any side
 	tournaments e.g. 13x13, quiz etc.</td>
 	<td><textarea name="overview" rows="6" cols="50"></textarea></td>
 </tr>
 <tr>
-	<td>Venue<br />Please give a description of the venue, with street address.</td>
+	<td><b>Venue</b><br />Please give a description of the venue, with street address.</td>
 	<td><textarea name="address" rows="6" cols="50"></textarea></td>
 </tr>
 <tr>
 	<td colspan="2">Please give the correct postcode of the address for the benefit of Sat Nav users.</td>
 </tr>
 <tr>
-	<td>Postcode</td>
+	<td><b>Postcode</b></td>
 	<td><input type="text" name="postcode" size="10"></td>
 </tr>
 <tr>
-	<td>Provisional dates and details</td>
+	<td><b>Provisional dates and details</b></td>
 	<td><input type="checkbox" name="provisional"$pprov /></td>
 </tr>
 <tr>
-	<td>Open for entries</td>
+	<td><b>Open for entries</b></td>
 	<td><input type="checkbox" name="open"$popen /></td>
 </tr>
 <tr>
-	<td>Date (or first day)</td>
+	<td><b>Date (or first day)</b></td>
 	<td><?php $tourn->Sdate->dateopt(); ?></td>
 </tr>
 <tr>
-	<td>Number of days</td>
+	<td><b>Number of days</b></td>
 	<td><select name="ndays">
 	<option selected="selected">1</option>
 <?php
 for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
 ?></td></tr>
 <tr>
-	<td>Number of rounds</td>
+	<td><b>Number of rounds</b></td>
 	<td><select name="rounds">
 	<option selected="selected">3</option>
 	<?php
 	for ($i = 4;  $i <= 20;  $i++) print "<option>$i</option>\n";
 ?></td></tr>
 <tr>
-	<td>Basic fee for tournament</td>
+	<td><b>Basic fee for tournament</b></td>
 	<td><input type="text" name="fee" value="5.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Supplement for lunch, put zero if no lunch</td>
+	<td><b>Supplement for lunch, put zero if no lunch</b></td>
 	<td><input type="text" name="lunch" value="0.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Dinner or other event, blank if none</td>
+	<td><b>Dinner or other event, blank if none</b></td>
 	<td><input type="text" name="dinner" size="20" /></td>
 </tr>
 <tr>
-	<td>Supplement if not BGA member</td>
+	<td><b>Supplement if not BGA member</b></td>
 	<td><input type="text" name="nonbga" value="3.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
@@ -236,27 +236,27 @@ for ($i = 2;  $i <= 7;  $i++) print "<option>$i</option>\n";
 	This allows up to two alternative concession discounts, plus descriptions to be assigned.
 	Just set one to zero to turn it off.</td>
 <tr>
-	<td>Concession 1</td>
+	<td><b>Concession 1 amount</b></td>
 	<td><input type="text" name="concess1" value="3.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Concession 1 description</td>
+	<td>C<b>oncession 1 description</b></td>
 	<td><input type="text" name="concess1name" value="Concession" size="20" /></td>
 </tr>
 <tr>
-	<td>Concession 2</td>
+	<td><b>Concession 2 amount</b></td>
 	<td><input type="text" name="concess2" value="0.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Concession 2 description</td>
+	<td><b>Concession 2 description</b></td>
 	<td><input type="text" name="concess2name" value="Other concession" size="20" /></td>
 </tr>
 <tr>
-	<td>Late entry fee</td>
+	<td><b>Late entry fee</b></td>
 	<td><input type="text" name="latefee" value="5.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Late entry applies if booked</td>
+	<td><b>Late entry applies if booked</b></td>
 	<td><select name="latedays"><option value="0" selected="selected">On Day</option>
 	<option value="1">Previous day</option>
 <?php
@@ -266,14 +266,14 @@ for ($i = 2;  $i <= 20;  $i++)  {
 }
 ?></select></td></tr>
 <tr>
-	<td>Early bird discount</td>
+	<td><b>Early bird discount</b></td>
 	<td><input type="text" name="ebird" value="0.00" size="6" maxlength="6" /></td>
 </tr>
 <tr>
-	<td>Last day for early bird</td>
+	<td><b>Last day for early bird</b></td>
 	<td><?php $tourn->Ebdate->dateopt("eb"); ?></td>
 <tr>
-	<td>Contact</td>
+	<td><b>Contact</b></td>
 	<td>
 <?php
 print <<<EOT
@@ -282,7 +282,7 @@ print <<<EOT
 EOT;
 ?>
 <tr>
-	<td>Contact email</td>
+	<td><b>Contact email</b></td>
 	<td>
 <?php
 print <<<EOT
@@ -291,12 +291,12 @@ print <<<EOT
 EOT;
 ?>
 <tr>
-	<td>Website</td>
+	<td><b>Website</b></td>
 	<td><input type="text" name="website" size="40"></td>
 </tr>
 <?php include 'php/sumchallenge.php'; ?>
 <tr>
-	<td>Click to create</td>
+	<td><b>Click to create</b></td>
 	<td><input type="submit" value="Create tournament"></td>
 </tr>
 </table>
