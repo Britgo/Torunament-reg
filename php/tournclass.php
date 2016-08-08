@@ -73,14 +73,13 @@ class Tournament {
  	}
  	
  	public function clonefrom($t)  {
- 		$dat = getdate();
- 		$year = $dat['year'];
- 		$this->Name = preg_replace('/20\d\d/', $year, $t->Name);
+ 		$this->Name = $t->Name;
  		$this->Tclass = $t->Tclass;
  		$this->Format = $t->Format;
  		$this->Overview = $t->Overview;
  		$this->Address = $t->Address;
  		$this->Postcode = $t->Postcode;
+ 		//$this->Sdate = new Tdate($t->Sdate);
 		$this->Ndays = $t->Ndays;
  		$this->Nrounds = $t->Nrounds;
  		$this->Fee = $t->Fee;
@@ -91,7 +90,7 @@ class Tournament {
  		$this->Nonbga = $t->Nonbga;
  		$this->Lunch = $t->Lunch;
  		$this->Dinner = $t->Dinner;
- 		$this->Ebird = $t->Ebird;
+ 		//$this->Ebird = new Tdate($t->Ebird);
  		$this->Latefee = $t->Latefee;
  		$this->Latedays = $t->Latedays;
  		//$this->Champion = $t->Champion;

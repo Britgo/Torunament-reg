@@ -162,6 +162,11 @@ class Tdate {
 		$day = $times["mday"];
 		$this->timestamp = mktime(12,0,0,$mon, $day+$inc, $yr);		
 	}
+
+	public function daysbetween($omd) {
+		$db = 24 * 60 * 60;
+		return round(($omd->timestamp - $this->timestamp) / $db);
+	}
 }
 
 ?>
