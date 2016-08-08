@@ -90,7 +90,7 @@ $tcode = $ncode;
 
 if (preg_match('/(\d+)/', $name, $matches)) {
 	$upd = $matches[1] + 1;
-	$name = preg_replace('/(\d+)/', $urd, $name);
+	$name = preg_replace('/(\d+)/', $upd, $name);
 }
 
 $tourn->Tcode = $tcode;
