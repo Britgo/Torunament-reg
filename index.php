@@ -24,6 +24,13 @@ include 'php/head.php';
 ?>
 <body>
 <script language="javascript" src="webfn.js"></script>
+<script language="javascript">
+function okdel(url, descr) {
+	if (!confirm("OK to delete tournament " + descr))
+		return;
+	document.location = "dt.php" + url;
+}
+</script>
 <?php
 include 'php/session.php';
 include 'php/nav.php';
@@ -52,7 +59,7 @@ try  {
 	<th>Date(s)</th>
 	<th>Rounds</th>
 	<th>Entries</th>
-	<th>ICS</th>
+	<th>Actions</th>
 </tr>
 EOT;
 
@@ -61,23 +68,33 @@ EOT;
 			$tourn->fetchdets();
 			$url = $tourn->urlof();
 			$nameprin = $tourn->display_name();
-			if  ($tourn->Open)  {
-				if  (!$tourn->is_over())
-					$nameprin = "<a href=\"eform.php$url\">$nameprin</a>";
-			}
+			if  ($tourn->Open  &&  !$tourn->is_over())
+				$nameprin = "<a href=\"eform.php$url\">$nameprin</a>";
 			print <<<EOT
 <tr>
 	<td>$nameprin</td>
 	<td>{$tourn->display_dates()}</td>
 	<td>{$tourn->Nrounds}</td>
 	<td><a href="listentries.php{$url}">{$tourn->count_entries()}</a></td>
-	<td><a href="downloadics.php{$url}">ICS</a></td>
+	<td><a href="downloadics.php{$url}">ICS</a>
+
+TOT;
+if ($organ)
+	print "<a href=\"clonetourn.php$url\">Clonee</a>";
+if ($admin || ($organ && $userid == $tourn->Orguser))  {
+	print <<<EOT
+<a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>
+<a href="upddescr.php$url">Update description</a>
+<a href="updfeedates.phpurl">Update dates, fees</a></td>
 </tr>
 
 EOT;
 		}
 		print <<<EOT
 </table>
+<p>Click on the tournament name to enter for the tournament or amend your existing entry.
+Click on the number of entrants to view the current list of entrants. The ICS link downloads an ICS
+file which can be incorporated in calendar applications.</p>
 
 EOT;
 	}

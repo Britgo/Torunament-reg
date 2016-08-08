@@ -130,6 +130,7 @@ function checkform() {
 <?php include 'php/nav.php'; ?>
 <h1>Create a new tournament</h1>
 <p>Please enter the required details in the form below.</p>
+<p>You may find it easier to "clone" a similar previous tournament and then amend the details rather than entering everything here.</p>
 <form name="ctform" action="ct2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table cellpadding="5" cellspacing="5" align="left" width="800"  summary="Tournament Table">
 <tr>
@@ -149,7 +150,7 @@ EOT;
 if ($admin) {
 	print <<<EOT
 <tr>
-	<td><b>Organiser userd</b></td>
+	<td><b>Organiser userid</b></td>
 	<td><input type="text" name="organiser" value="$userid" size="16"></td>
 </tr>
 
