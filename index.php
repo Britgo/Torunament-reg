@@ -83,9 +83,16 @@ EOT;
 				print "<a href=\"clonetourn.php$url\">Clone</a>";
 			if ($admin || ($organ && $userid == $tourn->Orguser))  {
 				print <<<EOT
-&nbsp;<a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>&nbsp;
-<a href="upddescr.php{$url}">Update description</a>&nbsp;
+&nbsp;<a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>
+
+EOT;
+			if  (!$tourn->is_over())
+				print <<<EOT
+&nbsp;<a href="upddescr.php{$url}">Update description</a>&nbsp;
 <a href="updfeedates.php{$url}">Update dates, fees</a></td>
+EOT;
+			print <<<EOT
+</td>
 </tr>
 
 EOT;

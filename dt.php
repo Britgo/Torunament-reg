@@ -20,39 +20,61 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-include 'tcerror.php';
-include 'tdate.php';
-include 'person.php';
-include 'entrant.php';
-include 'tournclass.php';
-include 'opendb.php';
+include 'php/tcerror.php';
+include 'php/session.php';
+include 'php/checklogged.php';
+include 'php/tdate.php';
+include 'php/person.php';
+include 'php/entrant.php';
+include 'php/tournclass.php';
+include 'php/opendb.php';
+
+// Check the guy can create tournaments before we go any further
+
+if (!$organ)  {
+	$mess = 'Not Tournament Organiser';
+	include 'php/wrongentry.php';
+	exit(0);
+}
 
 if (!isset($_GET['tcode']))  {
-print <<<EOT
-<h1>Wrong entry</h1>
-<p>I do not know how you got here, but it is wrong</p>
-
-EOT;
-	return;
+	$mess = 'No code';
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
 $tcode = $_GET['tcode'];
 
 try  {
 	opendb();
+}
+catch (Tcerror $e) {
+	$mess = "Cannot open database " . $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
+}
+try  {
 	$tourn = new Tournament($tcode);
 	$tourn->del();
 }
-catch (Tcerror $e)  {
-	$hdr = $e->Header;
-	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<h1>$hdr</h1>
-<p>$msg</p>
+catch (Tcerror $e) {
+	$mess = "Cannot delete tournament " . $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
+}
+$Title = "Tournament deleted OK";
+include 'php/head.php';
+?>
+<body>
+<?php include 'php/nav.php'; ?>
+<h1>Tournament deleted OK</h1>
+<?php
+print <<<EOT
+The tournament {$tourn->display_name()} was deleted OK.
 
 EOT;
-	return;
-}
-
-header("Location: http://www.britgo.org/tournaments/_register/admin");
 ?>
+</div>
+</div>
+</body>
+</html>
