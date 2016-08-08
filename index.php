@@ -78,17 +78,18 @@ EOT;
 	<td><a href="listentries.php{$url}">{$tourn->count_entries()}</a></td>
 	<td><a href="downloadics.php{$url}">ICS</a>
 
-TOT;
-if ($organ)
-	print "<a href=\"clonetourn.php$url\">Clonee</a>";
-if ($admin || ($organ && $userid == $tourn->Orguser))  {
-	print <<<EOT
+EOT;
+			if ($organ)
+				print "<a href=\"clonetourn.php$url\">Clone</a>";
+			if ($admin || ($organ && $userid == $tourn->Orguser))  {
+				print <<<EOT
 <a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>
 <a href="upddescr.php$url">Update description</a>
 <a href="updfeedates.phpurl">Update dates, fees</a></td>
 </tr>
 
 EOT;
+			}
 		}
 		print <<<EOT
 </table>
