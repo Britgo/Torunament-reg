@@ -77,7 +77,7 @@ catch (Tcerror $e) {
 $name = $tourn->Name;
 if (preg_match('/(\d+)/', $tcode, $matches)) {
 	$upd = $matches[1] + 1;
-	$tcode = preg_replace('/(\d+)/', $urd, $tcode);
+	$tcode = preg_replace('/(\d+)/', $upd, $tcode);
 }
 
 $ncode = $tcode;
@@ -148,7 +148,12 @@ function checkform() {
 </script>
 <?php include 'php/nav.php'; ?>
 <h1>Clone a tournament</h1>
+<?php
+print <<<EOT
 <p>This is cloned from the {$ptourn->display_name()} tournament.</p>
+
+EOT;
+?>
 <p>Please just adjust the code, name and start date and then use other links to correct and adjust other fields.</p>
 <form name="ctform" action="clonet2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table cellpadding="5" cellspacing="5" align="left" width="800"  summary="Tournament Table">
