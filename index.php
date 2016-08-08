@@ -83,9 +83,9 @@ EOT;
 				print "<a href=\"clonetourn.php$url\">Clone</a>";
 			if ($admin || ($organ && $userid == $tourn->Orguser))  {
 				print <<<EOT
-<a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>
-<a href="upddescr.php$url">Update description</a>
-<a href="updfeedates.phpurl">Update dates, fees</a></td>
+&nbsp;<a href="javascript:okdel('$url', '{$tourn->display_code()}');">Del</a>&nbsp;
+<a href="upddescr.php{$url}">Update description</a>&nbsp;
+<a href="updfeedates.php{$url}">Update dates, fees</a></td>
 </tr>
 
 EOT;
