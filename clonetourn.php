@@ -30,7 +30,7 @@ include 'php/tournclass.php';
 include 'php/opendb.php';
 
 function has_code($code)  {
-	$qcode = mysql_real_escap_string($code);
+	$qcode = mysql_real_escape_string($code);
 	$ret = mysql_query("select count(*) from tdetails where tcode='$qcode'");
 	if ($ret)
 		return false;
