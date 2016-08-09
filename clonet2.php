@@ -62,8 +62,8 @@ try {
 	$tourn->Sdate->frompost();
 	$tourn->Ebdate = new Tdate($tourn->Sdate);
 	$tourn->Ebdate->incdays($ptourn->Sdate->daysbetween($ptourn->Ebdate));
-	$this->Provisional = true;
- 	$this->Open = false;
+	$tourn->Provisional = true;
+ 	$tourn->Open = false;
 	$tourn->create();
 }
 catch (Tcerror $e)  {
