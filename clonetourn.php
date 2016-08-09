@@ -163,6 +163,7 @@ EOT;
 <tr>
 	<td><b>Tournament Code</b></td>
 <?php
+$ptourn->set_hidden('p');
 print <<<EOT
 	<td><input type="text" name="tcode" size="20" value="{$tourn->display_code()}"></td>
 </tr>

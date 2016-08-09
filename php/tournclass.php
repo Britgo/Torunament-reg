@@ -308,8 +308,8 @@ class Tournament {
  		$this->Orguser = trim($_POST['organiser']);
 	}
  		
- 	public function set_hidden()  {
-			print "<input type=\"hidden\" name=\"tcode\" value=\"{$this->Tcode}\" />\n";
+ 	public function set_hidden($prefix = "")  {
+			print "<input type=\"hidden\" name=\"{$prefix}tcode\" value=\"{$this->Tcode}\" />\n";
  	}
  	
  	public function hidden_organiser() {
