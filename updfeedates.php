@@ -74,32 +74,24 @@ include 'php/head.php';
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
-
 function checkform() {
 	var fm = document.utform;
-  	if  (!nonblank(fm.tname.value))  {
-		alert("Please give a tournament name");
-		return false;
-	}
-   if (!nonblank(fm.address.value)) {
-		alert("Please give a venue");
-		return false;
-   }
-   if (!nonblank(fm.postcode.value))  {
-		alert("Please give a postcode");
-		return  false;
-   }
-   if (!nonblank(fm.contact.value)) {
-   	alert("Please give contact name");
-   	return  false;
-   }
-   if (!nonblank(fm.email.value)) {
-   	alert("Please give contact email");
-   	return  false;
-   }
+
    try {
-    	var tdat = datecheck(fm.year, fm.month, fm.day, "Start date");
-   	if (tdat.getDay() > 0  &&  tdat.getDay() < 5  &&  !confirm("Not a weekend - OK"))
+   	if  (isprice(fm.fee, "fee") <= 3.0)
+   		throw Error("Invalid fee - too low");	
+   	isprice(fm.lunch, "lunch");
+   	isprice(fm.nonbga, "non-BGA");
+		isprice(fm.concess1, "Concession 1");
+		isprice(fm.concess2, "Concession 2");
+   	isprice(fm.latefee, "late fee");
+   	var tdat = datecheck(fm.year, fm.month, fm.day, "Start date");
+   	if  (isprice(fm.ebird, "Early bird") != 0.0)  {
+   		var ebdat = datecheck(fm.ebyear, fm.ebmonth, fm.ebday, "Early Bird date");
+   		if  (ebdat > tdat - 604800000)
+   			throw Error("Early bird date should be earlier!");
+   	}
+ 		if (tdat.getDay() > 0  &&  tdat.getDay() < 5  &&  !confirm("Not a weekend - OK"))
 			return false;
 	}
 	catch (err)  {
@@ -231,16 +223,13 @@ print <<<EOT
 
 EOT;
 ?>
-</tr><tr><td>Late entry fee</td>
+</tr><tr><td>Late entry fee / if booked</td>
 <?php
 print <<<EOT
 <td><input type="text" name="latefee" value="{$tourn->display_latefee()}" size="6" maxlength="6" />
+<select name="latedays">
 
 EOT;
-?>
-</td></tr><tr><td>Late entry applies if booked</td>
-<td><select name="latedays">
-<?php
 for ($i = 0;  $i <= 20;  $i++)  {
 	$lab = "$i days before";
 	if  ($i == 0)
@@ -254,16 +243,14 @@ for ($i = 0;  $i <= 20;  $i++)  {
 }
 ?>
 </select></td></tr>
-<tr><td>Early bird discount</td>
+<tr><td>Early bird discount / Last day</td>
 <?php
 print <<<EOT
 <td><input type="text" name="ebird" value="{$tourn->display_ebird()}" size="6" maxlength="6" />
 
 EOT;
-?>
-</td></tr><tr><td>Last day for early bird</td><td>
-<?php $tourn->Ebdate->dateopt("eb"); ?>
-</td></tr>
+$tourn->Ebdate->dateopt("eb");
+?></td></tr>
 <?php include 'php/sumchallenge.php'; ?>
 <tr><td><b>Click to update</b></td><td><input type="submit" value="Update tournament"></td></tr>
 </table>

@@ -3,13 +3,13 @@ e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/index.php:2784:1903:0:
 openfiles: /home/jmc/src/Websites/tournreg/clonet2.php:0:1474:0:
 openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:4562:3784:0:
-openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:3712:8506:0:
+openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:3726:2375:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:11495:11245:0:
 openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:0:2303:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:10965:4653:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/person.php:0:587:0:
 openfiles: /home/jmc/src/Websites/tournreg/upddescr2.php:2886:1630:0:
-openfiles: /home/jmc/src/Websites/tournreg/updfeedates.php:3172:2451:1:
+openfiles: /home/jmc/src/Websites/tournreg/updfeedates.php:6295:5497:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
