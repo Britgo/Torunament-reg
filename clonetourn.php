@@ -97,7 +97,7 @@ $tourn->Tcode = $tcode;
 $tourn->Name = $name;
 $tourn->Orguser = $userid;
 $tourn->Sdate->incdays(60);
-$tourn->Ebdate = new Tdate($thorn->Sdate);
+$tourn->Ebdate = new Tdate($tourn->Sdate);
 $tourn->Ebdate->incdays($ptourn->Sdate->daysbetween($ptourn->Ebdate));
 
 $Title = 'Clone a tournament';

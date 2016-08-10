@@ -64,6 +64,7 @@ try {
 	$tourn->Ebdate->incdays($ptourn->Sdate->daysbetween($ptourn->Ebdate));
 	$tourn->Provisional = true;
  	$tourn->Open = false;
+ 	$tourn->Orguser = $userid;
 	$tourn->create();
 }
 catch (Tcerror $e)  {
@@ -80,7 +81,7 @@ include 'php/head.php';
 include 'php/nav.php';
 print <<<EOT
 <h1>Tournament cloned OK</h1>
-<p>Your tournament, <?php print $tourn->display_name(); ?>, was cloned successfully, however you will probably need to amend some details.</p>
+<p>Your tournament, {$tourn->display_name()}, was cloned successfully, however you will probably need to amend some details.</p>
 
 EOT;
 ?>
