@@ -1,12 +1,14 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/index.php:0:1903:0:
-openfiles: /home/jmc/src/Websites/tournreg/clonet2.php:2093:1474:0:
+openfiles: /home/jmc/src/Websites/tournreg/clonet2.php:0:1474:0:
 openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:2144:1472:0:
-openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:9593:8506:0:
+openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:3712:2568:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:9398:11153:0:
-openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:3329:2356:1:
-openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:13114:12331:0:
+openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:1766:2303:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:10043:9455:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/person.php:0:587:0:
+openfiles: /home/jmc/src/Websites/tournreg/upddescr2.php:1918:1292:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -64,7 +66,6 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/player.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/sumchallenge.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/entrant.php
-recent_files: file:///home/jmc/src/Websites/tournreg/php/person.php
 recent_files: file:///home/jmc/src/Websites/tournreg/newacct2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/webfn.js
 recent_files: file:///home/jmc/src/Websites/tournreg/php/tdate.php
@@ -77,6 +78,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/createtourn.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/tcform.php
 recent_files: file:///home/jmc/src/Websites/tournreg/upddescr.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/tournclass.php
+recent_files: file:///home/jmc/src/Websites/tournreg/php/person.php
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1

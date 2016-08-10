@@ -377,7 +377,7 @@ class Tournament {
  		return sprintf("%.2f", $this->Ebird);
  	}
  	public function display_contact() {
- 		return htmlspecialchars($this->Contact);
+ 		return htmlspecialchars($this->Contact->display_name());
  	}
  	public function display_email() {
  		return htmlspecialchars($this->Email);
