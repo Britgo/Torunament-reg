@@ -103,7 +103,6 @@ function checkform() {
 </script>
 <?php include 'php/nav.php'; ?>
 <h1>Update tournament fee/dates details</h1>
-<p>Please enter the required details in the form below.</p>
 <p>Use this form to update the fee and date details of the tournament.</p>
 <form name="utform" action="updfeedates2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
  <?php $tourn->set_hidden(); ?>
