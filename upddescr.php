@@ -122,7 +122,8 @@ function checkform() {
 <tr>
 	<td><b>Tournament Name</b></td>
 <?php
-	print <<<EOT
+$tourn->set_hidden();
+print <<<EOT
 <td><input type="text" name="tname" value="{$tourn->display_name()}" size="40"></td>
 
 EOT;
