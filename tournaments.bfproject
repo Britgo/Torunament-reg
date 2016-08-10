@@ -1,14 +1,15 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/index.php:0:1903:0:
+openfiles: /home/jmc/src/Websites/tournreg/index.php:2784:1903:0:
 openfiles: /home/jmc/src/Websites/tournreg/clonet2.php:0:1474:0:
-openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:2144:1472:0:
-openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:3712:2568:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:9398:11153:0:
-openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:1766:2303:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:10043:9455:0:
+openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:4562:3784:0:
+openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:3712:8506:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:11495:11245:0:
+openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:0:2303:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:10965:4653:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/person.php:0:587:0:
-openfiles: /home/jmc/src/Websites/tournreg/upddescr2.php:1918:1292:1:
+openfiles: /home/jmc/src/Websites/tournreg/upddescr2.php:2886:1630:0:
+openfiles: /home/jmc/src/Websites/tournreg/updfeedates.php:3172:2451:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -27,7 +28,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/tournreg/php
 wrap_text_default: 0
 bookmarks_filename_mode: 0
-ssearch_text: contact
+ssearch_text: hidden
 snr_casesens: 0
 view_blocks: 1
 name: tournaments
@@ -90,7 +91,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: playerselect
 searchlist: email
 searchlist: existing
 searchlist: getsel
@@ -105,6 +105,7 @@ searchlist: real
 searchlist: provis
 searchlist: dateopt
 searchlist: contact
+searchlist: hidden
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
