@@ -97,6 +97,15 @@ function checkform() {
    	alert("Please give contact email");
    	return  false;
    }
+   try {
+    	var tdat = datecheck(fm.year, fm.month, fm.day, "Start date");
+   	if (tdat.getDay() > 0  &&  tdat.getDay() < 5  &&  !confirm("Not a weekend - OK"))
+			return false;
+	}
+	catch (err)  {
+		alert(err.message);
+		return false;
+	}
    return true;
 }
 </script>
@@ -106,19 +115,6 @@ function checkform() {
 <p>Use this form to update the vanue and format details of the tournament.</p>
 <form name="utform" action="upddescr2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkform();">
 <table cellpadding="5" cellspacing="5" align="left" width="800"  summary="Tournament Table">
-<?php
-if ($admin) {
-	print <<<EOT
-<tr>
-	<td><b>Organiser userid</b></td>
-	<td><input type="text" name="organiser" value="$userid" size="16"></td>
-</tr>
-
-EOT;
-}
-else
-	$tourn->hidden_organiser();
-?>
 <tr>
 	<td colspan="2">Please give a full name for the tournament, usually just location and year.<br />
 	This is normally displayed as a heading in various places.</td>
@@ -236,7 +232,7 @@ EOT;
 ?>
 </tr>
 	<td>Date (or first day)</td><td>
-EOT;
+<?php
 $tourn->Sdate->dateopt();
 ?>
 </td></tr>
@@ -262,6 +258,19 @@ for ($i = 3;  $i <= 20;  $i++)
 			print "<option>$i</option>\n";
 ?>
 </select></td></tr>
+<?php
+if ($admin) {
+	print <<<EOT
+<tr>
+	<td><b>Organiser userid</b></td>
+	<td><input type="text" name="organiser" value="$userid" size="16"></td>
+</tr>
+
+EOT;
+}
+else
+	$tourn->hidden_organiser();
+?>
 <tr>
 	<td><b>Contact</b></td>
 	<td>

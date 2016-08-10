@@ -5,7 +5,7 @@ openfiles: /home/jmc/src/Websites/tournreg/clonet2.php:2093:1474:0:
 openfiles: /home/jmc/src/Websites/tournreg/clonetourn.php:2144:1472:0:
 openfiles: /home/jmc/src/Websites/tournreg/createtourn.php:9593:8506:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/tcform.php:9398:11153:0:
-openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:6143:5536:1:
+openfiles: /home/jmc/src/Websites/tournreg/upddescr.php:3329:2356:1:
 openfiles: /home/jmc/src/Websites/tournreg/php/tournclass.php:13114:12331:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
@@ -78,7 +78,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/tcform.php
 recent_files: file:///home/jmc/src/Websites/tournreg/upddescr.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/tournclass.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 
