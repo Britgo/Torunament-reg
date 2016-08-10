@@ -24,6 +24,7 @@ include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checklogged.php';
 include 'php/tdate.php';
+include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/entrant.php';
