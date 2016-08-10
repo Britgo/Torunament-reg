@@ -44,7 +44,7 @@ function lostpw() {
 
 function isprice(s, descr)  {
 	var  v = s.value;
-	if  (!/^\d+\.\d\d\$/.test(v))
+	if  (!/^\d+\.\d\d$/.test(v))
 		throw Error("Invalid price value for " + descr);
 	return  parseFloat(s.value);
 }
