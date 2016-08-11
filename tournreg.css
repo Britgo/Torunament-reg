@@ -272,7 +272,7 @@ body {
 }
 #Content {
     position: fixed;
-    top: 10%;
+    float: bottom;
     left: 0;
     height: auto;
     width: 100%;
