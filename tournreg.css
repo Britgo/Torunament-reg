@@ -275,7 +275,7 @@ body {
     left: 0;
     height: auto;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 .innertube {
 	margin: 10px;
