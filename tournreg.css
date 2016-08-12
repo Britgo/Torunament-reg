@@ -258,7 +258,6 @@ body {
 	padding: 0;
 	border: 0;
 	overflow: hidden;
-	font: sans-serif;
 }
 
 #Nav {
@@ -276,7 +275,7 @@ body {
     left: 0;
     height: auto;
     width: 100%;
-    overflow: scroll;
+    overflow: hidden;
 }
 .innertube {
 	margin: 10px;
