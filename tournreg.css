@@ -276,7 +276,7 @@ body {
     left: 0;
     height: auto;
     width: 100%;
-    overflow: auto;
+    overflow: scroll;
 }
 .innertube {
 	margin: 10px;
