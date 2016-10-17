@@ -160,13 +160,13 @@ $player = new Player();
 $player->clubopt("club_sel");
 $qclub = htmlspecialchars($player->Club);
 print <<<EOT
-</td></tr>tr><td>&nbsp;</td><td><input type="text" name="club" value="$qclub" size="30" onchange="clubedited"></td></tr>
+</td></tr>tr><td>(Enter if not on drop-down)</td><td><input type="text" name="club" value="$qclub" size="30" onchange="clubedited"></td></tr>
 <tr><td>Country</td><td>
 EOT;
 $player->countryopt("country_sel");
 $qcountry = htmlspecialchars($player->Country);
 print <<<EOT
-</td></tr><tr><td>&nbsp;</td><td><input type="text" name="country" value="$qcountry" size="30" onchange="countryedited"></td></tr>
+</td></tr><tr><td>(Enter if not on drop-down)</td><td><input type="text" name="country" value="$qcountry" size="30" onchange="countryedited"></td></tr>
 <tr><td>Rank</td><td>
 EOT;
 $player->rankopt();
