@@ -62,14 +62,14 @@ function formvalid()
       	alert("Passwords do not match");
       	return  false;
       }
-      if (form.clubsel.selectedIndex <= 0)  {
-      	alert("No club selected");
+	   if (!nonblank(fm.club.value))  {
+			alert("No club given");
       	return  false;
-      }
-      if (form.clubsel.selectedIndex <= 0)  {
-      	alert("No country selected");
+   	}
+   	if (nonblank(fm.country.value))  {
+     		alert("No country given");
       	return  false;
-      }
+   	}
       var nbgasel = form.nonbga;
 	 	var optl = nbgasel.options;
 	 	if (optl[nbgasel.selectedIndex].value == 'u')  {
@@ -88,6 +88,7 @@ function club_sel() {
 		return;
 	var optv = ps.options[psi].value;
 	var parts = optv.split(':');
+	fm.club.value = parts[0];
 	var cntry = parts[1];
 	var n;
 	for (n = 1;  n < cs.options.length; n++) {
@@ -96,6 +97,25 @@ function club_sel() {
 			break;
 		}
 	}
+	fm.country.value = cntry;
+}
+
+function country_sel() {
+	var fm = document.playform;
+	var cs = fm.countrysel;
+	var csi = cs.selectedIndex;
+	if  (csi <= 0)
+		return;
+	fm.country.value = cs.options[csi].value;
+}
+
+function clubedited()  {
+	var fm = document.playform;
+	fm.clubsel.selectedIndex = -1;
+}
+function countryedited()  {
+	var fm = document.playform;
+	fm.countrysel.selectedIndex = -1;
 }
 
 function confirmdel(urlq)
@@ -127,13 +147,16 @@ print <<<EOT
 <td>
 EOT;
 $player->clubopt("club_sel");
+$qclub = htmlspecialchars($player->Club);
 print <<<EOT
-</td></tr>
+</td></tr><tr><td>&nbsp;</td><td><input type="text" name="club" value="$qclub" size="30" onchange="clubedited"></td></tr>
 <tr><td>Country</td><td>
 
 EOT;
-$player->countryopt();
+$player->countryopt("country_sel");
+$qcountry = htmlspecialchars($defplayer->Country);
 print <<<EOT
+/td></tr><tr><td>&nbsp;</td><td><input type="text" name="country" value="$qcountry" size="30" onchange="countryedited"></td></tr>
 <tr><td>Rank</td><td>
 
 EOT;

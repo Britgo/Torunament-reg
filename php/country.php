@@ -17,7 +17,7 @@ class Country {
 	public function create()
 	{
 		$qname = mysql_real_escape_string($this->Name);
-		$ret = mysql_query("select name from country where {$this->queryof()}");
+		$ret = mysql_query("select name from country where name='$qname'");
 		if  (!$ret)  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot access country record, error was $ecode", "Database error");
@@ -34,6 +34,11 @@ class Country {
 	{
 		return htmlspecialchars($this->Name);
 	}
+}
+
+function optcreate_country($c) {
+	$cnt = new Country($c);
+	$cnt->create();
 }
 
 function list_countries()

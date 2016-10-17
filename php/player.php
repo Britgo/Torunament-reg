@@ -170,8 +170,7 @@ class Player extends Person {
 		}
 	}
 	
-	public function display_country()
-	{
+	public function display_country()  {
 		return htmlspecialchars($this->Country);
 	}
 	
@@ -204,9 +203,12 @@ class Player extends Person {
 		print "</select>\n";
 	}
 	
-	public function countryopt() {
+	public function countryopt($selfn = "") {
 		$countries = list_countries();
-		print "<select name=\"countrysel\">\n";
+		$onc = "";
+		if (strlen($selfn) != 0)
+			$onc = " onchange=\"$selfn();\"";
+		print "<select name=\"countrysel\"$onc>\n";
 		print "<option value='none'>None Selected</option>\n";
 		foreach ($countries as $country) {
 			$qname = htmlspecialchars($country->Name);

@@ -124,12 +124,12 @@ function checkform() {
    	alert("Sorry unacceptable name format");
       return false;
    }
-   if (fm.clubsel.selectedIndex <= 0)  {
-		alert("No club selected");
+   if (!nonblank(fm.club.value))  {
+		alert("No club given");
       return  false;
    }
-   if (fm.countrysel.selectedIndex <= 0)  {
-     	alert("No country selected");
+   if (nonblank(fm.country.value))  {
+     	alert("No country given");
       return  false;
    }
    if (!nonblank(fm.email.value))  {
@@ -226,6 +226,7 @@ function club_sel() {
 		return;
 	var optv = ps.options[psi].value;
 	var parts = optv.split(':');
+	fm.club.value = parts[0];
 	var cntry = parts[1];
 	var n;
 	for (n = 1;  n < cs.options.length; n++) {
@@ -234,6 +235,25 @@ function club_sel() {
 			break;
 		}
 	}
+	fm.country.value = cntry;
+}
+
+function country_sel() {
+	var fm = document.entryform;
+	var cs = fm.countrysel;
+	var csi = cs.selectedIndex;
+	if  (csi <= 0)
+		return;
+	fm.country.value = cs.options[csi].value;
+}
+
+function clubedited()  {
+	var fm = document.entryform;
+	fm.clubsel.selectedIndex = -1;
+}
+function countryedited()  {
+	var fm = document.entryform;
+	fm.countrysel.selectedIndex = -1;
 }
 </script>
 
@@ -269,12 +289,15 @@ print <<<EOT
 	<td>
 EOT;
 $defplayer->clubopt("club_sel");
+$qclub = htmlspecialchars($defplayer->Club);
 print <<<EOT
-</td></tr>
+</td></tr><tr><td>&nbsp;</td><td><input type="text" name="club" value="$qclub" size="30" onchange="clubedited"></td></tr>
 <tr><td>Country</td><td>
 EOT;
-$defplayer->countryopt();
+$defplayer->countryopt("country_sel");
+$qcountry = htmlspecialchars($defplayer->Country);
 print <<<EOT
+</td></tr><tr><td>&nbsp;</td><td><input type="text" name="country" value="$qcountry" size="30" onchange="countryedited"></td></tr>
 <tr><td>Rank</td><td>
 EOT;
 $defplayer->rankopt();

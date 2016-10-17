@@ -41,8 +41,8 @@ $username = $_POST["userid"];
 $passw1 = $_POST["passw1"];
 $passw2 = $_POST["passw2"];
 $email = $_POST["email"];
-$club = $_POST["clubsel"];
-$country = $_POST["countrysel"];
+$club = $_POST["club"];
+$country = $_POST["country"];
 $rank = $_POST["rank"];
 $nonbga = $_POST['nonbga'] != 'm';
 
@@ -120,9 +120,8 @@ $player->Club = $club;
 $player->Country = $country;
 $player->Email = $email;
 $player->Nonbga = $nonbga;
-
 try {
-	if  ($addacct)
+	if ($addacct)
 		$player->update();
 	else
 		$player->create();
@@ -133,6 +132,8 @@ try {
 		$passw1 = generate_password();
 
 	$player->set_passwd($passw1, $username);
+	optcreate_club($club, $country);
+	optcreate_country($country);
 }
 catch (Tcerror $e) {
 	$h = htmlspecialchars($e->Header);

@@ -99,11 +99,10 @@ class Entrant extends Person {
  
 	public function frompost()  {
 		$this->Rank = new rank($_POST['rank']);
- 		$this->Club = trim($_POST['clubsel']);
- 		$bits = split(':', $this->Club);
-		if (count($bits) > 1)
-			$this->Club = $bits[0];
- 		$this->Country = trim($_POST['countrysel']);
+ 		$this->Club = trim($_POST['club']);
+ 		$this->Country = trim($_POST['country']);
+ 		optcreate_club($this->Club, $this->Country);
+ 		optcreate_country($this->Country);
  		$this->Email = trim($_POST['email']);
 		if (!preg_match('/@/', $this->Email))
 			$this->Email = "";						//  Cater for "as before" which we sort out in create_or_update in player

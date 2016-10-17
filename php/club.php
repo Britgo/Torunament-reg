@@ -39,9 +39,14 @@ class Club {
 		$qcnt = mysql_real_escape_string($this->Country);
 		if  (!mysql_query("update clubs set country='$qcnt' where {$this->queryof()}"))  {
 			$ecode = mysql_error();
-			throw  new  Tcerror("Cannot create clubs record, error was $ecode", "Database error");
+			throw  new  Tcerror("Cannot update clubs record, error was $ecode", "Database error");
 		}
 	}
+}
+
+function optcreate_club($club, $cnt) {
+	$clb = new Club($club, $cnt);
+	$clb->create();
 }
 
 function list_clubs()

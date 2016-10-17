@@ -72,14 +72,14 @@ function formvalid()
       	alert("Passwords do not match");
       	return  false;
       }
-      if (form.clubsel.selectedIndex <= 0)  {
-      	alert("No club selected");
+    	if (!nonblank(form.club.value))  {
+			alert("No club given");
       	return  false;
-      }
-      if (form.countrysel.selectedIndex <= 0)  {
-      	alert("No country selected");
+   	}
+   	if (nonblank(form.country.value))  {
+     		alert("No country given");
       	return  false;
-      }
+   	}
       var nbgasel = form.nonbga;
 	 	var optl = nbgasel.options;
 	 	if (optl[nbgasel.selectedIndex].value == 'u')  {
@@ -98,6 +98,7 @@ function club_sel() {
 		return;
 	var optv = ps.options[psi].value;
 	var parts = optv.split(':');
+	fm.club.value = parts[0];
 	var cntry = parts[1];
 	var n;
 	for (n = 1;  n < cs.options.length; n++) {
@@ -106,7 +107,27 @@ function club_sel() {
 			break;
 		}
 	}
+	fm.country.value = cntry;
 }
+
+function country_sel() {
+	var fm = document.trform;
+	var cs = fm.countrysel;
+	var csi = cs.selectedIndex;
+	if  (csi <= 0)
+		return;
+	fm.country.value = cs.options[csi].value;
+}
+
+function clubedited()  {
+	var fm = document.trform;
+	fm.clubsel.selectedIndex = -1;
+}
+function countryedited()  {
+	var fm = document.trform;
+	fm.countrysel.selectedIndex = -1;
+}
+
 </script>
 <?php include 'php/nav.php'; ?>
 <h1>Apply for new account on tournament registration database</h1>
@@ -137,12 +158,15 @@ tournament entries.</p>
 <?php
 $player = new Player();
 $player->clubopt("club_sel");
+$qclub = htmlspecialchars($player->Club);
 print <<<EOT
-</td></tr>
+</td></tr>tr><td>&nbsp;</td><td><input type="text" name="club" value="$qclub" size="30" onchange="clubedited"></td></tr>
 <tr><td>Country</td><td>
 EOT;
-$player->countryopt();
+$player->countryopt("country_sel");
+$qcountry = htmlspecialchars($player->Country);
 print <<<EOT
+</td></tr><tr><td>&nbsp;</td><td><input type="text" name="country" value="$qcountry" size="30" onchange="countryedited"></td></tr>
 <tr><td>Rank</td><td>
 EOT;
 $player->rankopt();

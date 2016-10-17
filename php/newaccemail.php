@@ -36,7 +36,7 @@ function ackentry($tourn, $entrant, $upd)  {
 	$orgemail = $tourn->get_org_email();
 	$entemail = $entrant->Email;
 	if  (strlen($entemail) != 0)  {
-		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'Entry acceated' $entemail", "w");
+		$fh = popen("REPLYTO=admin@tournaments.britgo.org mail -s 'Entry accepted' $entemail", "w");
 		$mess = <<<EOT
 Please DO NOT reply to this message!!!
 

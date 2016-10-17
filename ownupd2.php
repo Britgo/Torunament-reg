@@ -47,8 +47,8 @@ function checkname($newplayer) {
 
 $playname = $_POST["playname"];
 $email = $_POST["email"];
-$club = $_POST["clubsel"];
-$country = $_POST["countrysel"];
+$club = $_POST["club"];
+$country = $_POST["country"];
 $rank = $_POST["rank"];
 $passw1 = $_POST["passw1"];
 $passw2 = $_POST["passw2"];
@@ -91,6 +91,8 @@ $origplayer->Country = $country;
 $origplayer->Email = $email;
 $origplayer->Nonbga = $nonbga;
 $origplayer->update();
+optcreate_club($club, $country);
+optcreate_country($country);
 
 $chpw = false;
 try {
