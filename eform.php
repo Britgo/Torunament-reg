@@ -121,7 +121,7 @@ function checkform() {
       return false;
    }
    if (!okname(fm.name.value))  {
-   	alert("Sorry unacceptable name format expecting first-name(space) last-name");
+   	alert("Sorry unacceptable name format expecting first-name(space) last-name not " + fm.name.value);
       return false;
    }
    if (!nonblank(fm.club.value))  {
