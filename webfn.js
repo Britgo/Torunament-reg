@@ -27,8 +27,7 @@ function okcode(s)  {
 }
 
 function okname(s)  {
-	//return /^[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s);
-	return /^[-_a-zA-Z]+ [-_a-zA-Z]+$/.test(s);
+	return /^ *[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s); //'
 }
 
 function lostpw() {

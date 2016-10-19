@@ -63,6 +63,8 @@ class Person {
  	}
 
 	public function display_name() {
+		if (strlen($this->First) + strlen($this->Last) == 0)
+			return ""; 
 		if  ($this->Last == '_')
 			return  htmlspecialchars($this->First);
  		return  htmlspecialchars($this->First . ' ' . $this->Last);
