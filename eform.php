@@ -128,7 +128,7 @@ function checkform() {
 		alert("No club given");
       return  false;
    }
-   if (nonblank(fm.country.value))  {
+   if (!nonblank(fm.country.value))  {
      	alert("No country given");
       return  false;
    }

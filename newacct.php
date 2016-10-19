@@ -76,7 +76,7 @@ function formvalid()
 			alert("No club given");
       	return  false;
    	}
-   	if (nonblank(form.country.value))  {
+   	if (!nonblank(form.country.value))  {
      		alert("No country given");
       	return  false;
    	}
