@@ -73,7 +73,7 @@ EOF;
 ?>
 </tr>
 </table>
-<br/>
+<br clear="all">
 <p><b>Please note</b> that you do not have to be logged in just to register or list public entries.</p>
 </div>
 </div>
