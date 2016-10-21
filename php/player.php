@@ -123,7 +123,19 @@ class Player extends Person {
 		$qnonbga = $this->Nonbga? 1: 0;
 		$qrank = $this->Rank->Rankvalue;
 		$ret = mysql_query("update player set rank=$qrank,club='$qclub',country='$qcountry',email='$qemail',nonbga=$qnonbga where $qq");
-	}	
+		if (!$ret)  {
+			$ecode = mysql_error();
+			throw new Tcerror("Cannot update player, error was $ecode", "Database error");
+		}
+	}
+	
+	public function delete_player() {
+		$ret = mysql_query("DELETE FROM player WHERE {$this->queryof()}"};
+		if (!$ret)  {
+			$ecode = mysql_error();
+			throw new Tcerror("Cannot delete player, error was $ecode", "Database error");
+		}
+	}
 	
 	public function save_hidden($prefix = "") {
 		$f = htmlspecialchars($this->First);
@@ -186,6 +198,14 @@ class Player extends Person {
  	}
  	public function display_login() {
  		return  htmlspecialchars($this->Login);
+ 	}
+ 	public function display_admin() {
+ 		switch ($this->Admin) {
+ 			default: return "Normal";
+ 			case 'O': return "Org";
+ 			case 'A': return "Admin";
+ 			case 'SA': return "Super";
+ 		}
  	}
 
 	// Get password for "display"

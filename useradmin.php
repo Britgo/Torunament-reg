@@ -28,7 +28,6 @@ include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/entrant.php';
-include 'php/tournclass.php';
 include 'php/opendb.php';
 
 // Check the guy can create tournaments before we go any further
@@ -84,8 +83,8 @@ foreach ($players as $plyr)  {
 	<td>{$plyr->display_country()}</td>
 	<td>{$plyr->display_rank()}</td>
 	<td>{$plyr->display_login()}</td>
-	<td>{$plyr->Admin}</td>
-	<td><a href-"javascript:okdel('$disp', '$urlp')">del</a></td>
+	<td>{$plyr->display_admin()}</td>
+	<td><a href="javascript:okdel('$disp', '$urlp')">del</a></td>
 </tr>
 
 EOT;
