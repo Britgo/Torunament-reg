@@ -43,7 +43,7 @@ try  {
 	opendb();
 	$tourn = new Tournament($tcode);
 	$tourn->fetchdets();
-	$players = list_players();
+	$players = Player::list_players();
 	$clubs = list_clubs();
 	$countries = list_countries();
 }

@@ -7,9 +7,10 @@ class Player extends Person {
  	public $Country;
  	public $Email;
   	public $Nonbga;
+  	public $Login;
   	public $Admin;
  	
-	public function __construct($f = "", $l = "", $rk = 0, $club = "", $cnt = "", $em = "", $nbg = false)  {
+	public function __construct($f = "", $l = "", $rk = 0, $club = "", $cnt = "", $em = "", $nbg = false, $log = "", $adm = 'N')  {
 		if  (is_a($f, "Entrant"))  {
 			parent::__construct($f->First, $f->Last);
 			$this->Rank = new rank($f->Rank->Rankvalue);
@@ -17,7 +18,8 @@ class Player extends Person {
 			$this->Country = $f->Country;
  			$this->Email = $f->Email;
  			$this->Nonbga = $f->Nonbga;
- 			$this->Admin = 'N';
+ 			$this->Login = $log;
+ 			$this->Admin = $adm;
 		}
 		else  {
 			parent::__construct($f, $l);
@@ -26,12 +28,13 @@ class Player extends Person {
 			$this->Country = strlen($cnt) == 0? "UK": $cnt;
  			$this->Email = $em;
  			$this->Nonbga = $nbg;
- 			$this->Admin = 'N';
+ 			$this->Login = $log;
+ 			$this->Admin = $adm;
  		}
  	}
  	
  	public function fetchplayer() {
- 		$ret = mysql_query("select rank,club,country,email,nonbga.admin from player where {$this->queryof()}");
+ 		$ret = mysql_query("select rank,club,country,email,nonbga.user,admin from player where {$this->queryof()}");
  		if (!$ret || mysql_num_rows($ret) == 0)
  			return  false;
  		$row = mysql_fetch_assoc($ret);
@@ -40,6 +43,7 @@ class Player extends Person {
  		$this->Country = $row['country'];
  		$this->Email = $row['email'];
  		$this->Nonbga = $row['nonbga'];
+ 		$this->Login = $row['user'];
  		$this->Admin = $row["admin"];
  		return true;
  	}
@@ -48,7 +52,7 @@ class Player extends Person {
 	
 	public function fromid($id) {
 		$qid = mysql_real_escape_string($id);
-		$ret = mysql_query("select first,last,rank,club,country,email,nonbga,admin from player where user='$qid'");
+		$ret = mysql_query("select first,last,rank,club,country,email,nonbga,user,admin from player where user='$qid'");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new Tcerror("Unknown player userid $id", "Userid not found");
 		$row = mysql_fetch_assoc($ret);
@@ -58,6 +62,7 @@ class Player extends Person {
 		$this->Club = $row["club"];
 		$this->Country = $row["country"];
 		$this->Email = $row["email"];
+		$this->Login = $row['user'];
 		$this->Admin = $row["admin"];
 		$this->Nonbga = $row["nonbga"];
 		return $this;
@@ -170,10 +175,19 @@ class Player extends Person {
 		}
 	}
 	
-	public function display_country()  {
-		return htmlspecialchars($this->Country);
-	}
-	
+ 	public function display_rank() {
+ 		return $this->Rank->display();
+ 	}
+ 	public function display_club() {
+ 		return  htmlspecialchars($this->Club);
+ 	}
+ 	public function display_country() {
+ 		return  htmlspecialchars($this->Country);
+ 	}
+ 	public function display_login() {
+ 		return  htmlspecialchars($this->Login);
+ 	}
+
 	// Get password for "display"
 		
 	public function disp_passwd() {
@@ -246,15 +260,14 @@ class Player extends Person {
 
 EOT;
 		}
-}
-
-function list_players()
-{
-	$result = array();
-	if  ($ret = mysql_query("select first,last,rank,club,country,email,nonbga from player order by first,last,rank desc,club"))  {
-		while  ($row = mysql_fetch_array($ret))
-			array_push($result, new Player($row[0], $row[1], $row[2], $row[3], $row[4], $row[5]));
+		
+	public static function list_players()  {
+		$result = array();
+		if ($ret = mysql_query("select first,last,rank,club,country,email,nonbga,user,admin from player order by last,first,rank desc,club"))  {
+			while ($row = mysql_fetch_array($ret))
+				array_push($result, new Player($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
+		}
+		return $result;
 	}
-	return $result;
 }
 ?>

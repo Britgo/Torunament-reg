@@ -150,19 +150,15 @@ a.noundm:visited {
 	text-decoration: none;
 }
 a.noundd:active {
-	color: #553999;
 	text-decoration: none;
 }
 a.noundd:hover {
-	color: #553999;
 	text-decoration: underline;
 }
 a.noundd:link {
-	color: #553999;
 	text-decoration: none;
 }
 a.noundd:visited {
-	color: #553999;
 	text-decoration: none;
 }
 a:active {
