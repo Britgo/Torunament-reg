@@ -130,7 +130,7 @@ class Player extends Person {
 	}
 	
 	public function delete_player() {
-		$ret = mysql_query("DELETE FROM player WHERE {$this->queryof()}"};
+		$ret = mysql_query("DELETE FROM player WHERE {$this->queryof()}");
 		if (!$ret)  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot delete player, error was $ecode", "Database error");
