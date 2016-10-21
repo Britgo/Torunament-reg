@@ -265,7 +265,7 @@ EOT;
 		$result = array();
 		if ($ret = mysql_query("select first,last,rank,club,country,email,nonbga,user,admin from player order by last,first,rank desc,club"))  {
 			while ($row = mysql_fetch_array($ret))
-				array_push($result, new Player($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]);
+				array_push($result, new Player($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]));
 		}
 		return $result;
 	}
