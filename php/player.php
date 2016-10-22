@@ -35,7 +35,9 @@ class Player extends Person {
  	
  	public function fetchplayer() {
  		$ret = mysql_query("select rank,club,country,email,nonbga.user,admin from player where {$this->queryof()}");
- 		if (!$ret || mysql_num_rows($ret) == 0)
+ 		if (!$ret)
+ 			throw new Tcerror(mysql_error(), "Read player error");
+ 		if (mysql_num_rows($ret) == 0)
  			return  false;
  		$row = mysql_fetch_assoc($ret);
  		$this->Rank = new rank($row['rank']);
@@ -53,7 +55,9 @@ class Player extends Person {
 	public function fromid($id) {
 		$qid = mysql_real_escape_string($id);
 		$ret = mysql_query("select first,last,rank,club,country,email,nonbga,user,admin from player where user='$qid'");
-		if (!$ret || mysql_num_rows($ret) == 0)
+		if (!$ret)
+ 			throw new Tcerror(mysql_error(), "Read player error");
+		if (mysql_num_rows($ret) == 0)
 			throw new Tcerror("Unknown player userid $id", "Userid not found");
 		$row = mysql_fetch_assoc($ret);
 		$this->First = $row['first'];
