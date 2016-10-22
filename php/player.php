@@ -274,7 +274,7 @@ class Player extends Person {
 		print <<<EOT
 <select name="nonbga"$onc>
 <option value="u"$u>Not selected</option>
-<option value="m"$m>Member</option>
+<option value="m"$m>Member (or national org)</option>
 <option value="n"$n>Not member</option>
 </select>
 

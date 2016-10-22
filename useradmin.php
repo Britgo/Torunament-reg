@@ -30,7 +30,7 @@ include 'php/player.php';
 include 'php/entrant.php';
 include 'php/opendb.php';
 
-// Check the guy can create tournaments before we go any further
+// Check the guy can can do this before we go any further
 
 if (!$admin)  {
 	$mess = 'Not Admin Person';
