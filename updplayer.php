@@ -125,7 +125,7 @@ function country_sel() {
 <p>Please use the form to update details of the player on the tournament registration system.</p>
 <form name="plform" action="updplayer2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
 <?php
-$pw = $pers->display_passwd();
+$pw = $pers->disp_passwd();
 print <<<EOT
 {$pers->save_hidden("orig")}
 <table cellpadding="5" cellspacing="5" border="0">
