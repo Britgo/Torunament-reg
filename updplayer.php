@@ -49,7 +49,7 @@ try {
 catch (Tcerror $e)  {
    $Title = "Update error ";
    $mess = $e->getMessage();
-   include 'php/generror.php';
+   include 'php/wrongentry.php';
    exit(0);
 }
 $Title = "Update details of player";
