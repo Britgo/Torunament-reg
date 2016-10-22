@@ -193,7 +193,7 @@ print <<<EOT
 	<td>BGA Memb</td>
 	<td>
 EOT;
-$pers->bgaopt();
+$pers->bgaopt(FALSE);
 ?>
 </td>
 </tr>
