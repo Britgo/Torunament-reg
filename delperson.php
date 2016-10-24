@@ -73,7 +73,7 @@ EOT;
 </select>
 <p>If you also want to update historical tournament records with the amended name, select this:
 <input type="checkbox" name="adjhist"></p>
-<p>Press <input type="submit" name="cont" value="Delete user"> to continue or <input type="submit" name="canc" value="Cancel" onclick="window.location=document.referrer;"></p>
+<p>Press <input type="submit" name="cont" value="Delete user"> to continue or <input type="button" name="canc" value="Cancel"  onclick="window.location=document.referrer;"></p>
 </form>
 </div>
 </div>
