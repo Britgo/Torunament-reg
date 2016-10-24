@@ -33,7 +33,7 @@ try {
    opendb();
    $delpers = new Player();
    $delpers->frompost();
-   if (!$delpost->isdefined())
+   if (!$delpers->isdefined())
    	throw new Tcerror("No delete person defined", "Delete error");
    $changeto = $_POST['chgname'];
    if (strlen($changeto) != 0  &&  $changeto != 'none:none')  {
