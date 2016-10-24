@@ -60,11 +60,13 @@ class Person {
 	public function fromget() {
    	$this->First = $_GET["f"];
       $this->Last = $_GET["l"];
+      if (!$this->isdefined())
+ 			throw new Tcerror("Person missing", "Person error");
  	}
 
 	public function display_name() {
-		if (strlen($this->First) + strlen($this->Last) == 0)
-			return ""; 
+		if (!$this->isdefined())
+			return "";
 		if  ($this->Last == '_')
 			return  htmlspecialchars($this->First);
  		return  htmlspecialchars($this->First . ' ' . $this->Last);

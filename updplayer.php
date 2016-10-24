@@ -21,7 +21,7 @@
 
 include 'php/tcerror.php';
 include 'php/session.php';
-include 'php/checklogged.php';
+include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
@@ -29,14 +29,6 @@ include 'php/player.php';
 include 'php/club.php';
 include 'php/country.php';
 include 'php/opendb.php';
-
-// Check the current user can do this before we go any further
-
-if (!$admin)  {
-	$mess = 'Not Admin Person';
-	include 'php/wrongentry.php';
-	exit(0);
-}
 
 try {
    opendb();

@@ -22,21 +22,13 @@
 
 include 'php/tcerror.php';
 include 'php/session.php';
-include 'php/checklogged.php';
+include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/entrant.php';
 include 'php/opendb.php';
-
-// Check the guy can can do this before we go any further
-
-if (!$admin)  {
-	$mess = 'Not Admin Person';
-	include 'php/wrongentry.php';
-	exit(0);
-}
 
 try  {
 	opendb();
@@ -52,12 +44,6 @@ include 'php/head.php';
 
 ?>
 <body>
-<script language="javascript">
-function okdel(name, url) {
-	if (confirm("OK to delete " + name + " from system"))
-		document.location = "delperson.php?" + url;
-}
-</script>
 <?php include 'php/nav.php'; ?>
 <h1>View/Update user details</h1>
 <p>Click on user name to edit details.</p>
@@ -84,7 +70,7 @@ foreach ($players as $plyr)  {
 	<td>{$plyr->display_rank()}</td>
 	<td>{$plyr->display_login()}</td>
 	<td>{$plyr->display_admin()}</td>
-	<td><a href="javascript:okdel('$disp', '$urlp')">del</a></td>
+	<td><a href="delperson.php?$urlp">del</a></td>
 </tr>
 
 EOT;

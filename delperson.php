@@ -21,36 +21,61 @@
 
 include 'php/tcerror.php';
 include 'php/session.php';
-include 'php/checklogged.php';
+include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/opendb.php';
 
+
 try {
    opendb();
    $pers = new Player();
    $pers->fromget();
-   $pers->delete_player();
+   $people = Player::list_players();
 }
 catch (Tcerror $e)  {
    $Title = "Delete error ";
    $mess = $e->getMessage();
-   include 'php/generror.php';
+   include 'php/wrongentry.php';
    exit(0);
 }
-$Title = "Deleted OK";
+$dispname = $pers->display_name();
+$Title = "Delete User";
 include 'php/head.php';
 ?>
-<body onload="javascript:window.location = document.referrer;">
-<h1>Deleted OK</h1>
+<body>
 <?php
+include 'php/nav.php';
 print <<<EOT
-<p>The person has been deleted successfully.</p>
+<h1>Delete player $dispname</h1>
+<form action="delperson2.php" method="post" enctype="application/x-www-form-urlencoded">
+{$pers->save_hidden()}
+<p>Use this form to delete player $dispname.</p>
+<p>Please don't use this form to remove an incorrectly spelled player's name and you haven't entered the
+correct name, use <a href="updplayer.php?{$pers->urlof()}">this form</a> instead and amend the name.
+Use this form either to remove a name completely, or where you've got two (or more) slightly different versions of the same name
+and you want to remove one.</p>
+<p>If you want to change entries in current tournaments to show a different name, please select that name from this list:
+<select name="chgname">
+<option value="none:none" selected>None</option>
 
 EOT;
+foreach ($people as $p) {
+	$ps = $p->First . ':' . $p->Last;
+	print <<<EOT
+<option value="$ps">{$p->display_name()}</option>
+
+EOT;
+}
 ?>
-<p>Please <a href="useradmin.php">Click here</a> to return to the admin page.</p>
+</select>
+<p>If you also want to update historical tournament records with the amended name, select this:
+<input type="checkbox" name="adjhist"></p>
+<p>Press <input type="submit" name="cont" value="Delete user"> to continue or <input type="submit" name="canc" value="Cancel" onclick="window.location=document.referrer;"></p>
+</form>
+</div>
+</div>
 </body>
 </html>
