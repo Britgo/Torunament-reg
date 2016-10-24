@@ -466,11 +466,11 @@ class Tournament {
 	$result = array();
 	$constr = "";
 	if  ($openonly && $futureonly)
-		$constr = " where open!=0 and date_add(sdate,interval ndays day)>current_date()";
+		$constr = " where open!=0 and date_add(sdate,interval ndays day)>=current_date()";
 	elseif  ($openonly)
 		$constr = " where open!=0";
 	elseif  ($futureonly)
-		$constr = " where date_add(sdate,interval ndays day)>current_date()";
+		$constr = " where date_add(sdate,interval ndays day)>=current_date()";
 	$ret = mysql_query("select tcode from tdetails$constr order by $order");
 	if  ($ret)  {
    		while ($row = mysql_fetch_array($ret)) {

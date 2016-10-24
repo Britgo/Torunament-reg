@@ -23,17 +23,36 @@ include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/tdate.php';
+include 'php/tournclass.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/opendb.php';
 
-
 try {
    opendb();
-   $pers = new Player();
-   $pers->fromget();
-   $people = Player::list_players();
+   $delpers = new Player();
+   $delpers->frompost();
+   if (!$delpost->isdefined())
+   	throw new Tcerror("No delete person defined", "Delete error");
+   $changeto = $_POST['chgname'];
+   if (strlen($changeto) != 0  &&  $changeto != 'none:none')  {
+   	$cbits = split(':', $changeto);
+   	if (count($cbits) != 2)
+   		throw new Tcerror("Not 2 fields in $changeto", "Input error");
+   	$replpers = new Person($cbits[0], $cbits[1]);
+   	$setcomm = "first='{$replpers->qfirst()}',last='{$replpers->qlast()}'";
+   	$sel = $delpers->queryof();
+   	$plushist = isset($_POST['adjhist']);
+   	$tournlist = get_tcodes("tcode", false, $plushist);
+   	foreach ($tournlist as $tc)  {
+   		$ents = $tc . "_entries";
+   		$ret = mysql_query("UPDATE $ents SET $setcomm WHERE $sel");
+   		if (!$ret)
+   			throw new Tcerror(mysql_error(), "Update entry error");
+   	}
+   }
+   $delpers->delete_player();
 }
 catch (Tcerror $e)  {
    $Title = "Delete error ";
@@ -41,43 +60,18 @@ catch (Tcerror $e)  {
    include 'php/wrongentry.php';
    exit(0);
 }
-$dispname = $pers->display_name();
-$Title = "Delete User";
+$dispname = $delpers->display_name();
+$Title = "Deleted OK";
 include 'php/head.php';
 ?>
-<body>
+<body onload="window.location=window.location.protocol+'//'+window.location.hostname+'/useradmin.php'">
+<h1>Deleted OK</h1>
 <?php
-include 'php/nav.php';
 print <<<EOT
-<h1>Delete player $dispname</h1>
-<form action="delperson2.php" method="post" enctype="application/x-www-form-urlencoded">
-{$pers->save_hidden()}
-<p>Use this form to delete player $dispname.</p>
-<p>Please don't use this form to remove an incorrectly spelled player's name and you haven't entered the
-correct name, use <a href="updplayer.php?{$pers->urlof()}">this form</a> instead and amend the name.
-Use this form either to remove a name completely, or where you've got two (or more) slightly different versions of the same name
-and you want to remove one.</p>
-<p>If you want to change entries in current tournaments to show a different name, please select that name from this list:
-<select name="chgname">
-<option value="none:none" selected>None</option>
+<p>The user $dispname has been deleted successfully.</p>
 
 EOT;
-foreach ($people as $p) {
-	if ($p->is_same($pers))
-		continue;
-	$ps = $p->First . ':' . $p->Last;
-	print <<<EOT
-<option value="$ps">{$p->display_name()}</option>
-
-EOT;
-}
 ?>
-</select>
-<p>If you also want to update historical tournament records with the amended name, select this:
-<input type="checkbox" name="adjhist"></p>
-<p>Press <input type="submit" name="cont" value="Delete user"> to continue or <input type="button" name="canc" value="Cancel"  onclick="window.location=document.referrer;"></p>
-</form>
-</div>
-</div>
+<p>Please <a href="useradmin.php">Click here</a> to return to the admin page.</p>
 </body>
 </html>
