@@ -76,7 +76,6 @@ for ($row = 0;  $row < $Nrows;  $row++)  {
 			$urlc = $c->urlof();
 			$disc = $c->display_name();
 			print <<<EOT
-<tr>
 	<td><a href="updclub.php?$urlc" class="nound">$disc</a></td>
 	<td>{$c->display_country()}</td>
 	<td><a href="delclub.php?$urlc">del</a></td>
@@ -85,6 +84,7 @@ for ($row = 0;  $row < $Nrows;  $row++)  {
 EOT;
 		}
 	}
+	print "</tr>\n";
 }
 ?>
 </table>

@@ -78,8 +78,8 @@ for ($row = 0;  $row < $Nrows;  $row++)  {
 
 EOT;
 		}
-		print "</tr>\n";
 	}
+	print "</tr>\n";
 }
 ?>
 </table>
