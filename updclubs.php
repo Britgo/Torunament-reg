@@ -41,6 +41,10 @@ catch (Tcerror $e) {
 $Title = 'Update Clubs List';
 include 'php/head.php';
 
+$Nclubs = count($clublist);
+$Ncols = min(4, ceil($Nclubs/10));
+$Nrows = ceil($Nclubs/$Ncols);
+
 ?>
 <body>
 <?php include 'php/nav.php'; ?>
@@ -50,15 +54,28 @@ include 'php/head.php';
 one which is least accurate. You will get the option to reset club names in player lists.</p>
 <table>
 <tr>
+<?php
+for ($col = 0;  $col < $Ncols;  $col++)
+	print <<<EOT
 	<th>Name</th>
 	<th>Country</th>
 	<th>Action</th>
+	
+EOT;
+?>
 </tr>
 <?php
-foreach ($clublist as $c)  {
-	$urlc = $c->urlof();
-	$disc = $c->display_name();
-	print <<<EOT
+for ($row = 0;  $row < $Nrows;  $row++)  {
+	print "<tr>\n";
+	for ($col = 0; $col < $Nclubs;  $col++)  {
+		$n = $row + $col * $Nrows;
+		if ($n >= $Nclubs)
+			print "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>\n";
+		else  {
+			$c = $clublist[$n];
+			$urlc = $c->urlof();
+			$disc = $c->display_name();
+			print <<<EOT
 <tr>
 	<td><a href="updclub.php?$urlc" class="nound">$disc</a></td>
 	<td>{$c->display_country()}</td>
@@ -66,6 +83,8 @@ foreach ($clublist as $c)  {
 </tr>
 
 EOT;
+		}
+	}
 }
 ?>
 </table>

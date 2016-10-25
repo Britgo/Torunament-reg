@@ -41,7 +41,7 @@ $Title = 'Update countries List';
 include 'php/head.php';
 
 $Ncountries = count($countrylist);
-$Ncols = min(6, ceil($nrm/10));
+$Ncols = min(6, ceil($Ncountries/10));
 $Nrows = ceil($Ncountries/$Ncols);
 ?>
 <body>
@@ -55,7 +55,6 @@ one which is least accurate. You will get the option to reset country names in p
 <?php
 for ($col = 0;  $col < $Ncols;  $col++)
 	print <<<EOT
-	<th>Name</th>
 	<th>Country</th>
 	<th>Action</th>
 
@@ -68,14 +67,13 @@ for ($row = 0;  $row < $Nrows;  $row++)  {
 	for ($col = 0; $col < $Ncols;  $col++)  {
 		$n = $row + $col * $Nrows;
 		if ($n >= $Ncountries)
-			print "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>\n";
+			print "<td>&nbsp;</td><td>&nbsp;</td>\n";
 		else  {
 			$c = $countrylist[$n];
 			$urlc = $c->urlof();
 			$disc = $c->display_name();
 			print <<<EOT
 	<td><a href="updcountry.php?$urlc" class="nound">$disc</a></td>
-	<td>{$c->display_country()}</td>
 	<td><a href="delcountry.php?$urlc">del</a></td>
 
 EOT;

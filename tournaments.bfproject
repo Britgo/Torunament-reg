@@ -4,10 +4,10 @@ openfiles: /home/jmc/src/Websites/tournreg/useradmin.php:1261:1181:0:
 openfiles: /home/jmc/src/Websites/tournreg/updplayer.php:5734:4953:0:
 openfiles: /home/jmc/src/Websites/tournreg/delperson2.php:1908:619:0:
 openfiles: /home/jmc/src/Websites/tournreg/updplayer2.php:2163:1420:0:
-openfiles: /home/jmc/src/Websites/tournreg/updclubs.php:1022:0:0:
+openfiles: /home/jmc/src/Websites/tournreg/updclubs.php:1842:824:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/club.php:1021:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/country.php:2058:1096:0:
-openfiles: /home/jmc/src/Websites/tournreg/updcounts.php:1433:1021:1:
+openfiles: /home/jmc/src/Websites/tournreg/updcounts.php:1906:1021:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -86,7 +86,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/club.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/country.php
 recent_files: file:///home/jmc/src/Websites/tournreg/updcounts.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 
