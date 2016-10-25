@@ -44,7 +44,7 @@ try {
    	$setcomm = "first='{$replpers->qfirst()}',last='{$replpers->qlast()}'";
    	$sel = $delpers->queryof();
    	$plushist = isset($_POST['adjhist']);
-   	$tournlist = get_tcodes("tcode", false, $plushist);
+   	$tournlist = get_tcodes("tcode", false, !$plushist);
    	foreach ($tournlist as $tc)  {
    		$ents = $tc . "_entries";
    		$ret = mysql_query("UPDATE $ents SET $setcomm WHERE $sel");

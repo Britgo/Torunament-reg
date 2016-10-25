@@ -92,7 +92,7 @@ class Player extends Person {
 	// Are we talking about same player
 		
 	public function is_same($pl) {
-		return $this->First == $pl->First && $this->Last == $pl->Last;
+		return strcasecmp($this->First, $pl->First) == 0 && strcasecmp($this->Last, $pl->Last) == 0;
 	}
  	
  	public function create()  {
@@ -105,7 +105,7 @@ class Player extends Person {
 		$qnonbga = $this->Nonbga? 1: 0;
 		$qrank = $this->Rank->Rankvalue;
 		mysql_query("delete from player where $qq");
-		if  (!mysql_query("insert into player (first,last,rank,club,country,email,nonbga) values ('$qfirst','$qlast',$qrank,'$qclub','$qcountry','$qemail',$qnonbga)"))  {
+		if  (!mysql_query("INSERT INTO player (first,last,rank,club,country,email,nonbga) VALUES ('$qfirst','$qlast',$qrank,'$qclub','$qcountry','$qemail',$qnonbga)"))  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot create player record, error was $ecode", "Database error");
 		}
@@ -114,7 +114,7 @@ class Player extends Person {
 	public function updatename($newp) {
 		$qfirst = mysql_real_escape_string($newp->First);
 		$qlast = mysql_real_escape_string($newp->Last);
-		mysql_query("update player set first='$qfirst',last='$qlast' where {$this->queryof()}");
+		mysql_query("UPDATE player SET first='$qfirst',last='$qlast' WHERE {$this->queryof()}");
 		$this->First = $newp->First;
 		$this->Last = $newp->Last;
 	}
@@ -126,7 +126,7 @@ class Player extends Person {
 		$qemail = mysql_real_escape_string($this->Email);
 		$qnonbga = $this->Nonbga? 1: 0;
 		$qrank = $this->Rank->Rankvalue;
-		$ret = mysql_query("update player set rank=$qrank,club='$qclub',country='$qcountry',email='$qemail',nonbga=$qnonbga where $qq");
+		$ret = mysql_query("UPDATE player SET rank=$qrank,club='$qclub',country='$qcountry',email='$qemail',nonbga=$qnonbga WHERE $qq");
 		if (!$ret)  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot update player, error was $ecode", "Database error");
@@ -150,7 +150,7 @@ class Player extends Person {
 	// Get userid
 	
 	public function get_userid() {
-		$ret = mysql_query("select user from player where {$this->queryof()}");
+		$ret = mysql_query("SELECT user FROM player WHERE {$this->queryof()}");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return  "";
 		$row = mysql_fetch_array($ret);
@@ -160,7 +160,7 @@ class Player extends Person {
 	// Get password
 		
 	public function get_passwd() {
-		$ret = mysql_query("select password from player where {$this->queryof()}");
+		$ret = mysql_query("SELECT password FROM player WHERE {$this->queryof()}");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return  "";
 		$row = mysql_fetch_array($ret);
@@ -172,10 +172,10 @@ class Player extends Person {
 	public function set_passwd($pw, $uid = NULL)  {
 		$qpw = mysql_real_escape_string($pw);
 		if (is_null($uid))
-				$ret = mysql_query("update player set password='$qpw' where {$this->queryof()}");
+				$ret = mysql_query("UPDATE player SET password='$qpw' WHERE {$this->queryof()}");
 		else {
 			$quid = mysql_real_escape_string($uid);
-			$ret = mysql_query("update player set password='$qpw',user='$quid' where {$this->queryof()}");
+			$ret = mysql_query("UPDATE player SET password='$qpw',user='$quid' WHERE {$this->queryof()}");
 		}
 		if (!$ret)  {
 			$ecode = mysql_error();
@@ -185,7 +185,7 @@ class Player extends Person {
 	
 	public function set_admin($adm = 'N')  {
 		$qad = mysql_real_escape_string($adm);
-		if  (!mysql_query("update player set admin='$qad' where {$this->queryof()}"))  {
+		if  (!mysql_query("UPDATE player SET admin='$qad' WHERE {$this->queryof()}"))  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot set admin, error was $ecode", "Database error");
 		}
@@ -287,11 +287,20 @@ EOT;
 		
 	public static function list_players()  {
 		$result = array();
-		if ($ret = mysql_query("select first,last,rank,club,country,email,nonbga,user,admin from player order by last,first,rank desc,club"))  {
+		if ($ret = mysql_query("SELECT first,last,rank,club,country,email,nonbga,user,admin FROM player ORDER BY last,first,rank desc,club"))  {
 			while ($row = mysql_fetch_array($ret))
 				array_push($result, new Player($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]));
 		}
 		return $result;
+	}
+
+	public static function check_clash_userid($uid)  {
+		$quid = mysql_real_escape_string($uid);
+		$ret = mysql_query("SELECT COUNT(*) FROM player WHERE user='$quid'");
+		if  (!$ret)
+			throw new Tcerror(mysql_error(), "Database error");
+		$row = mysql_fetch_array($ret);
+		return $row[0] != 0;
 	}
 }
 ?>
