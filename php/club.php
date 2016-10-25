@@ -1,5 +1,26 @@
 <?php
 
+//   Copyright 2016 John Collins
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
 class Club {
 	public  $Name;
 	public  $Country;
@@ -15,6 +36,12 @@ class Club {
 		$qname = mysql_real_escape_string($this->Name);
 		return "name='$qname'";
 	}
+
+	public function urlof()
+	{
+		$qc = urlencode($this->Name);
+		return "clubname=$qc";
+	}	
 	
 	public function create()
 	{
@@ -41,6 +68,16 @@ class Club {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot update clubs record, error was $ecode", "Database error");
 		}
+	}
+	
+	public function display_name()
+	{
+		return  htmlspecialchars($this->Name);
+	}
+	
+	public function display_country()
+	{
+		return  htmlspecialchars($this->Country);
 	}
 }
 
