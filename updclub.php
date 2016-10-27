@@ -77,6 +77,7 @@ print <<<EOT
 EOT;
 ?>
 <form name="clform" action="updclub2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
+<?php
 print <<<EOT
 {$updclub->save_hidden("orig")}
 <table cellpadding="5" cellspacing="5" border="0">
