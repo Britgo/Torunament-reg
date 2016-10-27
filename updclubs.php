@@ -29,7 +29,7 @@ include 'php/opendb.php';
 
 try  {
 	opendb();
-	$clublist = list_clubs();
+	$clublist = Club::list_clubs();
 }
 catch (Tcerror $e) {
 	$Title = $e->Header;
@@ -51,7 +51,7 @@ $Nrows = ceil($Nclubs/$Ncols);
 <h1>View/Update club details</h1>
 <p>Click on club name to edit details.</p>
 <p>If there are two versions of the same club with similar names, delete the
-one which is least accurate. You will get the option to reset club names in player lists.</p>
+one which is less accurate. You will get the option to reset club names in player lists.</p>
 <table>
 <tr>
 <?php

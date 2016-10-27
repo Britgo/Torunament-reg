@@ -31,9 +31,9 @@ class Entrant extends Person {
  	}
  		
  	public function fetchdets($t)  {
- 		$ret = mysql_query("select club,country,email,rank,nonbga,lunch,dinner,privacy,concess1,concess2,edate,fee from {$t->etable()} where {$this->queryof()}");
+ 		$ret = mysql_query("SELECT club,country,email,rank,nonbga,lunch,dinner,privacy,concess1,concess2,edate,fee FROM {$t->etable()} WHERE {$this->queryof()}");
  		if  (!$ret)
- 			throw new Tcerror("Cannot read entrant details", "Fetch entrant details error");
+ 			throw new Tcerror(mysql_error(), "Fetch entrant details error");
  		if  (mysql_num_rows($ret) == 0)
  			throw new Tcerror("No entrant found {$this->First} {$this->Last}". "Read fail");
  		$row = mysql_fetch_assoc($ret);
@@ -50,7 +50,7 @@ class Entrant extends Person {
  		$this->Fee = $row['fee'];
  		$this->Edate->enctime($row['edate']);	
  	}
- 		
+ 
 	public function create($t)	
  	{
 		$qfirst = mysql_real_escape_string($this->First);
@@ -65,7 +65,7 @@ class Entrant extends Person {
 		$qconcess1 = $this->Concess1? 1: 0;
 		$qconcess2 = $this->Concess2? 1: 0;
 		$qdat = $this->Edate->queryof();
-		if  (!mysql_query("insert into {$t->etable()} (first,last,club,country,email,edate,rank,nonbga,lunch,dinner,privacy,concess1,concess2,fee) values ('$qfirst','$qlast','$qclub','$qcountry','$qemail','$qdat',{$this->Rank->Rankvalue},$qnonbga,$qlunch,$qdinner,$qprivacy,$qconcess1,$qconcess2,$this->Fee)"))  {
+		if  (!mysql_query("INSERT INTO {$t->etable()} (first,last,club,country,email,edate,rank,nonbga,lunch,dinner,privacy,concess1,concess2,fee) VALUES ('$qfirst','$qlast','$qclub','$qcountry','$qemail','$qdat',{$this->Rank->Rankvalue},$qnonbga,$qlunch,$qdinner,$qprivacy,$qconcess1,$qconcess2,$this->Fee)"))  {
 			$ecode = mysql_error();
 			throw new Tcerror("Cannot create entrant record, error was $ecode", "Database error");
 		}
@@ -83,7 +83,7 @@ class Entrant extends Person {
 		$qprivacy = $this->Privacy? 1: 0;
 		$qconcess1 = $this->Concess1? 1: 0;
 		$qconcess2 = $this->Concess2? 1: 0;
-		if  (!mysql_query("update {$t->etable()} set club='$qclub',country='$qcountry',email='$qemail',edate='$qdat',rank={$this->Rank->Rankvalue},nonbga=$qnonbga,lunch=$qlunch,dinner=$qdinner,privacy=$qprivacy,concess1=$qconcess1,concess2=$qconcess2,fee={$this->Fee} where {$this->queryof()}"))  {
+		if  (!mysql_query("UPDATE {$t->etable()} SET club='$qclub',country='$qcountry',email='$qemail',edate='$qdat',rank={$this->Rank->Rankvalue},nonbga=$qnonbga,lunch=$qlunch,dinner=$qdinner,privacy=$qprivacy,concess1=$qconcess1,concess2=$qconcess2,fee={$this->Fee} WHERE {$this->queryof()}"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot update entrant record, error was $ecode", "Database error");
 		}
@@ -91,7 +91,7 @@ class Entrant extends Person {
 	
 	public function del($t)
 	{
-		if  (!mysql_query("delete from {$t->etable()} where {$this->queryof()}"))  {
+		if  (!mysql_query("DELETE FROM {$t->etable()} WHERE {$this->queryof()}"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot delete tournament record, error was $ecode", "Database error");
 		}
@@ -101,7 +101,7 @@ class Entrant extends Person {
 		$this->Rank = new rank($_POST['rank']);
  		$this->Club = trim($_POST['club']);
  		$this->Country = trim($_POST['country']);
- 		optcreate_club($this->Club, $this->Country);
+ 		Club::optcreate_club($this->Club, $this->Country);
  		optcreate_country($this->Country);
  		$this->Email = trim($_POST['email']);
 		if (!preg_match('/@/', $this->Email))

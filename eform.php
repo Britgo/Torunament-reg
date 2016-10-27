@@ -44,7 +44,7 @@ try  {
 	$tourn = new Tournament($tcode);
 	$tourn->fetchdets();
 	//$players = Player::list_players();
-	$clubs = list_clubs();
+	$clubs = Club::list_clubs();
 	$countries = list_countries();
 }
 catch (Tcerror $e)  {

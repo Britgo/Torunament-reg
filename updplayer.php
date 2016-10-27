@@ -35,7 +35,7 @@ try {
    $pers = new Player();
    $pers->fromget();
    $pers->fetchplayer();
-   $clublist = list_clubs();
+   $clublist = Club::list_clubs();
    $countrylist = list_countries();
 }
 catch (Tcerror $e)  {

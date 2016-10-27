@@ -49,7 +49,7 @@ $Nrows = ceil($Ncountries/$Ncols);
 <h1>View/Update country list</h1>
 <p>Click on country name to edit details.</p>
 <p>If there are two versions of the same country with similar names, delete the
-one which is least accurate. You will get the option to reset country names in player or club lists.</p>
+one which is less accurate. You will get the option to reset country names in player or club lists.</p>
 <table>
 <tr>
 <?php

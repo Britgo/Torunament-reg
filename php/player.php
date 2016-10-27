@@ -223,7 +223,7 @@ class Player extends Person {
 	}
 	
 	public function clubopt($selfn = "") {
-		$clubs = list_clubs();
+		$clubs = Club::list_clubs();
 		$onc = "";
 		if (strlen($selfn) != 0)
 			$onc = " onchange=\"$selfn();\"";

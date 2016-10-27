@@ -91,7 +91,7 @@ $origplayer->Country = $country;
 $origplayer->Email = $email;
 $origplayer->Nonbga = $nonbga;
 $origplayer->update();
-optcreate_club($club, $country);
+Club::optcreate_club($club, $country);
 optcreate_country($country);
 
 $chpw = false;

@@ -34,39 +34,80 @@ class Club {
 	public function queryof()
 	{
 		$qname = mysql_real_escape_string($this->Name);
-		return "name='$qname'";
+		$qcount = mysql_real_escape_string($this->Country);
+		return "name='$qname' AND country='$qcount'";
 	}
 
-	public function urlof()
-	{
+	public function urlof()  {
 		$qc = urlencode($this->Name);
-		return "clubname=$qc";
-	}	
+		$qcnt = urlencode($this-LCountry);
+		return "clubname=$qc&countname=$qcnt";
+	}
 	
-	public function create()
+	public function fromget($prefix = "") {
+      $this->Name = $_GET["${prefix}clubname"];
+      $this->Country = $_GET["${prefix}countname"];
+      if (strlen($this->Name) == 0 || strlen($this->Country) == 0)
+      	throw new Tcerror("Null get club name field"); 
+   }
+
+	public function save_hidden($prefix = "") {
+   	$qname = htmlspecialchars($this->Name);
+   	$qcnt = htmlspecialchars($this->Country);
+      return "<input type=\"hidden\" name=\"${prefix}clubname\" value=\"$qname\"><input type=\"hidden\" name=\"${prefix}countname\" value=\"$qcnt\">";
+   }
+	
+	public function from_post($prefix = "")  {
+		$this->Name = $_POST["${prefix}clubname"];
+		$this->Country = $_POST["${prefix}countname"];
+		if  (strlen($this->Name) == 0 || strlen($this->Country) == 0)
+			throw new Tcerror("Null post club name field");
+	}
+	
+	public function is_same($other)
 	{
-		$qname = mysql_real_escape_string($this->Name);
-		$qcnt = mysql_real_escape_string($this->Country);
+		return  strcasecmp($this->Name, $other->Name) == 0 && strcasecmp($this->Country, $other->Country) == 0;
+	}
+
+	public function check_clashes() {
 		$qq = $this->queryof();
-		$ret = mysql_query("select name from clubs where $qq");
+		$ret = mysql_query("SELECT COUNT(*) FROM clubs WHERE $qq");
 		if  (!$ret)  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot access clubs record, error was $ecode", "Database error");
 		}
-		if  (mysql_num_rows($ret) > 0)
-			return;
-		if  (!mysql_query("insert into clubs (name,country) values ('$qname','$qcnt')"))  {
+		$row = mysql_fetch_array($ret);
+		return  $row[0] > 0;
+	}
+	
+	public function create()
+	{
+		if  ($this->check_clashes())
+			return;		
+		$qname = mysql_real_escape_string($this->Name);
+		$qcnt = mysql_real_escape_string($this->Country);
+		if  (!mysql_query("INSERT INTO clubs (name,country) VALUES ('$qname','$qcnt')"))  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot create clubs record, error was $ecode", "Database error");
 		}
 	}
 	
-	public function update()
-	{
-		$qcnt = mysql_real_escape_string($this->Country);
-		if  (!mysql_query("update clubs set country='$qcnt' where {$this->queryof()}"))  {
+	public function update($newclub)  {
+		$qq = $this->queryof();
+		$qname = mysql_real_escape_string($newclub->Name);
+		$qcnt = mysql_real_escape_string($newclub->Country);
+		if  (!mysql_query("UPDATE clubs SET name='$qname',country='$qcnt' WHERE $qq"))  {
 			$ecode = mysql_error();
-			throw  new  Tcerror("Cannot update clubs record, error was $ecode", "Database error");
+			throw  new  Tcerror("Cannot uodate clubs record, error was $ecode", "Database error");
+		}
+	}
+	
+	public function del()
+	{
+		$ret = mysql_query("DELETE FROM clubs WHERE {$this->queryof()}");
+		if  (!$ret)  {
+			$ecode = mysql_error();
+			throw  new  Tcerror("Cannot delete clubs record, error was $ecode", "Database error");
 		}
 	}
 	
@@ -79,21 +120,21 @@ class Club {
 	{
 		return  htmlspecialchars($this->Country);
 	}
-}
+	
+	public static function optcreate_club($club, $cnt) {
+		$clb = new Club($club, $cnt);
+		$clb->create();
+		return  $clb;
+	}
 
-function optcreate_club($club, $cnt) {
-	$clb = new Club($club, $cnt);
-	$clb->create();
-}
-
-function list_clubs()
-{
-	$result = array();
-	$ret = mysql_query("select name,country from clubs order by name,country");
-	if  ($ret)
-		while  ($row = mysql_fetch_array($ret))  {
-			array_push($result, new Club($row[0], $row[1]));
-		}
-	return $result;
+	public static function list_clubs() {
+		$result = array();
+		$ret = mysql_query("SELECT name,country FROM clubs ORDER BY name,country");
+		if  ($ret)
+			while  ($row = mysql_fetch_array($ret))  {
+				array_push($result, new Club($row[0], $row[1]));
+			}
+		return $result;
+	}
 }
 ?>

@@ -132,7 +132,7 @@ try {
 		$passw1 = generate_password();
 
 	$player->set_passwd($passw1, $username);
-	optcreate_club($club, $country);
+	Club::optcreate_club($club, $country);
 	optcreate_country($country);
 }
 catch (Tcerror $e) {
