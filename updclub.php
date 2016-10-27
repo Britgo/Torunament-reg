@@ -24,6 +24,8 @@ include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/club.php';
 include 'php/country.php';
+include 'php/person.php';
+include 'php/player.php';
 include 'php/opendb.php';
 
 try {
@@ -104,7 +106,8 @@ EOT;
 	<td>Country</td>
 	<td>
 <?php
-$updclub->countryopt("country_sel");
+$pretend = new Player();
+$pretend->countryopt("country_sel");
 print <<<EOT
 </td>
 </tr>
