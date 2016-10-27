@@ -24,6 +24,7 @@ include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/club.php';
 include 'php/country.php';
+include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
 include 'php/opendb.php';
