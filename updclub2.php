@@ -39,6 +39,7 @@ try {
    	if ($newclub->check_clashes())
    		throw new Tcerror("Club name/country clashes with existing", "Club name clash");
    	$updclub->update($newclub);
+  		optcreate_country($newclub->Country);
    	$qoclub = mysql_real_escape_string($updclub->Name);
    	$qnclub = mysql_real_escape_string($newclub->Name);
    	$qocnt = mysql_real_escape_string($updclub->Country);

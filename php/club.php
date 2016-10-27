@@ -40,7 +40,7 @@ class Club {
 
 	public function urlof()  {
 		$qc = urlencode($this->Name);
-		$qcnt = urlencode($this-LCountry);
+		$qcnt = urlencode($this->Country);
 		return "clubname=$qc&countname=$qcnt";
 	}
 	
