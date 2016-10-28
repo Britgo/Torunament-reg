@@ -22,30 +22,34 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checkadmin.php';
-include 'php/tdate.php';
 include 'php/club.php';
 include 'php/country.php';
-include 'php/rank.php';
-include 'php/person.php';
-include 'php/player.php';
+include 'php/tdate.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 
 try {
    opendb();
-   $delpers = new Player();
-   $delpers->frompost();
-   if (!$delpers->isdefined())
+   $delclub = new Club();
+   $delclub->frompost("orig");
+   if (!$delclub->isdefined())
    	throw new Tcerror("No delete person defined", "Delete error");
    $changeto = $_POST['chgname'];
    if (strlen($changeto) != 0  &&  $changeto != 'none:none')  {
    	$cbits = split(':', $changeto);
    	if (count($cbits) != 2)
    		throw new Tcerror("Not 2 fields in $changeto", "Input error");
-   	$replpers = new Person($cbits[0], $cbits[1]);
-   	Tournament::update_all_entries($delpers->queryof(), "first='{$replpers->qfirst()}',last='{$replpers->qlast()}'", isset($_POST['adjhist']));
+   	$replclub = new Club(urldecode($cbits[0]), urldecode($cbits[1]));
+   	$qo = $delclub->queryof();
+   	$qs = "club='{$replclub->qfirst()}',country='{$replclub->qlast()}'";
+   	if  (isset($_POST["adjplayers"]))  {
+   		$ret = mysql_query("UPDATE player SET $qs WHERE $qo");
+   		if (!$ret)
+   			throw new Tcerror(mysql_error(), "Player update error");
+   	}  		
+   	Tournament::update_all_entries($qo, $qs, isset($_POST['adjhist']));
    }
-   $delpers->delete_player();
+   $delclub->del();
 }
 catch (Tcerror $e)  {
    $Title = $e->Header;
@@ -53,11 +57,11 @@ catch (Tcerror $e)  {
    include 'php/generror.php';
    exit(0);
 }
-$dispname = $delpers->display_name();
+$dispname = $delclub->display_name();
 $Title = "Deleted OK";
 include 'php/head.php';
 ?>
-<body onload="window.location=window.location.protocol+'//'+window.location.hostname+'/useradmin.php'">
+<body onload="window.location=window.location.protocol+'//'+window.location.hostname+'/updclubs.php'">
 <h1>Deleted OK</h1>
 <?php
 print <<<EOT

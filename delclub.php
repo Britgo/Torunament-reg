@@ -48,7 +48,7 @@ include 'php/nav.php';
 print <<<EOT
 <h1>Delete club $dispname</h1>
 <form action="delclub2.php" method="post" enctype="application/x-www-form-urlencoded">
-{$delclub->save_hidden()}
+{$delclub->save_hidden("orig")}
 <p>Use this form to delete club $dispname.</p>
 <p>Please don't use this form to remove an incorrectly spelled club name and you haven't entered the
 correct name, use <a href="updclub.php?{$delclub->urlof()}">this form</a> instead and amend the name.
@@ -71,6 +71,7 @@ EOT;
 }
 ?>
 </select></p>
+<p>To change clubs in player entries select this: <input type="checkbox" name="adjplayers" checked></p>
 <p>If you also want to update historical tournament records with the other name, select this:
 <input type="checkbox" name="adjhist"></p>
 <p>Press <input type="submit" name="cont" value="Delete club"> to continue or <input type="button" name="canc" value="Cancel"  onclick="window.location=document.referrer;"></p>
