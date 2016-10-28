@@ -35,7 +35,7 @@ try {
    $updclub = new Club();
    $updclub->from_post("orig");
    $newclub = new Club();
-   $newclub->frompost();
+   $newclub->from_post();
    if  (!$updclub->is_same($newclub))  {
    	if ($newclub->check_clashes())
    		throw new Tcerror("Club name/country clashes with existing", "Club name clash");
