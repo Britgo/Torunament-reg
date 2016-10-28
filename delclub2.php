@@ -25,6 +25,9 @@ include 'php/checkadmin.php';
 include 'php/club.php';
 include 'php/country.php';
 include 'php/tdate.php';
+include 'php/rank.php';
+include 'php/person.php';
+include 'php/player.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 
@@ -42,7 +45,7 @@ try {
    	$replclub = new Club(urldecode($cbits[0]), urldecode($cbits[1]));
    	$qo = $delclub->queryof();
    	$qs = "club='{$replclub->qfirst()}',country='{$replclub->qlast()}'";
-   	if  (isset($_POST["adjplayers"]))  {
+   	if  (isset($_POST["adjplayers"])  {
    		$ret = mysql_query("UPDATE player SET $qs WHERE $qo");
    		if (!$ret)
    			throw new Tcerror(mysql_error(), "Player update error");
