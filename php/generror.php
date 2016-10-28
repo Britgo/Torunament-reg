@@ -32,7 +32,6 @@ print <<<EOT
 <p>$qmess</p>
 
 EOT;
-}
 ?>
 <p>Please try again from the top by <a href="/index.php">clicking here</a>.</p>
 </body>
