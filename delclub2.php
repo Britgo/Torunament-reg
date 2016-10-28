@@ -41,7 +41,7 @@ try {
    	if (count($cbits) != 2)
    		throw new Tcerror("Not 2 fields in $changeto", "Input error");
    	$replclub = new Club(urldecode($cbits[0]), urldecode($cbits[1]));
-   	$qo = $delclub->queryof();
+   	$qo = "club='{$delclub->qname()}' AND country='{$delclub->qcountry()}'";
    	$qs = "club='{$replclub->qname()}',country='{$replclub->qcountry()}'";
    	if  (isset($_POST["adjplayers"]))  {
    		$ret = mysql_query("UPDATE player SET $qs WHERE $qo");
