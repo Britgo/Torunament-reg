@@ -35,8 +35,6 @@ try {
    opendb();
    $delclub = new Club();
    $delclub->from_post("orig");
-   if (!$delclub->isdefined())
-   	throw new Tcerror("No delete person defined", "Delete error");
    $changeto = $_POST['chgname'];
    if (strlen($changeto) != 0  &&  $changeto != 'none:none')  {
    	$cbits = split(':', $changeto);
