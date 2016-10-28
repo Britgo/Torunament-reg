@@ -34,7 +34,7 @@ include 'php/opendb.php';
 try {
    opendb();
    $delclub = new Club();
-   $delclub->frompost("orig");
+   $delclub->from_post("orig");
    if (!$delclub->isdefined())
    	throw new Tcerror("No delete person defined", "Delete error");
    $changeto = $_POST['chgname'];
