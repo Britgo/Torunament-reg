@@ -37,6 +37,15 @@ class Club {
 		$qcount = mysql_real_escape_string($this->Country);
 		return "name='$qname' AND country='$qcount'";
 	}
+	
+	public function qname()
+	{
+		return  mysql_real_escape_string($this->Name);
+	}
+	
+	public function qcountry() {
+		return  mysql_real_escape_string($this->Country);
+	}
 
 	public function urlof()  {
 		$qc = urlencode($this->Name);
