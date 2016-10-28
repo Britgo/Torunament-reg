@@ -66,7 +66,7 @@ $dispname = $updclub->display_name();
 $Title = "Updated OK";
 include 'php/head.php';
 ?>
-<body onload="window.location=window.location.protocol+'//'+window.location.hostname+'/useradmin.php'">
+<body onload="window.location=window.location.protocol+'//'+window.location.hostname+'/updclubs.php'">
 <h1>Updated OK</h1>
 <?php
 print <<<EOT
@@ -74,6 +74,6 @@ print <<<EOT
 
 EOT;
 ?>
-<p>Please <a href="updclubs.php">Click here</a> to return to the admin page.</p>
+<p>Please <a href="updclubs.php">Click here</a> to return to the clubs page.</p>
 </body>
 </html>
