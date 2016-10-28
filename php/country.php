@@ -61,21 +61,38 @@ class Country {
 	{
 		return htmlspecialchars($this->Name);
 	}
-}
+	
+	public static function optcreate_country($c)  {
+		$cnt = new Country($c);
+		$cnt->create();
+		return $cnt;
+	}
 
-function optcreate_country($c) {
-	$cnt = new Country($c);
-	$cnt->create();
-}
-
-function list_countries()
-{
-	$result = array();
-	$ret = mysql_query("select name from country order by name");
-	if  ($ret)
-		while  ($row = mysql_fetch_array($ret))  {
-			array_push($result, new Country($row[0]));
+	public static function list_countries()  {
+		$result = array();
+		$ret = mysql_query("select name from country order by name");
+		if  ($ret)
+			while  ($row = mysql_fetch_array($ret))  {
+				array_push($result, new Country($row[0]));
+			}
+		return $result;
+	}
+	
+	public static function countryopt($existing = "", $selfn = "") {
+		$countries = self::list_countries();
+		$onc = "";
+		if (strlen($selfn) != 0)
+			$onc = " onchange=\"$selfn();\"";
+		print "<select name=\"countrysel\"$onc>\n";
+		print "<option value='none'>None Selected</option>\n";
+		foreach ($countries as $country) {
+			$qname = htmlspecialchars($country->Name);
+			if ($country->Name == $existing)
+				print "<option value=\"$qname\" selected>$qname</option>\n";
+			else
+				print "<option value=\"$qname\">$qname</option>\n";
 		}
-	return $result;
+		print "</select>\n";
+	}
 }
 ?>

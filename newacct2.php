@@ -30,6 +30,7 @@ include 'php/tcerror.php';
 include 'php/opendb.php';
 include 'php/country.php';
 include 'php/club.php';
+include 'php/country.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
@@ -133,7 +134,7 @@ try {
 
 	$player->set_passwd($passw1, $username);
 	Club::optcreate_club($club, $country);
-	optcreate_country($country);
+	Country::optcreate_country($country);
 }
 catch (Tcerror $e) {
 	$h = htmlspecialchars($e->Header);

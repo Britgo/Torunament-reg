@@ -22,14 +22,14 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/tdate.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/entrant.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 include 'php/player.php';
-include 'php/club.php';
-include 'php/country.php';
 
 if (!isset($_GET['tcode']))  {
 	$mess = "No code";
@@ -45,7 +45,7 @@ try  {
 	$tourn->fetchdets();
 	//$players = Player::list_players();
 	$clubs = Club::list_clubs();
-	$countries = list_countries();
+	$countries = Country::list_countries();
 }
 catch (Tcerror $e)  {
 	$mess = $e->getMessage();

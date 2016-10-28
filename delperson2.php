@@ -24,6 +24,8 @@ include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/tournclass.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
@@ -41,16 +43,7 @@ try {
    	if (count($cbits) != 2)
    		throw new Tcerror("Not 2 fields in $changeto", "Input error");
    	$replpers = new Person($cbits[0], $cbits[1]);
-   	$setcomm = "first='{$replpers->qfirst()}',last='{$replpers->qlast()}'";
-   	$sel = $delpers->queryof();
-   	$plushist = isset($_POST['adjhist']);
-   	$tournlist = get_tcodes("tcode", false, !$plushist);
-   	foreach ($tournlist as $tc)  {
-   		$ents = $tc . "_entries";
-   		$ret = mysql_query("UPDATE $ents SET $setcomm WHERE $sel");
-   		if (!$ret)
-   			throw new Tcerror(mysql_error(), "Update entry error");
-   	}
+   	Tournament::update_all_entries($delpers->queryof(), "first='{$replpers->qfirst()}',last='{$replpers->qlast()}'", isset($_POST['adjhist']));
    }
    $delpers->delete_player();
 }

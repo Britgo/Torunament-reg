@@ -35,6 +35,8 @@ function okdel(url, descr) {
 include 'php/session.php';
 include 'php/nav.php';
 include 'php/tcerror.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/tdate.php';
 include 'php/person.php';
 include 'php/tournclass.php';
@@ -46,9 +48,9 @@ include 'php/opendb.php';
 try  {
 	opendb();
 	if ($organ)
-		$tlist = get_tcodes("sdate desc,tname", false, false);
+		$tlist = Tournament::get_tcodes("sdate desc,tname", false, false);
 	else
-		$tlist = get_tcodes("sdate desc,tname", true, true);
+		$tlist = Tournament::get_tcodes("sdate desc,tname", true, true);
 	if  (count($tlist) == 0)
 		print "<p>There are currently no tournaments to list.</p>\n";
 	else  {

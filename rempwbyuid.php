@@ -24,6 +24,8 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/opendb.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';

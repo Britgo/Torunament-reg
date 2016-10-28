@@ -92,7 +92,7 @@ $origplayer->Email = $email;
 $origplayer->Nonbga = $nonbga;
 $origplayer->update();
 Club::optcreate_club($club, $country);
-optcreate_country($country);
+Country::optcreate_country($country);
 
 $chpw = false;
 try {

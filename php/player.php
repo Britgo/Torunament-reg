@@ -242,20 +242,7 @@ class Player extends Person {
 	}
 	
 	public function countryopt($selfn = "") {
-		$countries = list_countries();
-		$onc = "";
-		if (strlen($selfn) != 0)
-			$onc = " onchange=\"$selfn();\"";
-		print "<select name=\"countrysel\"$onc>\n";
-		print "<option value='none'>None Selected</option>\n";
-		foreach ($countries as $country) {
-			$qname = htmlspecialchars($country->Name);
-			if ($country->Name == $this->Country)
-				print "<option value=\"$qname\" selected>$qname</option>\n";
-			else
-				print "<option value=\"$qname\">$qname</option>\n";
-		}
-		print "</select>\n";
+		Country::countryopt($this->Country, $selfn);
 	}	
 	
 	// Display rank as a selection

@@ -430,6 +430,14 @@ class Tournament {
  			$result = $row[0];
  		return  $result;
  	}
+
+	// Update entries with given selection criteria and given updates
+	 	
+ 	public function update_entries($selection, $update)  {
+ 		$ret = mysql_query("UPDATE {$this->etable()} SET $update WHERE $selection");
+ 		if (!ret)
+ 			throw new Tcerror(mysql_error(), "Entires table update failed");
+ 	}
  	
  	// Get organiser details
  	
@@ -459,49 +467,54 @@ class Tournament {
  			return  $orge;
  		return "$conte $orge";
  	}
- }
  
- function get_tcodes($order = "tcode", $openonly = false, $futureonly = false)
- {
-	$result = array();
-	$constr = "";
-	if  ($openonly && $futureonly)
-		$constr = " where open!=0 and date_add(sdate,interval ndays day)>=current_date()";
-	elseif  ($openonly)
-		$constr = " where open!=0";
-	elseif  ($futureonly)
-		$constr = " where date_add(sdate,interval ndays day)>=current_date()";
-	$ret = mysql_query("select tcode from tdetails$constr order by $order");
-	if  ($ret)  {
-   		while ($row = mysql_fetch_array($ret)) {
+ 	public static function get_tcodes($order = "tcode", $openonly = false, $futureonly = false) {
+ 		$result = array();
+		$constr = "";
+		if  ($openonly && $futureonly)
+			$constr = " where open!=0 and date_add(sdate,interval ndays day)>=current_date()";
+		elseif  ($openonly)
+			$constr = " where open!=0";
+		elseif  ($futureonly)
+			$constr = " where date_add(sdate,interval ndays day)>=current_date()";
+		$ret = mysql_query("select tcode from tdetails$constr order by $order");
+		if  ($ret)  {
+   		while ($row = mysql_fetch_array($ret))
      			array_push($result, $row[0]);
-     		}
-	}
-	else {
-		$code = mysql_error();
-		throw new Tcerror("Error was $code", "List fail");
-	}
-	
-	return $result;
- }
+     	}
+		else {
+			$code = mysql_error();
+			throw new Tcerror("Error was $code", "List fail");
+		}
+		return $result;
+ 	}
  
- function tourn_select()
- {
-	$ret = mysql_query("select tcode,tname from tdetails order by tname");
-	if  (!$ret  ||  mysql_num_rows($ret) == 0)
-		throw new Tcerror("No tournaments to select from", "No tournaments");
-	print <<<EOT
+ 	public static function tourn_select() {
+		$ret = mysql_query("select tcode,tname from tdetails order by tname");
+		if  (!$ret  ||  mysql_num_rows($ret) == 0)
+			throw new Tcerror("No tournaments to select from", "No tournaments");
+		print <<<EOT
 <select name="tselect">
 
 EOT;
-	while  ($row = mysql_fetch_array($ret))  {
-		$tcode = urlencode($row[0]);
-		$tname = htmlspecialchars($row[1]);
-		print <<<EOT
+		while  ($row = mysql_fetch_array($ret))  {
+			$tcode = urlencode($row[0]);
+			$tname = htmlspecialchars($row[1]);
+			print <<<EOT
 <option value="$tcode">$tname</option>
 
 EOT;
+		}
+		print "</select>\n";
 	}
-	print "</select>\n"; 	
+	
+	public static function update_all_entries($selection, $update, $historic)
+	{
+		$tournlist = self::get_tcodes("tcode", false, !$historic);
+   	foreach ($tournlist as $tc)  {
+   		$nt = new Tournament($tc);
+   		$nt->update_entries($selection, $update);
+   	}
+	} 	
 }
 ?>

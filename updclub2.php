@@ -24,6 +24,7 @@ include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/club.php';
+inlcude 'php/country.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 
@@ -39,27 +40,20 @@ try {
    	if ($newclub->check_clashes())
    		throw new Tcerror("Club name/country clashes with existing", "Club name clash");
    	$updclub->update($newclub);
-  		optcreate_country($newclub->Country);
+  		Country::optcreate_country($newclub->Country);
    	$qoclub = mysql_real_escape_string($updclub->Name);
    	$qnclub = mysql_real_escape_string($newclub->Name);
    	$qocnt = mysql_real_escape_string($updclub->Country);
    	$qncnt = mysql_real_escape_string($newclub->Country);
-   	$sel = "WHERE club='$qoclub' AND country='$qocnt'";
-   	$setcomm = "SET club='$qnclub',country='$qncnt";
+   	$sel = "club='$qoclub' AND country='$qocnt'";
+   	$setcomm = "lub='$qnclub',country='$qncnt";
    	if  (isset($_POST['adjplayers']) {
-   		$ret = mysql_query("UPDATE player $setcomm $sel");
+   		$ret = mysql_query("UPDATE player SET $setcomm WHERE $sel");
    		if (!$ret)
    			throw new Tcerror(mysql_error(), "Update player error");
    	}
-   	if  (isset($_POST['adjcurr']))  {
-   		$tournlist = get_tcodes("tcode", false, !isset($_POST['adjhist']));
-   		foreach ($tournlist as $tc)  {
-   			$ents = $tc . "_entries";
-   			$ret = mysql_query("UPDATE $ents $setcomm $sel");
-   			if (!$ret)
-   				throw new Tcerror(mysql_error(), "Update entry error");
-   		}
-   	}
+   	if  (isset($_POST['adjcurr']))
+   		Tournament::update_all_entries($sel, $setcomm, isset($_POST['adjhist']));
    }
 }
 catch (Tcerror $e)  {

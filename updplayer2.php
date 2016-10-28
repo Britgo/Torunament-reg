@@ -22,6 +22,8 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checkadmin.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/tdate.php';
 include 'php/tournclass.php';
 include 'php/rank.php';
@@ -68,17 +70,8 @@ try {
 		if  ($newpers->fetchplayer())
 			throw new Tcerror("Trying to rename player to existing player", "Player exists");
 		$updpers->updatename($newpers);
-		if ($adjcurr)  {
-			$tournlist = get_tcodes("tcode", false, !$plushist);
-			$sel = $updpers->queryof();
-			$setcomm = "first='{$newpers->qfirst()}',last='{$newpers->qlast()}'";
-   		foreach ($tournlist as $tc)  {
-   			$ents = $tc . "_entries";
-   			$ret = mysql_query("UPDATE $ents SET $setcomm WHERE $sel");
-   			if (!$ret)
-   				throw new Tcerror(mysql_error(), "Update entry error");
-   		}
-   	}
+		if ($adjcurr)
+			Tournament::update_all_entries($updpers->queryof(), "first='{$newpers->qfirst()}',last='{$newpers->qlast()}'", $plushist);
 	}
 
 	// Sort out what we're doing with passwords and userids

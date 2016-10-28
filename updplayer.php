@@ -22,12 +22,12 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checkadmin.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/tdate.php';
 include 'php/rank.php';
 include 'php/person.php';
 include 'php/player.php';
-include 'php/club.php';
-include 'php/country.php';
 include 'php/opendb.php';
 
 try {
@@ -36,7 +36,7 @@ try {
    $pers->fromget();
    $pers->fetchplayer();
    $clublist = Club::list_clubs();
-   $countrylist = list_countries();
+   $countrylist = Country::list_countries();
 }
 catch (Tcerror $e)  {
    $Title = "Update error ";

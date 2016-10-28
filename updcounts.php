@@ -28,7 +28,7 @@ include 'php/opendb.php';
 
 try  {
 	opendb();
-	$countrylist = list_countries();
+	$countrylist = Country::list_countries();
 }
 catch (Tcerror $e) {
 	$Title = $e->Header;

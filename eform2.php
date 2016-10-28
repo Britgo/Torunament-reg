@@ -23,13 +23,13 @@ include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/person.php';
 include 'php/tdate.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/rank.php';
 include 'php/entrant.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 include 'php/player.php';
-include 'php/club.php';
-include 'php/country.php';
 include 'php/newaccemail.php';
 
 if (!isset($_POST['tcode']))  {

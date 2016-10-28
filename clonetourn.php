@@ -23,6 +23,8 @@
 include 'php/tcerror.php';
 include 'php/session.php';
 include 'php/checklogged.php';
+include 'php/club.php';
+include 'php/country.php';
 include 'php/tdate.php';
 include 'php/person.php';
 include 'php/entrant.php';
@@ -110,7 +112,7 @@ include 'php/head.php';
 //  Set up list of existing codes to check against
 	
 print "Existing_codes = new Array();\n";
-$codes = get_tcodes();
+$codes = Tournament::get_tcodes();
 foreach ($codes as $code)
 	print "Existing_codes['$code'] = 1;\n";
 ?>
