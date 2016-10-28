@@ -46,7 +46,7 @@ try {
    	$qocnt = mysql_real_escape_string($updclub->Country);
    	$qncnt = mysql_real_escape_string($newclub->Country);
    	$sel = "club='$qoclub' AND country='$qocnt'";
-   	$setcomm = "lub='$qnclub',country='$qncnt";
+   	$setcomm = "club='$qnclub',country='$qncnt";
    	if  (isset($_POST['adjplayers'])) {
    		$ret = mysql_query("UPDATE player SET $setcomm WHERE $sel");
    		if (!$ret)
