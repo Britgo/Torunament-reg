@@ -45,7 +45,7 @@ try {
    	$replclub = new Club(urldecode($cbits[0]), urldecode($cbits[1]));
    	$qo = $delclub->queryof();
    	$qs = "club='{$replclub->qfirst()}',country='{$replclub->qlast()}'";
-   	if  (isset($_POST["adjplayers"])  {
+   	if  (isset($_POST["adjplayers"]))  {
    		$ret = mysql_query("UPDATE player SET $qs WHERE $qo");
    		if (!$ret)
    			throw new Tcerror(mysql_error(), "Player update error");
