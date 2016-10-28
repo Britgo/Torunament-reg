@@ -33,7 +33,7 @@ $sendmsg = false;
 try {
    opendb();
    $updclub = new Club();
-   $updclub->frompost("orig");
+   $updclub->from_post("orig");
    $newclub = new Club();
    $newclub->frompost();
    if  (!$updclub->is_same($newclub))  {
