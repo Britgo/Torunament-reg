@@ -24,7 +24,7 @@ include 'php/session.php';
 include 'php/checkadmin.php';
 include 'php/tdate.php';
 include 'php/club.php';
-inlcude 'php/country.php';
+include 'php/country.php';
 include 'php/tournclass.php';
 include 'php/opendb.php';
 
