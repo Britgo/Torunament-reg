@@ -64,7 +64,7 @@ class Country {
    
    public function save_hidden($prefix = "") {
    	$qname = htmlspecialchars($this->Name);
-   	return "<input type=\"hidden\" name=\"${prefix}countryname\" value=\"$qcnt\">";
+   	return "<input type=\"hidden\" name=\"${prefix}countryname\" value=\"$qname\">";
    }
 	
 	public function create()
