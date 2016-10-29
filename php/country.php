@@ -85,7 +85,7 @@ class Country {
 	
 	public function update($newinst)
 	{
-		$ret = mysql_query("UPDATE country SET name={$newinst->qname()} WHERE {$this->queryof()}");
+		$ret = mysql_query("UPDATE country SET name='{$newinst->qname()}' WHERE {$this->queryof()}");
 		if  (!$ret)  {
 			$ecode = mysql_error();
 			throw  new  Tcerror("Cannot update country record, error was $ecode", "Database error");
