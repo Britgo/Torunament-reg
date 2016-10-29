@@ -38,8 +38,8 @@ try {
    $changeto = $_POST['chgname'];
    if (strlen($changeto) != 0  &&  $changeto != 'none')  {
    	$replcnt = new Country(urldecode($changeto));
-   	$qo = "country='{$delcountry->qcountry()}'";
-   	$qs = "country='{$replcnt->qcountry()}'";
+   	$qo = "country='{$delcountry->qname()}'";
+   	$qs = "country='{$replcnt->qname()}'";
    	if  (isset($_POST["adjplayers"]))  {
    		$ret = mysql_query("UPDATE player SET $qs WHERE $qo");
    		if (!$ret)
