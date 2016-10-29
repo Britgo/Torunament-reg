@@ -37,7 +37,7 @@ catch (Tcerror $e)  {
    include 'php/generror.php';
    exit(0);
 }
-$Title = "Update details of club";
+$Title = "Update details of country";
 include 'php/head.php';
 ?>
 <body>
@@ -54,7 +54,7 @@ function formvalid()
 }
 </script>
 <?php include 'php/nav.php'; ?>
-<h1>Update country/h1>
+<h1>Update country</h1>
 <p>Please use the form to update a country name on the tournament registration system.</p>
 <?php
 print <<<EOT
@@ -87,7 +87,7 @@ EOT;
 	<td><input type="checkbox" name="adjhist"></td>
 </tr>
 </table>
-<p><input type="submit" name="subm" value="Update Club"></p>
+<p><input type="submit" name="subm" value="Update Country"></p>
 </form>
 </div>
 </div>
