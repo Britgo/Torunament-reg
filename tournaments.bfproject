@@ -6,10 +6,10 @@ openfiles: /home/jmc/src/Websites/tournreg/php/club.php:4011:2535:0:
 openfiles: /home/jmc/src/Websites/tournreg/updclub2.php:1204:40:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/generror.php:1252:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/updcountry.php:2819:1448:0:
-openfiles: /home/jmc/src/Websites/tournreg/php/country.php:2727:1361:1:
-openfiles: /home/jmc/src/Websites/tournreg/updcountry2.php:2689:873:0:
+openfiles: /home/jmc/src/Websites/tournreg/php/country.php:3324:2312:1:
+openfiles: /home/jmc/src/Websites/tournreg/updcountry2.php:2689:1565:0:
 openfiles: /home/jmc/src/Websites/tournreg/delcountry.php:2409:1158:0:
-openfiles: /home/jmc/src/Websites/tournreg/delcountry2.php:1754:945:0:
+openfiles: /home/jmc/src/Websites/tournreg/delcountry2.php:1625:945:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -92,9 +92,9 @@ recent_files: file:///home/jmc/src/Websites/tournreg/delclub2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/delperson2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/updclub2.php
 recent_files: file:///home/jmc/src/Websites/tournreg/updcountry2.php
-recent_files: file:///home/jmc/src/Websites/tournreg/php/country.php
 recent_files: file:///home/jmc/src/Websites/tournreg/delcountry.php
 recent_files: file:///home/jmc/src/Websites/tournreg/delcountry2.php
+recent_files: file:///home/jmc/src/Websites/tournreg/php/country.php
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/tournreg/php
 spell_check_default: 1
