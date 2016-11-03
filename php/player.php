@@ -254,7 +254,7 @@ class Player extends Person {
 	public function bgaopt($isnew = TRUE, $selfn = "") {
 		$onc = "";
 		if (strlen($selfn) != 0)
-			$onc = " onchange=\"$selfn());\"";
+			$onc = " onchange=\"$selfn();\"";
 		$u = $m = $n = "";
 		if ($isnew)
 			$u = " selected";
