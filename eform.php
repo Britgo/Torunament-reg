@@ -111,7 +111,7 @@ include 'php/head.php';
 // "Enjoy"
 
 print <<<EOT
-<body>
+<body onload="calccost();">
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function checkform() {
