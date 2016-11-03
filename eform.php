@@ -314,7 +314,7 @@ if ($tourn->Nonbga != 0)  {
 <tr><td>BGA Memb</td><td>
 
 EOT;
-	$defplayer->bgaopt(false);
+	$defplayer->bgaopt(strlen($userid) == 0, "calccost");
 	print "</td></tr>\n";
 }
 
