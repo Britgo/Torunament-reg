@@ -280,7 +280,7 @@ print <<<EOT
 <table>
 
 <tr>
-	<td>Player Name</td>
+	<td>Player Name (please enter as Firstname Lastname using nearest English letters if needed)</td>
 	<td><input type="text" name="name" size="30" value="{$defplayer->display_name()}"></td>
 </tr>
 
