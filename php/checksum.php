@@ -32,6 +32,16 @@ $r2 = $_POST['r2'];
 $asp = strtolower($_POST['asp']);
 $ans = array('zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty');
 if  ($ans[$r1+$r2] != $asp) {
+	$fh = fopen($_SERVER["DOCUMENT_ROOT"] . '/Badsums', 'a');
+	fwrite($fh, "Bad login on " . date("/M/Y H:i:s\n"));
+	foreach ($_SERVER as $n => $v) {
+		fwrite($fh, "SERVER[$n] = $v\n");
+	}
+	foreach ($_POST as $n -> $v) {
+		fwrite($fh, "POST[$n] = $v\n");
+	}
+	fwrite($fh, "\n\n");
+	fclose($fh);
 	$Title = 'Wrong sum';
 	include 'php/head.php';
 	print <<<EOT
@@ -43,7 +53,7 @@ if  ($ans[$r1+$r2] != $asp) {
 
 EOT;
 	flush();
-	sleep(60);
+	sleep(30);
 	exit(111);
 }
 ?>
