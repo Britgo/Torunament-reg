@@ -33,7 +33,7 @@ $asp = strtolower($_POST['asp']);
 $ans = array('zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty');
 if  ($ans[$r1+$r2] != $asp) {
 	$fh = fopen($_SERVER["DOCUMENT_ROOT"] . '/Badsums', 'a');
-	fwrite($fh, "Bad login on " . date("d/m/Y H:i:s\n"));
+	fwrite($fh, "Bad checksum on " . date("d/m/Y H:i:s\n"));
 	foreach ($_SERVER as $n => $v) {
 		fwrite($fh, "SERVER[$n] = $v\n");
 	}
