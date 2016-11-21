@@ -32,12 +32,18 @@ $r2 = $_POST['r2'];
 $asp = strtolower($_POST['asp']);
 $ans = array('zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty');
 if  ($ans[$r1+$r2] != $asp) {
-	$Mess = <<<EOT
-Sorry but the answer to your sum was wrong, please try again - remember it should be figures, like "eleven".
+	$Title = 'Wrong sum';
+	include 'php/head.php';
+	print <<<EOT
+<body>
+<h1>Incorrect spam challenge</h1>
+<p>Sorry but the answer to your sum was wrong, please try again - remember it should be as a word, like "eleven".</p>
+</body>
+</html>
 
 EOT;
 	flush();
-	sleep(300);
+	sleep(60);
 	exit(111);
 }
 ?>
