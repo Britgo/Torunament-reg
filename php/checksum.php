@@ -37,7 +37,7 @@ if  ($ans[$r1+$r2] != $asp) {
 	foreach ($_SERVER as $n => $v) {
 		fwrite($fh, "SERVER[$n] = $v\n");
 	}
-	foreach ($_POST as $n -> $v) {
+	foreach ($_POST as $n => $v) {
 		fwrite($fh, "POST[$n] = $v\n");
 	}
 	fwrite($fh, "\n\n");
@@ -47,13 +47,13 @@ if  ($ans[$r1+$r2] != $asp) {
 	print <<<EOT
 <body>
 <h1>Incorrect spam challenge</h1>
-<p>Sorry but the answer to your sum was wrong, please try again - remember it should be as a word, like "eleven".</p>
+<p>Sorry but the answer to your sum was wrong, please try again (use back on your browser) - remember it should be as a word, like "eleven".</p>
 </body>
 </html>
 
 EOT;
 	flush();
-	sleep(30);
+	sleep(20);
 	exit(111);
 }
 ?>
