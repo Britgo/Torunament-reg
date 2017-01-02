@@ -132,6 +132,14 @@ function checkform() {
      	alert("No country given");
       return  false;
    }
+   if (!okclubcountry(fm.club.value))  {
+   	alert("Invalid club name, must be alphabetic, spaces, hyphen");
+   	return  false;
+   }
+   if (!okclubcountry(fm.country.value))  {
+   	alert("Invalid country name, must be alphabetic, spaces, hyphen");
+   	return  false;
+   }
    if (!nonblank(fm.email.value))  {
 	   alert("Please give your email address");
 		return  false;

@@ -30,6 +30,10 @@ function okname(s)  {
 	return /^ *[A-Z][a-z]*( +(Mc|O')?[A-Z][a-z]*(-[A-Z][a-z]*)?)+$/.test(s); //'
 }
 
+function okclubcountry(s)  {
+	return /^[A-Z][- a-zA-Z]*[a-z]$/.test(s);
+}
+
 function lostpw() {
 	var uidv = document.getElementById('user_id');
 	var l = uidv.value;
