@@ -3,8 +3,8 @@ e2c.convert_num: 0
 openfiles: /home/jmc/src/Websites/tournreg/php/checksum.php:1548:40:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/head.php:97:0:0:
 openfiles: /home/jmc/src/Websites/tournreg/php/generror.php:0:0:0:
-openfiles: /home/jmc/src/Websites/tournreg/eform.php:0:2859:0:
-openfiles: /home/jmc/src/Websites/tournreg/webfn.js:1147:0:1:
+openfiles: /home/jmc/src/Websites/tournreg/eform.php:4092:2859:1:
+openfiles: /home/jmc/src/Websites/tournreg/webfn.js:1167:0:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -91,7 +91,7 @@ recent_files: file:///home/jmc/src/Websites/tournreg/php/generror.php
 recent_files: file:///home/jmc/src/Websites/tournreg/eform.php
 recent_files: file:///home/jmc/src/Websites/tournreg/webfn.js
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/tournreg/php
+savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
 spell_insert_entities: 0
 last_filefilter: 

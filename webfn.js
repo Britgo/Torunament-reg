@@ -34,6 +34,10 @@ function okclubcountry(s)  {
 	return /^[A-Z][- a-zA-Z]*[a-z]$/.test(s);
 }
 
+function checkchallenge(s) {
+	return /^[a-zA-Z]+$/.test(s);
+}
+
 function lostpw() {
 	var uidv = document.getElementById('user_id');
 	var l = uidv.value;

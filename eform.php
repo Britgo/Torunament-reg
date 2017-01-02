@@ -144,6 +144,10 @@ function checkform() {
 	   alert("Please give your email address");
 		return  false;
 	}
+	if (!checkchallenge(fm.asp.value))  {
+		alert("Invalid challenge response, should be word");
+		return  false;
+	}
 
 EOT;
 if ($tourn->Nonbga != 0)
