@@ -31,7 +31,7 @@ function okname(s)  {
 }
 
 function okclubcountry(s)  {
-	return /^[A-Z][- a-zA-Z]*[a-z]$/.test(s);
+	return /^[A-Z][- a-zA-Z]*[a-zA-Z]$/.test(s);
 }
 
 function checkchallenge(s) {

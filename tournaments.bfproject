@@ -1,6 +1,6 @@
 c2e.convert_special: 0
 e2c.convert_num: 0
-openfiles: /home/jmc/src/Websites/tournreg/php/opendb.php:8:0:1:
+openfiles: /home/jmc/src/Websites/tournreg/webfn.js:1156:0:1:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -17,7 +17,7 @@ view_left_panel: 1
 bookmarks_filename_mode: 0
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/goleague/php
+opendir: file:///home/jmc/src/Websites/tournreg
 wrap_text_default: 0
 default_mime_type: text/plain
 ssearch_text: club
@@ -83,9 +83,9 @@ recent_files: file:///home/jmc/src/Websites/tournreg/eform.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/checksum.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/generror.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/head.php
-recent_files: file:///home/jmc/src/Websites/tournreg/webfn.js
 recent_files: file:///home/jmc/src/Websites/tournreg/php/sumchallenge.php
 recent_files: file:///home/jmc/src/Websites/tournreg/php/opendb.php
+recent_files: file:///home/jmc/src/Websites/tournreg/webfn.js
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/tournreg
 spell_check_default: 1
@@ -123,10 +123,10 @@ e2c.convert_special: 0
 autoindent: 1
 encoding: UTF-8
 adv_open_recursive: 0
-recent_dirs: file:///home/jmc/src/Websites/tournreg
 recent_dirs: file:///home/jmc/src/Websites/tournreg/php
 recent_dirs: file:///home/jmc/src/Websites/goleague
 recent_dirs: file:///home/jmc/src/Websites/goleague/php
+recent_dirs: file:///home/jmc/src/Websites/tournreg
 filegloblist: *.xml
 filegloblist: *.txt
 filegloblist: *.shtml
